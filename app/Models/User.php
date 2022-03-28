@@ -11,10 +11,11 @@ use App\Models\Service;
 use App\Models\Subject;
 use App\Models\Order;
 use Auth;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, HasApiTokens;
 
     public function marks(){
         return $this->belongsTo(Mark::class);
