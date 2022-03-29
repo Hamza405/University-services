@@ -51,12 +51,21 @@ class ApiController extends Controller
             'gender' => $request['gender'],
             'role' => 'طالب',
             ]);
-        $token = $user->createToken('token')->plainTextToken;
-    
+            
+        if($user){
+            $token = $user->createToken('token')->plainTextToken;
+            return response()->json([
+                'user' => $user,
+                'token' => $token,
+                'status'=> Response::HTTP_OK
+            ]);
+        }
+        
         return response()->json([
-            'user' => $user,
-            'token' => $token
+            'error' => 'Some thing went wrong!',
+            'status' => Response::HTTP_NOT_FOUND,
         ]);
+       
       
     }
 
@@ -96,7 +105,8 @@ class ApiController extends Controller
             $token = $user->createToken('token')->plainTextToken;
             return response()->json([
                 'user' => $user,
-                'token' => $token
+                'token' => $token,
+                'status'=> Response::HTTP_OK
             ]);
         }
 
