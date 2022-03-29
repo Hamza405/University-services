@@ -43,40 +43,66 @@ class ApiController extends Controller
             
         $user = User::create([
             'name' => $request['name'],
-                'email' => $request['email'],
-                'password' => Hash::make($request['password']),
-                'num' => $request['num'],
-                'year' => $request['year'],
-                    'section' => $request['section'],
-                    'gender' => $request['gender'],
-                    'role' => 'طالب',
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+            'num' => $request['num'],
+            'year' => $request['year'],
+            'section' => $request['section'],
+            'gender' => $request['gender'],
+            'role' => 'طالب',
             ]);
-            $token = $user->createToken('token')->plainTextToken;
+        $token = $user->createToken('token')->plainTextToken;
     
-            return response()->json([
-                    'user' => $user,
-                    'token' => $token
-                ]
-            );
+        return response()->json([
+            'user' => $user,
+            'token' => $token
+        ]);
       
     }
-    public function login($request){
-        // $request = $request->requestate([
-        //     'email' => 'required',
-        //     'password' => 'required',
-        // ]);
+
+    public function login(Request $request){
+        $valid = Validator::make($request->all(),[
+            'email' => 'required|string|email|max:255',
+            'password' => 'required|string|min:7',
+        ]);
+
+        if($valid->fails()){
+            return  response()->json([
+                'error' => $valid->errors()->first(),
+                'status' => Response::HTTP_BAD_REQUEST,
+            ]);
+        }
+        
 
         $user = User::where('email', $request['email'])->first();
+       
+
+        if(!$user){
+            return response()->json([
+                'error' => 'User not found',
+                'status' => Response::HTTP_NOT_FOUND,
+            ]);
+        }
         $password = Hash::check($request['password'], $user->password);
 
-        if($user && $password){
-            // $token = $user->createToken('token')->plainTextToken();
+        if(!$password){
             return response()->json([
-                'user' => $user,
-                // 'token' => $token
+                'error' => 'Password is incorrect',
+                'status' => Response::HTTP_NOT_FOUND,
             ]);
         }
 
-            return response()->json(['message' => 'error']);
+        if($user && $password){
+            $token = $user->createToken('token')->plainTextToken;
+            return response()->json([
+                'user' => $user,
+                'token' => $token
+            ]);
+        }
+
+        return response()->json([
+            'error' => 'Some thing went wrong!',
+            'status' => Response::HTTP_NOT_FOUND,
+        ]);
     }
 }

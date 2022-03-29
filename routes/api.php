@@ -15,5 +15,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('/signup',[App\Http\Controllers\ApiController::class, 'signup']);
+Route::post('/login',[App\Http\Controllers\ApiController::class, 'login']);
 Route::get('/',[App\Http\Controllers\ApiController::class, 'a']);
 
