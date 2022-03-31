@@ -63,7 +63,7 @@ class ApiController extends Controller
         
         return response()->json([
             'error' => 'Some thing went wrong!',
-            'status' => Response::HTTP_NOT_FOUND,
+            'status' => 500,
         ]);
        
       
@@ -112,7 +112,32 @@ class ApiController extends Controller
 
         return response()->json([
             'error' => 'Some thing went wrong!',
-            'status' => Response::HTTP_NOT_FOUND,
+            'status' => 500,
+        ]);
+    }
+
+    public function logout (Request $request) {
+        // $accessToken = auth()->user()->token();
+        // if($accessToken){
+        //     $token= $request->user()->tokens->find($accessToken);
+        //     if($token){
+        //         $token->revoke();
+        //         return response()->json([
+        //             'message' => 'Logout successfully',
+        //             'status' => Response::HTTP_OK
+        //         ]);
+        //     }
+        // }
+        $res = $request->user()->currentAccessToken()->delete();
+        if($res){
+            return response()->json([
+                'message' => 'Logout successfully',
+                'status' => Response::HTTP_OK
+            ]);
+        }
+        return response()->json([
+            'message' => 'Something went wrong',
+            'status' => 500
         ]);
     }
 }

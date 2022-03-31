@@ -16,5 +16,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/signup',[App\Http\Controllers\ApiController::class, 'signup']);
 Route::post('/login',[App\Http\Controllers\ApiController::class, 'login']);
+
+Route::middleware('auth:sanctum')->get('/user/revoke', function (Request $request) {
+    $user = $request->user();
+    $user->tokens()->delete();
+    return response()->json([
+        'message' => 'Logout successfully',
+        'status' => 200
+    ]);
+});
+
 Route::get('/',[App\Http\Controllers\ApiController::class, 'a']);
 
