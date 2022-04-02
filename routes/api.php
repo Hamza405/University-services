@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::post('/signup',[App\Http\Controllers\ApiController::class, 'signup']);
 Route::post('/login',[App\Http\Controllers\ApiController::class, 'login']);
 
+Route::get('/ads',[App\Http\Controllers\ApiController::class, 'getAds']);
+
 Route::middleware('auth:sanctum')->get('/user/revoke', function (Request $request) {
     $user = $request->user();
     $user->tokens()->delete();
@@ -26,5 +28,9 @@ Route::middleware('auth:sanctum')->get('/user/revoke', function (Request $reques
     ]);
 });
 
-Route::get('/',[App\Http\Controllers\ApiController::class, 'a']);
+Route::group(['middleware'=>'auth:sanctum'], function(){
+    Route::get('/ads',[App\Http\Controllers\ApiController::class, 'getAds']);
+
+});
+
 

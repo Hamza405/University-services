@@ -16,6 +16,7 @@ use App\Models\AD;
 use App\Models\Reorder;
 use App\Models\ProImage;
 use Illuminate\Support\Facades\Hash;
+use Auth;
 
 class ApiController extends Controller
 {
@@ -85,7 +86,7 @@ class ApiController extends Controller
 
         $user = User::where('email', $request['email'])->first();
        
-
+        
         if(!$user){
             return response()->json([
                 'error' => 'User not found',
@@ -116,28 +117,31 @@ class ApiController extends Controller
         ]);
     }
 
-    public function logout (Request $request) {
-        // $accessToken = auth()->user()->token();
-        // if($accessToken){
-        //     $token= $request->user()->tokens->find($accessToken);
-        //     if($token){
-        //         $token->revoke();
-        //         return response()->json([
-        //             'message' => 'Logout successfully',
-        //             'status' => Response::HTTP_OK
-        //         ]);
-        //     }
-        // }
-        $res = $request->user()->currentAccessToken()->delete();
-        if($res){
-            return response()->json([
-                'message' => 'Logout successfully',
-                'status' => Response::HTTP_OK
-            ]);
-        }
+   public function getAds(){
+       $userYear = Auth::user()->year;
+       $ads = DB::table('a_d_s')
+       ->where('target', 0)
+       ->orWhere('target', $userYear)
+       ->orderBy('id', 'DESC')->get();
+       if($ads){
         return response()->json([
-            'message' => 'Something went wrong',
-            'status' => 500
+            'ads' => $ads,
+            'status' => 200
         ]);
-    }
+       }
+       return response()->json([
+        'error' => 'Some thing wrong!',
+        'status' => 404
+    ]);
+        
+      
+   }
+
+   public function getMarksByUserId($uid){
+         $marks = Mark::where('user_id', Auth::user()->id)->get();
+         return response()->json([
+              'marks' => $marks,
+              'status' => 200
+         ]);
+   }
 }
