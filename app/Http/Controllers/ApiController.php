@@ -15,6 +15,7 @@ use App\Models\Order;
 use App\Models\AD;
 use App\Models\Reorder;
 use App\Models\ProImage;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Auth;
 
@@ -133,15 +134,58 @@ class ApiController extends Controller
         'error' => 'Some thing wrong!',
         'status' => 404
     ]);
-        
-      
    }
 
-   public function getMarksByUserId($uid){
-         $marks = Mark::where('user_id', Auth::user()->id)->get();
+   public function getServices(){
+         $services = Service::all();
+         if($services){
+          return response()->json([
+                'services' => $services,
+                'status' => 200
+          ]);
+         }
          return response()->json([
-              'marks' => $marks,
-              'status' => 200
-         ]);
+          'error' => 'Some thing wrong!',
+          'status' => 404
+     ]);
    }
+
+   public function addOrder(Request $request){
+    $currentDateTime = Carbon::now();
+    $newDateTime = Carbon::now()->addDay(30);
+
+   $order =Order::create([
+        'userID' => Auth::user()->id,
+        'serviceID' => $request['serviceId'],
+        'state' => 0,
+        'deadline'=> $newDateTime
+    ]);
+
+    if($order){
+        return response()->json([
+            'order' => $order,
+            'status' => 200
+        ]);
+    }
+    return response()->json([
+        'error' => 'Some thing wrong!',
+        'status' => 500
+   ]);
+   }
+
+   public function getOrders(){
+    $orders = Order::where('userID', Auth::user()->id)->get();
+    if($orders){
+        return response()->json([
+            'myOrder' => $orders,
+            'status' => 200
+        ]);
+    }
+    return response()->json([
+        'error' => 'Some thing wrong!',
+        'status' => 404
+   ]);
+   }
+
+   
 }

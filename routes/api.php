@@ -30,6 +30,9 @@ Route::middleware('auth:sanctum')->get('/user/revoke', function (Request $reques
 
 Route::group(['middleware'=>'auth:sanctum'], function(){
     Route::get('/ads',[App\Http\Controllers\ApiController::class, 'getAds']);
+    Route::get('/services',[App\Http\Controllers\ApiController::class, 'getServices']);
+    Route::post('/addOrder',[App\Http\Controllers\ApiController::class, 'addOrder']);
+    Route::get('/getOrders',[App\Http\Controllers\ApiController::class, 'getOrders']);
 
 });
 
