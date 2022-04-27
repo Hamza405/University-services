@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Mail;
+use Auth;
 
 class RegisterController extends Controller
 {
@@ -30,7 +31,23 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = '/adminDash';
+    // protected function authenticated(Request $request, $user)
+    // {
+    //     if($user->role == 'موظف'){
+    //         return redirect('/adminDash');
+    //     }
+
+    //     return redirect('/home');
+    // }
+    protected function redirectTo()
+    {
+        if(Auth::user()->role == 'موظف'){
+            return '/adminDash';
+        }
+
+        return '/home';
+    }
 
     /**
      * Create a new controller instance.
@@ -50,16 +67,21 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:25'],
-            'email' => ['required', 'string', 'email', 'max:30', 'unique:users'],
-            'password' => ['required', 'string', 'min:7', 'confirmed'],
-            'num' => ['required', 'string', 'max:5','unique:users'],
-        ]);
-        
-        
-
+        if($data['role']=="موظف"){
+            return Validator::make($data, [
+                'name' => ['required', 'string', 'max:25'],
+                'email' => ['required', 'string', 'email', 'max:30', 'unique:users'],
+                'password' => ['required', 'string', 'min:7', 'confirmed'],
+            ]);
+        }else{
+            return Validator::make($data, [
+                'name' => ['required', 'string', 'max:25'],
+                'email' => ['required', 'string', 'email', 'max:30', 'unique:users'],
+                'password' => ['required', 'string', 'min:7', 'confirmed'],
+                'num' => ['required', 'string', 'max:5','unique:users'],
+            ]);
+            
+        }
     }
 
     /**
@@ -71,6 +93,14 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         // Mail::to($data['email'])->send(new \App\Mail\Welcome);
+        if($data['role']=="موظف"){
+            return User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+                'role' =>  $data['role'], ]); 
+                
+        }
          return User::create([
                 'name' => $data['name'],
                 'email' => $data['email'],
@@ -79,7 +109,6 @@ class RegisterController extends Controller
                 'year' => $data['year'],
                 'section' => $data['section'],
                 'gender' => $data['gender'],
-                'role' => 'طالب',
-            ]); 
+                'role' =>  $data['role'], ]); 
     }
 }

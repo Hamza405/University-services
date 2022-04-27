@@ -180,7 +180,7 @@
 									<li><a href="{{ route('login') }}">وثيقة تخرج</a></li>
 								</ul>
 							</li> --}}
-							@if(Auth::user()->role == 'Admin')
+							@if(Auth::user()->role == 'موظف')
 								<li class="active"><a href="{{ url('/adminDash') }}">Dashboard</a>
 							
 							@endif

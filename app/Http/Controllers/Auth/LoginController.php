@@ -23,12 +23,21 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
+    protected function authenticated(Request $request, $user)
+    {
+        if($user->role == 'موظف'){
+            return redirect('/adminDash');
+        }
+
+        return redirect('/home');
+    }
+
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -43,5 +52,9 @@ class LoginController extends Controller
     public function logout(Request $request) {
         Auth::logout();
         return redirect('/login');
+      }
+    
+      public function employeeRegister(Request $request){
+          return view('employeeRegister');
       }
 }

@@ -29,10 +29,14 @@ Route::middleware('auth:sanctum')->get('/user/revoke', function (Request $reques
 });
 
 Route::group(['middleware'=>'auth:sanctum'], function(){
+    Route::get('/getUser',[App\Http\Controllers\ApiController::class, 'getUser']);
     Route::get('/ads',[App\Http\Controllers\ApiController::class, 'getAds']);
     Route::get('/services',[App\Http\Controllers\ApiController::class, 'getServices']);
     Route::post('/addOrder',[App\Http\Controllers\ApiController::class, 'addOrder']);
     Route::get('/getOrders',[App\Http\Controllers\ApiController::class, 'getOrders']);
+    Route::get('/getMarks',[App\Http\Controllers\ApiController::class, 'getMarks']);
+    Route::get('/getMarksOnly',[App\Http\Controllers\ApiController::class, 'getMarksOnly']);
+    Route::get('/getSubjects',[App\Http\Controllers\ApiController::class, 'getSubjects']);
 
 });
 

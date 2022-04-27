@@ -105,6 +105,13 @@
 								@endif
 							</div>
 						</div>
+						<div class="col-lg-12">
+							<div class="form-group form-forget">
+					
+								<a href="employeeRegister" class="ml-auto">هل تريد التسجيل كموظف ؟</a>
+							
+							</div>
+						</div>
 						<div class="col-lg-12 m-b30">
                             <br>
 							<button name="submit" style="background:#ccc" type="submit" value="Submit" class="btn button-md btn-block">تسجيل الدخول</button>

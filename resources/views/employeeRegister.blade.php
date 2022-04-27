@@ -120,74 +120,11 @@
                             </div>
                             </div>
                         </div>
-                        <div class="col-lg-12">
-							<div class="row">
-                            <div class="form-group col-lg-6">
-								<div class="input-group">
-									<label style="text-align:end">الرقم الجامعي</label>
-									<input style="direction:rtl" id="num" type="text" class="form-control @error('num') is-invalid @enderror" name="num" required>
-									@error('num')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong> الرقم الجامعي مستخدم في حساب أخر</strong>
-                                    </span>
-                                @enderror
-								</div>
-                            </div>
-                            <div class="form-group col-lg-6">
-                            <select id="section" name="section">
-                                        <option value="حاسبات" selected>
-                                            حاسبات
-                                        </option>
-                                        <option disabled>
-                                          طبية
-                                        </option>
-                                        <option disabled>
-                                          اتصالات
-                                        </option>
-                                        <option disabled>
-                                          ميكاترونيك
-                                        </option>
-                                        <option disabled>
-                                          بحرية
-                                        </option>
-                                        <option disabled>
-                                          طاقة
-                                        </option> <optiondisabled >
-                                          قوى
-                                        </option> <option disabled>
-                                          ميكانيك
-                                        </option>
-                                    </select>
-                            </div>
-                            </div>
-						</div>
-						<div class="col-lg-12">
-							<div class="row">
-                                <div class="col-lg-6">
-                                    <select id="gender" name="gender">
-                                        <option value="ذكر">
-                                            ذكر
-                                        </option>
-                                        <option value="أنثى">
-                                        أنثى
-                                        </option>
-                                    </select>
-                                </div>
-                                <div class="col-lg-6">
-                                    <select id="year" name="year">
-                                        <option value="1">السنة الأولى</option>
-                                        <option value="2">السنة الثانية</option>
-                                        <option value="3">السنة الثالثة</option>
-                                        <option value="4">السنة الرابعة</option>
-                                        <option value="5">السنة الخامسة</option>
-                                    </select>
-                                </div>
-                            </div>
-						</div> 
-						<input type="hidden" id="role" name="role" value="طالب">
+                        
+						<input type="hidden" id="role" name="role" value="موظف">
 						<div class="col-lg-12 m-b30">
-                        	<br>    
-                        	<button name="submit" type="submit" style="background:#ccc" value="Submit" class="btn button-md btn-block">إنشاء الحساب</button>
+							<br>    
+							<button name="submit" type="submit" style="background:#ccc" value="Submit" class="btn button-md btn-block">إنشاء الحساب</button>
 						</div>
 						
 					</div>

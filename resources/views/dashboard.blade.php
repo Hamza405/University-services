@@ -120,6 +120,9 @@
 					<li>
 						<a href="{{ url('/home') }}" class="ttr-material-button ttr-submenu-toggle">HOME</a>
 					</li>
+					<li>
+						<a href="{{ url('/logout') }}" class="ttr-material-button ttr-submenu-toggle" style="padding-right:0px">LOGOUT</a>
+					</li>
 				
 				</ul>
 				<!-- header left menu end -->

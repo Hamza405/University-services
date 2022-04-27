@@ -18,6 +18,7 @@ use App\Models\ProImage;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Auth;
+use PDF;
 
 class ApiController extends Controller
 {
@@ -118,6 +119,20 @@ class ApiController extends Controller
         ]);
     }
 
+    public function getUser(){
+        $user = Auth::user();
+        if($user){
+            return response()->json([
+                'user' => $user,
+                'status' => 200
+            ]);
+        }
+        return response()->json([
+            'error' => 'Some thing wrong!',
+            'status' => 404
+        ]);
+    }
+
    public function getAds(){
        $userYear = Auth::user()->year;
        $ads = DB::table('a_d_s')
@@ -186,6 +201,62 @@ class ApiController extends Controller
         'status' => 404
    ]);
    }
+
+   public function getMarks(){
+    $data = Mark::where('userId',Auth::user()->id)->get();
+        if($data){
+            return response()->json([
+                'marks' => $data,
+                'status' => 200
+            ]);
+        }
+        return response()->json([
+            'error' => 'Some thing wrong!',
+            'status' => 404
+        ]);
+    }
+
+    public function getSubjects(){
+        $data = Subject::orderBy('year', 'ASC')->orderBy('semester', 'ASC')->get();
+        if($data){
+            return response()->json([
+                'subjects' => $data,
+                'status' => 200
+            ]);
+        }
+        return response()->json([
+            'error' => 'Some thing wrong!',
+            'status' => 404
+        ]);
+    }
+
+    public function getMarksOnly(){
+    $data = Mark::where('userID',Auth::user()->id)->where('result','ناجح')->orderBy('subjectId','ASC')->get();
+        if($data){
+            return response()->json([
+                'marks' => $data,
+                'status' => 200
+            ]);
+        }
+        return response()->json([
+            'error' => 'Some thing wrong!',
+            'status' => 404
+        ]);
+    }
+
+// public function getMarks(){
+//     $data = Mark::where('userID',Auth::user()->id)->where('result','ناجح')->orderBy('subjectId','ASC')->get();
+//     view()->share('marks',$data);
+//     $pdf = PDF::loadView('pdfMyMarkOnlyTable', $data);
+//     return response()->$pdf->download('marks.pdf');
+//     // return $pdf->download('marks.pdf');
+   
+  
+  
+//     // return Excel::download(new IExport(), 'ad.pdf');
+
+//     // return Excel::download(Mark::get(), 'invoices.xlsx');
+// }
 
    
 }
