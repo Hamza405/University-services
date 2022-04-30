@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Section;
 use App\Models\User;
 use App\Models\Subjects;
+use App\Models\AD;
+use Carbon\Carbon;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +23,8 @@ Route::get('/', function () {
     $sections =DB::table('sections')->get();
     $students =DB::table('users')->get();
     $subjects =DB::table('subjects')->get();
+    $rowsForDeleted = AD::select('id')->whereMonth('created_at',Carbon::now()->month)->get();
+    AD::whereNotIn('id', $rowsForDeleted)->delete();
     $ads =DB::table('a_d_s')->limit(10)->orderBy('id', 'DESC')->get();
     return view('welcome')->with('sections',$sections)->with('students',$students)
     ->with('subjects',$subjects)->with('ads',$ads);
@@ -86,3 +90,6 @@ Route::get('exportOnlyPdf',[App\Http\Controllers\HomeController::class,'exportOn
 Route::get('exportExcel',[App\Http\Controllers\HomeController::class,'exportExcel']);
 Route::get('exportExcelOrder',[App\Http\Controllers\HomeController::class,'exportExcelOrder']);
 
+Route::get('complaints',[App\Http\Controllers\ComplaintController::class,'complaints']);
+
+Route::post('saveComplaint',[App\Http\Controllers\ComplaintController::class,'saveComplaint']);

@@ -95,6 +95,14 @@ class ApiController extends Controller
                 'status' => Response::HTTP_NOT_FOUND,
             ]);
         }
+
+        if($user->role=='موظف'){
+            return response()->json([
+                'error' => 'You are not allowed to login',
+                'status' => Response::HTTP_NOT_FOUND,
+            ]);
+        }
+        
         $password = Hash::check($request['password'], $user->password);
 
         if(!$password){
@@ -235,6 +243,20 @@ class ApiController extends Controller
         if($data){
             return response()->json([
                 'marks' => $data,
+                'status' => 200
+            ]);
+        }
+        return response()->json([
+            'error' => 'Some thing wrong!',
+            'status' => 404
+        ]);
+    }
+
+    public function getStudyProgram(){
+        $studyProgram = DB::table('study_program')->get();
+        if($studyProgram){
+            return response()->json([
+                'studyProgram' => $studyProgram,
                 'status' => 200
             ]);
         }

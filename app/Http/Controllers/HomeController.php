@@ -52,7 +52,8 @@ class HomeController extends Controller
         $services =DB::table('services')->get();
         $orders =DB::table('orders')->where('userID',Auth::user()->id)->get();
         $reorders =DB::table('reorders')->where('userID',Auth::user()->id)->get();
-        
+        $rowsForDeleted = AD::select('id')->whereMonth('created_at',Carbon::now()->month)->get();
+        AD::whereNotIn('id', $rowsForDeleted)->delete();     
         $ads =DB::table('a_d_s')->limit(10)->orderBy('id', 'DESC')->get();
         return view('home')->with('sections',$sections)->with('students',$students)
         ->with('subjects',$subjects)->with('orders',$orders)
@@ -182,7 +183,6 @@ class HomeController extends Controller
     }
 
     public function storePro(Request $request){
-        $studypro = DB::table('study_program')->get();
         DB::table('study_program')->where('id','=',$request->day)->update([
             'year1'=>$request->y1,
             'year2'=>$request->y2,
@@ -190,6 +190,7 @@ class HomeController extends Controller
             'year4'=>$request->y4,
             'year5'=>$request->y5,
         ]);
+        $studypro = DB::table('study_program')->get();
         return view('addPro')->with('studypro',$studypro);
     }
 

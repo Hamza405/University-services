@@ -521,7 +521,7 @@
 										</div>
 										
 									</div>
-									<div style="padding: 0.5rem 1.5rem;text-align:end;height:30vh;@if(strlen($ad->description) > 100) overflow-y:scroll; @endif ">
+									<div style="margin:auto;width:70%;padding: 0.5rem 1.5rem;text-align:end;height:30vh;@if(strlen($ad->description) > 100) overflow-y:scroll; @endif ">
 										<p>{{ $ad->description }}</p>
 									</div>
 								</div>

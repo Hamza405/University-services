@@ -596,7 +596,7 @@
 
   
   <!-- Modal -->
-  <div class="modal fade" style="margin-top: 7rem" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div  class="modal fade" style="margin-top: 7rem" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 	  <div class="modal-content">
 		<div class="modal-header">
@@ -617,20 +617,41 @@
 			</select> <br>
 			<button type="submit" class="btn btn-primary btn-block" style="background: #f7b205;color:#fff;margin:2rem 0">تأكيد</button>
 		</form> 
-		<div class="modal-header">
-			<h5 class="modal-title" id="exampleModalLabel">تقديم طلب إعادة عملي</h5>
+		<div class="modal-header" style="direction:rtl;text-align:right">
+			<h5 style="direction:rtl;text-align:right" class="modal-title" id="exampleModalLabel">تقديم طلب إعادة عملي</h5>
 			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 			</button>
-		  </div>
-		<form action="{{ url('/reOrder') }}" method="POST" style="width: 80%;margin:auto;padding:1.1rem">
+		</div>
+		<form action="{{ url('/reOrder') }}" method="POST" style="width: 80%;margin:auto;padding:1.1rem;text-align:end">
 			@csrf
-			<label for="service">اختر المادة</label>
+			<label style="direction:rtl;text-align:right" for="service">اختر المادة</label>
 			<select name="subject" id="subject">
 				@foreach ($subjects as $subject) 
 					<option value="{{ $subject->id }}" @if($us->checkSubject(Auth::user()->id,$subject->id)) disabled @endif >{{ $subject->name }} </option>
 				@endforeach
 			</select> <br>
 			<button type="submit" class="btn btn-primary btn-block" style="background: #f7b205;color:#fff;margin:2rem 0">قدم الطلب</button>
+		</form>
+		<!-- -->
+		<div class="modal-header" style="direction:rtl;text-align:right">
+			<h5 class="modal-title" id="exampleModalLabel"> تقديم شكوى </h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			</button>
+		</div>
+		<form action="{{ url('/saveComplaint') }}" method="POST" style="width: 80%;margin:auto;padding:1.1rem">
+			@csrf
+			<textarea minlength="50" dir="rtl" name="content" id="content" cols="30" rows="10" class="form-control" required>
+			</textarea>
+			<br>
+			<div class="row" style="direction:rtl;text-align:right">
+				<div class="col-md-8">
+				<label for="isShown">إظهار اسم مقدم الشكوى</label>
+				</div>
+				<div class="col-md-4">
+				<input style="width:1rem;position:relative;right:-3rem;top:-.4rem" type="checkbox" name="isShown" id="isShown" class="form-control">
+				</div>
+			</div>	
+			<button type="submit" class="btn btn-primary btn-block" style="background: #f7b205;color:#fff;margin:2rem 0">قدم الشكوى</button>
 		</form>
 	  </div>
 	</div>
@@ -765,6 +786,8 @@ jQuery(document).ready(function() {
 		});
 	}
 });	
+
+document.getElementById('content').value = '';
 </script>
 </body>
 </html>
