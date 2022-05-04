@@ -59,10 +59,11 @@ class HomeController extends Controller
         ->with('subjects',$subjects)->with('orders',$orders)
         ->with('services',$services)->with('ads',$ads)->with('reorders',$reorders);
     }
-
+   
     public function exportPdf(){
+        $user = Auth::user();
         $data = Mark::where('userID',Auth::user()->id)->get();
-        view()->share('marks',$data);
+        view()->share(['marks'=> $data,'user'=>$user]);
         $pdf = PDF::loadView('pdfMarkTable', $data);
         return $pdf->download('marks.pdf');
        
@@ -242,12 +243,14 @@ class HomeController extends Controller
         $subjects = Subject::orderBy('year', 'ASC')->orderBy('semester', 'ASC')->get();
         $sections = Section::all();
         $students = User::where('role','طالب')->get();
+        $employees = User::where('role','موظف')->get();
         $services = Service::all();
         return view('dashboard')
         ->with('subjects',$subjects)
         ->with('sections',$sections)
         ->with('students',$students)
-        ->with('services',$services);
+        ->with('services',$services)
+        ->with('employees',$employees);
     }
 
     public function subjects()
@@ -280,6 +283,10 @@ class HomeController extends Controller
     public function addStudent ()
     {   
         return view('addStudent');
+    }
+
+    public function addEmployee(){
+        return view('addEmployee');
     }
 
     public function addSubject ()
@@ -333,6 +340,29 @@ class HomeController extends Controller
     
             $students = User::where('role','طالب')->get();
             return view('viewStudents')->with('students',$students);
+        }
+        return redirect()->back()->withErrors('');
+
+        
+    }
+
+    public function storeEmployee (Request $request)
+    {   
+        $email = User::where('email','=',$request->email)->first();
+        if($number == null){
+            User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'num' => $request->num,
+                'year' => $request->year,
+                'section' => $request->section,
+                'gender' => $request->gender,
+                'role' => 'موظف',
+            ]);
+    
+            $employees = User::where('role','موظف')->get();
+            return view('viewStudents')->with('employees',$employees);
         }
         return redirect()->back()->withErrors('');
 

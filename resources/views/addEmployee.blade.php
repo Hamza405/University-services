@@ -120,9 +120,6 @@
 					<li>
 						<a href="{{ url('/home') }}" class="ttr-material-button ttr-submenu-toggle">HOME</a>
 					</li>
-					<li>
-						<a href="{{ url('/logout') }}" class="ttr-material-button ttr-submenu-toggle" style="padding-right:0px">LOGOUT</a>
-					</li>
 				
 				</ul>
 				<!-- header left menu end -->
@@ -136,7 +133,7 @@
 	<div class="ttr-sidebar">
 		<div class="ttr-sidebar-wrapper content-scroll">
 			<!-- side menu logo start -->
-			
+		
 			<!-- side menu logo end -->
 			<!-- sidebar menu start -->
 			<nav class="ttr-sidebar-navi">
@@ -171,7 +168,7 @@
 		                	<span class="ttr-label">Sections</span>
 		                </a>
 					</li>
-					<li>
+          <li>
 						<a href="{{ url('/addmyMarks') }}" class="ttr-material-button">
 							<span class="ttr-icon"><i class="ti-layout-accordion-list"></i></span>
 		                	<span class="ttr-label">Marks</span>
@@ -194,15 +191,15 @@
 					<li>
 						<a href="{{ url('/addPro') }}" class="ttr-material-button">
 							<span class="ttr-icon"><i class="ti-layout-accordion-list"></i></span>
-		                	<span class="ttr-label">Add Study Program</span>
+		                	<span class="ttr-label">Add Pro</span>
 		                </a>
-					</li>
-					<li>
-						<a href="{{ url('/getreOrderRequest') }}" class="ttr-material-button">
-							<span class="ttr-icon"><i class="ti-layout-accordion-list"></i></span>
-		                	<span class="ttr-label">Order Request</span>
-		                </a>
-		            </li>
+                </li>
+                <li>
+                  <a href="{{ url('/getreOrderRequest') }}" class="ttr-material-button">
+                    <span class="ttr-icon"><i class="ti-layout-accordion-list"></i></span>
+                            <span class="ttr-label">Order Request</span>
+                          </a>
+                      </li>
 				</ul>
 				<!-- sidebar menu end -->
 			</nav>
@@ -222,128 +219,77 @@
 				</ul>
 			</div>	
 			<!-- Card -->
-			<div class="row" style="margin-top:5rem">
-				<div class="col-md-6 col-lg-6 col-xl-6 col-sm-6 col-12">
-					<div class="widget-card widget-bg1" style="padding:2rem">					 
-						<div class="wc-item">
-							<h4 class="wc-title">
-								Students
-							</h4>
-							<span class="wc-des">
-								
-							</span>
-							<span class="wc-stats">
-								{{ $students->count() }}
-							</span>		
-							<hr style="background: #fff;">
-							<span class="wc-progress-bx">
-								<span class="wc-change">
-									<a href="{{ url('/addStudents') }}" style="color:#fff">Add Student</a>
-								</span>
-								<span class="wc-number ml-auto">
-									<i class="fa fa-user"></i>
-								</span>
-							</span>
-						</div>				      
-					</div>
+			<div class="row" style="margin-top:2rem">
+				<div class="col-lg-12">
+                    <form class="contact-bx" method="POST" action="{{ url('/addStudents') }}">
+                        @csrf
+                        <div class="row placeani">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <label style="text-align:end">الاسم الكامل</label>
+                                        <input style="direction:rtl" id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+    
+                                        @error('name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <label style="text-align:end">بريدك الالكتروني</label>
+                                        <input style="direction:rtl" id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+    
+                                    @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="row">
+                               
+                                <div class="form-group col-lg-6 col-md-6">
+                                    <div class="input-group"> 
+                                        <label style="text-align:end">تأكيد كلمة المرور</label>
+                                        <input style="direction:rtl" id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                    
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-6 col-md-6">
+                                    <div class="input-group"> 
+                                        <label style="text-align:end">كلمة المرور</label>
+                                        <input style="direction:rtl" id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+    
+                                    @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                    </div>
+                                    
+                                </div>
+                                </div>
+                            </div>
+                           
+                            
+                            
+                           
+                            
+                            <div class="col-lg-12 m-b30">
+                            <br>    
+                            <button name="submit" type="submit" style="background:#ccc" value="Submit" class="btn button-md btn-block">حفظ البيانات</button>
+                            </div>
+                            
+                        </div>
+                    </form>
 				</div>
-				<div class="col-md-6 col-lg-6 col-xl-6 col-sm-6 col-12">
-					<div class="widget-card widget-bg1" style="padding:2rem">					 
-						<div class="wc-item">
-							<h4 class="wc-title">
-								Employees
-							</h4>
-							<span class="wc-des">
-								
-							</span>
-							<span class="wc-stats">
-								{{ $employees->count() }}
-							</span>		
-							<hr style="background: #fff;">
-							<span class="wc-progress-bx">
-								<span class="wc-change">
-									<a href="{{ url('/addStudents') }}" style="color:#fff">Add Employee</a>
-								</span>
-								<span class="wc-number ml-auto">
-									<i class="fa fa-user"></i>
-								</span>
-							</span>
-						</div>				      
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-6 col-xl-6 col-sm-6 col-12">
-					<div class="widget-card widget-bg2" style="padding:2rem">					 
-						<div class="wc-item">
-							<h4 class="wc-title">
-								Subjects
-							</h4>
-							<span class="wc-des">
-								
-							</span>
-							<span class="wc-stats counter">
-								{{ $subjects->count() }} 
-							</span>		
-							<hr style="background: #fff;">
-							<span class="wc-progress-bx">
-								<span class="wc-change">
-									<a href="{{ url('/addSubject') }}" style="color:#fff">Add Subject</a>
-								</span>
-								<span class="wc-number ml-auto">
-									<i class="fa fa-book" aria-hidden="true"></i>
-								</span>
-							</span>
-						</div>				      
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-6 col-xl-6 col-sm-6 col-12">
-					<div class="widget-card widget-bg3" style="padding:2rem">					 
-						<div class="wc-item">
-							<h4 class="wc-title">
-								Services
-							</h4>
-							<span class="wc-des">
-								
-							</span>
-							<span class="wc-stats counter">
-								{{ $services->count() }}
-							</span>		
-							<hr style="background: #fff;">
-							<span class="wc-progress-bx">
-								<span class="wc-change">
-									<a href="{{ url('/addService') }}" style="color:#fff">Add Services</a>
-								</span>
-								<span class="wc-number ml-auto">
-									<i class="fa fa-gear"></i>
-								</span>
-							</span>
-						</div>				      
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-6 col-xl-6 col-sm-6 col-12">
-					<div class="widget-card widget-bg3" style="padding:2rem">					 
-						<div class="wc-item">
-							<h4 class="wc-title">
-								Sections 
-							</h4>
-							<span class="wc-des">
-								 
-							</span>
-							<span class="wc-stats counter">
-								{{ $sections->count() }}
-							</span>		
-							<hr style="background: #fff;">
-							<span class="wc-progress-bx">
-								<span class="wc-change">
-									<a href="{{ url('/addSection') }}" style="color:#fff">Add Sections</a>
-								</span>
-								<span class="wc-number ml-auto">
-									<i class="fa fa-list-alt" aria-hidden="true"></i>
-								</span>
-							</span>
-						</div>				      
-					</div>
-				</div>
-				
 				
 			</div>
 		</div>

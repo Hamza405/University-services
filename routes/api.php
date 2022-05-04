@@ -38,6 +38,8 @@ Route::group(['middleware'=>'auth:sanctum'], function(){
     Route::get('/getMarksOnly',[App\Http\Controllers\ApiController::class, 'getMarksOnly']);
     Route::get('/getSubjects',[App\Http\Controllers\ApiController::class, 'getSubjects']);
     Route::get('/getStudyProgram',[App\Http\Controllers\ApiController::class, 'getStudyProgram']);
+    Route::post('/reOrder', [App\Http\Controllers\HomeController::class,'reOrder']);
+    Route::post('/getReOrder', [App\Http\Controllers\HomeController::class,'getReOrder']);
 
 });
 

@@ -53,6 +53,9 @@ Route::delete('/deleteAds/{post}',[App\Http\Controllers\HomeController::class,'d
 Route::get('addStudents', [App\Http\Controllers\HomeController::class,'addStudent']);
 Route::post('addStudents', [App\Http\Controllers\HomeController::class,'storeStudent']);
 
+Route::get('addEmployee', [App\Http\Controllers\HomeController::class,'addEmployee']);
+Route::post('addEmployee', [App\Http\Controllers\HomeController::class,'storeEmployee']);
+
 Route::get('addSection', [App\Http\Controllers\HomeController::class,'addSection']);
 Route::post('addSection', [App\Http\Controllers\HomeController::class,'storeSection']);
 
@@ -93,3 +96,4 @@ Route::get('exportExcelOrder',[App\Http\Controllers\HomeController::class,'expor
 Route::get('complaints',[App\Http\Controllers\ComplaintController::class,'complaints']);
 
 Route::post('saveComplaint',[App\Http\Controllers\ComplaintController::class,'saveComplaint']);
+

@@ -266,6 +266,60 @@ class ApiController extends Controller
         ]);
     }
 
+    public function reOrder(Request $request){
+        $currentDateTime = Carbon::now();
+        $newDateTime = Carbon::now()->addDay(30);
+
+        $validate = Reorder::where('userID', Auth::user()->id)->where('subjectID', $request->subject)->first();
+
+        $validateSuccessInSubject = Marks::where('userId', Auth::user()->id)->where('subjectId', $request->subject)->where('result','ناجح')->first();
+
+        if( $validateSuccessInSubject){
+            return response()->json([
+                'error' => 'You already success in this subject',
+                'status' => 404
+            ]);
+        }
+
+        if($validate){
+            return response()->json([
+                'error' => 'The order already exists',
+                'status' => 404
+            ]);
+        }
+
+        $order =Reorder::create([
+            'userID' => Auth::user()->id,
+            'subjectID' => $request->subject,
+            'deadline' => $newDateTime
+        ]);
+
+        if($order){
+            return response()->json([
+                'order' => $$order,
+                'status' => 200
+            ]);
+        }
+        return response()->json([
+            'error' => 'Some thing wrong!',
+            'status' => 404
+        ]);
+    }
+
+    public function getReOrder (){
+        $reorders = Reorder::where('userID', Auth::user()->id)->get();
+        if($reorders){
+            return response()->json([
+                'reorders' => $reorders,
+                'status' => 200
+            ]);
+        }
+        return response()->json([
+            'error' => 'Some thing wrong!',
+            'status' => 404
+        ]);
+    }
+
 // public function getMarks(){
 //     $data = Mark::where('userID',Auth::user()->id)->where('result','ناجح')->orderBy('subjectId','ASC')->get();
 //     view()->share('marks',$data);

@@ -180,7 +180,7 @@
 									<li><a href="{{ route('login') }}">وثيقة تخرج</a></li>
 								</ul>
 							</li> --}}
-							@if(Auth::user()->role == 'موظف')
+							@if(Auth::user()->role == 'Admin')
 								<li class="active"><a href="{{ url('/adminDash') }}">Dashboard</a>
 							
 							@endif
@@ -459,7 +459,7 @@
 			<div class="section-area content-inner service-info-bx">
                 <div class="container">
 					<div class="row">
-						<div class="col-lg-2 col-md-4 col-sm-6"></div>
+						
 						<div class="col-lg-4 col-md-4 col-sm-6">
 							<div class="service-bx">
 								<div class="action-box">
@@ -488,7 +488,20 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-2 col-md-4 col-sm-6"></div>
+						<div class="col-lg-4 col-md-4 col-sm-12">
+							<div class="service-bx m-b0">
+								<div class="action-box">
+									<img src="assets/images/our-services/pic3.jpg" alt="">
+								</div>
+								<div class="info-bx text-center">
+									<div class="feature-box-sm radius bg-white">
+										<i class="fa fa-file-text-o text-primary"></i>
+									</div>
+									<h4><a href="#">البرنامج الدراسي</a></h4>
+									<a href="{{ url('/viewProImg') }}" class="btn radius-xl">استعراض</a>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
             </div>

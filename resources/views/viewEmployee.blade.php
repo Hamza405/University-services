@@ -52,7 +52,7 @@
 	<style>
         .styled-table {
     border-collapse: collapse;
-    margin: 25px 0;
+    margin: 10px 0;
     font-size: 0.9em;
     font-family: sans-serif;
     min-width: 400px;
@@ -60,6 +60,10 @@
 
 	text-align: center;
 }
+
+span.relative svg{ width: 10px; }
+nav{ margin: auto;text-align: center; margin: 1.2rem 0; }
+nav div:first-child{ display: none; }
 
 .styled-table thead tr {
     background-color: #471878;
@@ -90,6 +94,13 @@
 .styled-table tbody tr.active-row {
     font-weight: bold;
     color: #009879;
+}.pdf{
+	background: #481875;
+				border: none;
+				padding: 3px 37px;
+				color: #fff;
+				font-size: 1.2rem;
+				border-radius: 7px;
 }
     </style>
 </head>
@@ -119,9 +130,6 @@
 				<ul class="ttr-header-navigation">
 					<li>
 						<a href="{{ url('/home') }}" class="ttr-material-button ttr-submenu-toggle">HOME</a>
-					</li>
-					<li>
-						<a href="{{ url('/logout') }}" class="ttr-material-button ttr-submenu-toggle" style="padding-right:0px">LOGOUT</a>
 					</li>
 				
 				</ul>
@@ -177,7 +185,6 @@
 		                	<span class="ttr-label">Marks</span>
 		                </a>
 					</li>
-					
 		            <li class="ttr-seperate"></li> 
 					<li>
 						<a href="{{ url('/addAds') }}" class="ttr-material-button">
@@ -222,128 +229,34 @@
 				</ul>
 			</div>	
 			<!-- Card -->
-			<div class="row" style="margin-top:5rem">
-				<div class="col-md-6 col-lg-6 col-xl-6 col-sm-6 col-12">
-					<div class="widget-card widget-bg1" style="padding:2rem">					 
-						<div class="wc-item">
-							<h4 class="wc-title">
-								Students
-							</h4>
-							<span class="wc-des">
-								
-							</span>
-							<span class="wc-stats">
-								{{ $students->count() }}
-							</span>		
-							<hr style="background: #fff;">
-							<span class="wc-progress-bx">
-								<span class="wc-change">
-									<a href="{{ url('/addStudents') }}" style="color:#fff">Add Student</a>
-								</span>
-								<span class="wc-number ml-auto">
-									<i class="fa fa-user"></i>
-								</span>
-							</span>
-						</div>				      
-					</div>
+			<div class="row" style="margin-top:2rem">
+				<div class="col-lg-12">
+					<form class="contact-bx exportForm"  action="{{ url('/exportExcel') }}">
+						<button class="pdf">
+							Excel
+						</button>
+					</form>
+					<table class="styled-table">
+						<thead>
+							<tr>
+								<th>Employee Name</th>
+                                <th>Student Email</th>
+                                <th>On date</th>
+                              
+							</tr>
+						</thead>
+						<tbody>
+							@foreach ($employees as $employee)
+							<tr>
+								<td>{{ $student->name }}</td>
+                                <td> {{ $student->email }}</td>
+                                <td> {{ $student->created_at }}</td>
+							</tr>
+							@endforeach	
+							
+						</tbody>
+					</table>
 				</div>
-				<div class="col-md-6 col-lg-6 col-xl-6 col-sm-6 col-12">
-					<div class="widget-card widget-bg1" style="padding:2rem">					 
-						<div class="wc-item">
-							<h4 class="wc-title">
-								Employees
-							</h4>
-							<span class="wc-des">
-								
-							</span>
-							<span class="wc-stats">
-								{{ $employees->count() }}
-							</span>		
-							<hr style="background: #fff;">
-							<span class="wc-progress-bx">
-								<span class="wc-change">
-									<a href="{{ url('/addStudents') }}" style="color:#fff">Add Employee</a>
-								</span>
-								<span class="wc-number ml-auto">
-									<i class="fa fa-user"></i>
-								</span>
-							</span>
-						</div>				      
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-6 col-xl-6 col-sm-6 col-12">
-					<div class="widget-card widget-bg2" style="padding:2rem">					 
-						<div class="wc-item">
-							<h4 class="wc-title">
-								Subjects
-							</h4>
-							<span class="wc-des">
-								
-							</span>
-							<span class="wc-stats counter">
-								{{ $subjects->count() }} 
-							</span>		
-							<hr style="background: #fff;">
-							<span class="wc-progress-bx">
-								<span class="wc-change">
-									<a href="{{ url('/addSubject') }}" style="color:#fff">Add Subject</a>
-								</span>
-								<span class="wc-number ml-auto">
-									<i class="fa fa-book" aria-hidden="true"></i>
-								</span>
-							</span>
-						</div>				      
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-6 col-xl-6 col-sm-6 col-12">
-					<div class="widget-card widget-bg3" style="padding:2rem">					 
-						<div class="wc-item">
-							<h4 class="wc-title">
-								Services
-							</h4>
-							<span class="wc-des">
-								
-							</span>
-							<span class="wc-stats counter">
-								{{ $services->count() }}
-							</span>		
-							<hr style="background: #fff;">
-							<span class="wc-progress-bx">
-								<span class="wc-change">
-									<a href="{{ url('/addService') }}" style="color:#fff">Add Services</a>
-								</span>
-								<span class="wc-number ml-auto">
-									<i class="fa fa-gear"></i>
-								</span>
-							</span>
-						</div>				      
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-6 col-xl-6 col-sm-6 col-12">
-					<div class="widget-card widget-bg3" style="padding:2rem">					 
-						<div class="wc-item">
-							<h4 class="wc-title">
-								Sections 
-							</h4>
-							<span class="wc-des">
-								 
-							</span>
-							<span class="wc-stats counter">
-								{{ $sections->count() }}
-							</span>		
-							<hr style="background: #fff;">
-							<span class="wc-progress-bx">
-								<span class="wc-change">
-									<a href="{{ url('/addSection') }}" style="color:#fff">Add Sections</a>
-								</span>
-								<span class="wc-number ml-auto">
-									<i class="fa fa-list-alt" aria-hidden="true"></i>
-								</span>
-							</span>
-						</div>				      
-					</div>
-				</div>
-				
 				
 			</div>
 		</div>
