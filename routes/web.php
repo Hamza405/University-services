@@ -29,7 +29,7 @@ Route::get('/', function () {
     return view('welcome')->with('sections',$sections)->with('students',$students)
     ->with('subjects',$subjects)->with('ads',$ads);
 });
-Route::get('/employeeRegister', [App\Http\Controllers\Auth\LoginController::class, 'employeeRegister'])->name('employeeRegister');
+Route::get('/employeeRegister', [App\Http\Controllers\HomeController::class, 'employeeRegister'])->name('employeeRegister');
 
 Auth::routes();
 

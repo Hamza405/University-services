@@ -59,6 +59,9 @@ class HomeController extends Controller
         ->with('subjects',$subjects)->with('orders',$orders)
         ->with('services',$services)->with('ads',$ads)->with('reorders',$reorders);
     }
+    public function employeeRegister(Request $request){
+        return view('employeeRegister');
+    }
    
     public function exportPdf(){
         $user = Auth::user();

@@ -61,8 +61,8 @@
 		<div class="account-form-inner">
 			<div class="account-container">
 				<div class="heading-bx left">
-					<h2 class="title-head">أنشئ حساب <span>الآن</span></h2>
-					<p><a href="{{ route('login') }}"  style="text-decoration:none">تسجيل الدخول</a></p>
+					<h2 class="title-head">أنشئ حساب الموظف</h2>
+					<p style="visibility:hidden"><a href="{{ route('login') }}"  style="text-decoration:none">تسجيل الدخول</a></p>
 				</div>	
 				<form class="contact-bx" method="POST" action="{{ route('register') }}">
 					@csrf
@@ -84,7 +84,7 @@
 						<div class="col-lg-12">
 							<div class="form-group">
 								<div class="input-group">
-									<label style="text-align:end">بريدك الالكتروني</label>
+									<label style="text-align:end">البريد الالكتروني</label>
 									<input style="direction:rtl" id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                 @error('email')

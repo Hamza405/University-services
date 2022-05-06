@@ -54,7 +54,5 @@ class LoginController extends Controller
         return redirect('/login');
       }
     
-      public function employeeRegister(Request $request){
-          return view('employeeRegister');
-      }
+      
 }
