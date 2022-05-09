@@ -194,7 +194,7 @@
 							<span class="wc-progress-bx">
 								@if(Auth::user()->role == 'Admin')
 								<span class="wc-change">
-									<a href="{{ url('/employeeRegister') }}" style="color:#fff">Add Employee</a>
+									<a href="{{ url('/addEmployee') }}" style="color:#fff">Add Employee</a>
 								</span>
 								@endif
 								<span class="wc-number ml-auto">

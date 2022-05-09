@@ -50,69 +50,67 @@
 	
 </head>
 <body id="bg">
-<div class="page-wraper">
+<div class="container-xl" style="background-image:url(assets/images/background/bg2.jpg);height:100vh;background-size: cover;">
 	<div id="loading-icon-bx"></div>
-	<div class="account-form">
-		<div class="account-head" style="background-image:url(assets/images/background/bg2.jpg);">
-			<h1 style="text-align: center; color:white;margin:auto"> 
-				كلية الهندسة<br>الميكانيكية و الكهربائية
-			 </h1> 
-		</div>
-		<div class="account-form-inner">
-			<div class="account-container">
-				<div class="heading-bx left">
-					<h2 class="title-head">تسجيل الدخول</h2>
-					<p>لاتملك حساب ؟ <a href="{{ route('register') }}" style="text-decoration:none">أنشئ حساب الآن</a></p>
-				</div>	
-				<form class="contact-bx" method="POST" action="{{ route('login') }}">
-					@csrf
-					<div class="row placeani">
-						<div class="col-lg-12">
-							<div class="form-group">
-								<div class="input-group">
-									<label style="text-align:end" >
-									البريد الألكتروني
-									</label>
-									<!-- <input name="email" > -->
-									<input style="direction:rtl" name="email" id="email" type="email"  value="{{ old('email') }}" required autocomplete="email" autofocus class="form-control @error('email') is-invalid @enderror">
-									@error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                               		 @enderror
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-12">
-							<div class="form-group">
-								<div class="input-group"> 
-									<label style="text-align:end" >كلمة المرور</label>
-									<input style="direction:rtl" id="password" value="" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required>
-
-									@error('password')
+	<div class="row" style="background:rgb(100,50,120,0.6);height:100vh;">
+			<h1 class="col-md-6" style="text-align: center; color:white;margin:auto;"> 
+					كلية الهندسة<br>الميكانيكية و الكهربائية
+			</h1> 
+			<div class="card col-md-4" style="margin:64px;">
+				<div class="account-container">
+					<div class="heading-bx left">
+						<h2 class="title-head">تسجيل الدخول</h2>
+						<p>لاتملك حساب ؟ <a href="{{ route('register') }}" style="text-decoration:none">أنشئ حساب الآن</a></p>
+					</div>	
+					<form class="contact-bx" method="POST" action="{{ route('login') }}">
+						@csrf
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="form-group">
+									<div class="input-group">
+										<label style="text-align:end" >
+										البريد الألكتروني
+										</label>
+										<!-- <input name="email" > -->
+										<input style="direction:rtl" name="email" id="email" type="email"  value="{{ old('email') }}" required autocomplete="email" autofocus class="form-control @error('email') is-invalid @enderror">
+										@error('email')
 										<span class="invalid-feedback" role="alert">
 											<strong>{{ $message }}</strong>
 										</span>
-									@enderror
+										@enderror
+									</div>
 								</div>
 							</div>
-						</div>
-						<div class="col-lg-12">
-							<div class="form-group form-forget">
-					
-								@if (Route::has('password.request'))
-								<a href="forget-password.html" class="ml-auto">هل نسيت كلمة المرور ؟</a>
-								@endif
+							<div class="col-lg-12">
+								<div class="form-group">
+									<div class="input-group"> 
+										<label style="text-align:end" >كلمة المرور</label>
+										<input style="direction:rtl" id="password" value="" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required>
+
+										@error('password')
+											<span class="invalid-feedback" role="alert">
+												<strong>{{ $message }}</strong>
+											</span>
+										@enderror
+									</div>
+								</div>
 							</div>
+							<div class="col-lg-12">
+								<div class="form-group form-forget">
+						
+									@if (Route::has('password.request'))
+									<a href="forget-password.html" class="ml-auto">هل نسيت كلمة المرور ؟</a>
+									@endif
+								</div>
+							</div>
+							<div class="col-lg-12 m-b30">
+								<br>
+								<button name="submit" style="background:#ccc" type="submit" value="Submit" class="btn button-md btn-block">تسجيل الدخول</button>
+							</div>
+						
 						</div>
-						<div class="col-lg-12 m-b30">
-                            <br>
-							<button name="submit" style="background:#ccc" type="submit" value="Submit" class="btn button-md btn-block">تسجيل الدخول</button>
-						</div>
-					
-					</div>
-				</form>
-			</div>
+					</form>
+				</div>
 		</div>
 	</div>
 </div>

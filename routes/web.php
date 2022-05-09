@@ -29,7 +29,7 @@ Route::get('/', function () {
     return view('welcome')->with('sections',$sections)->with('students',$students)
     ->with('subjects',$subjects)->with('ads',$ads);
 });
-Route::get('/employeeRegister', [App\Http\Controllers\HomeController::class, 'employeeRegister'])->name('employeeRegister');
+
 
 Auth::routes();
 
@@ -52,6 +52,8 @@ Route::delete('/deleteAds/{post}',[App\Http\Controllers\HomeController::class,'d
 
 Route::get('addStudents', [App\Http\Controllers\HomeController::class,'addStudent']);
 Route::post('addStudents', [App\Http\Controllers\HomeController::class,'storeStudent']);
+
+Route::get('/addEmployee', [App\Http\Controllers\HomeController::class, 'addEmployee'])->name('addEmployee');
 
 Route::get('addEmployee', [App\Http\Controllers\HomeController::class,'addEmployee']);
 Route::post('addEmployee', [App\Http\Controllers\HomeController::class,'storeEmployee']);

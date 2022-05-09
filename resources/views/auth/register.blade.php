@@ -49,16 +49,15 @@
 	
 </head>
 <body id="bg">
-<div class="page-wraper">
+<div class="container-xl" style="background-image:url(assets/images/background/bg1.jpg);height:100%;background-size: cover;">
 	<div id="loading-icon-bx"></div>
-	<div class="account-form">
-		<div class="account-head" style="background-image:url(assets/images/background/bg2.jpg);">
-			{{-- <a href="{{ url('/') }}"><img src="assets/images/logo-white-2.png" alt=""></a> --}}
-			<h1 style="text-align: center; color:white;margin:auto"> 
+	<div class="row" style="background:rgb(100,50,120,0.6);height:100%;">
+			
+		<h1 class="col-md-6" style="text-align: center; color:white;margin:auto"> 
 				كلية الهندسة<br>الميكانيكية و الكهربائية
-			 </h1>
-		</div>
-		<div class="account-form-inner">
+		</h1>
+		
+		<div class="card col-md-4" style="margin: 32px 64px;">
 			<div class="account-container">
 				<div class="heading-bx left">
 					<h2 class="title-head">أنشئ حساب <span>الآن</span></h2>

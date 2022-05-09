@@ -457,13 +457,12 @@
             
 			<!-- Our Services -->
 			<div class="section-area content-inner service-info-bx">
-                <div class="container">
+                <div class="container mb-4 mt-4">
 					<div class="row">
-						
-						<div class="col-lg-4 col-md-4 col-sm-6">
+						<div class="col-lg-3 col-md-4 col-sm-12">
 							<div class="service-bx">
 								<div class="action-box">
-									<img src="assets/images/our-services/pic2.jpg" alt="">
+									<img src="assets/images/gallery/pic5.jpg" alt="">
 								</div>
 								<div class="info-bx text-center">
 									<div class="feature-box-sm radius bg-white">
@@ -474,34 +473,49 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-4 col-md-4 col-sm-12">
+						<div class="col-lg-3 col-md-4 col-sm-12">
 							<div class="service-bx m-b0">
 								<div class="action-box">
-									<img src="assets/images/our-services/pic3.jpg" alt="">
+									<img src="assets/images/gallery/pic6.jpg" alt="">
 								</div>
 								<div class="info-bx text-center">
 									<div class="feature-box-sm radius bg-white">
-										<i class="fa fa-file-text-o text-primary"></i>
+										<i class="fa fa-files-o text-primary"></i>
 									</div>
 									<h4><a href="#">البرنامج الدراسي</a></h4>
 									<a href="{{ url('/viewProImg') }}" class="btn radius-xl">استعراض</a>
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-4 col-md-4 col-sm-12">
+						<div class="col-lg-3 col-md-4 col-sm-12">
 							<div class="service-bx m-b0">
 								<div class="action-box">
-									<img src="assets/images/our-services/pic3.jpg" alt="">
+									<img src="assets/images/gallery/pic3.jpg" alt="">
 								</div>
 								<div class="info-bx text-center">
 									<div class="feature-box-sm radius bg-white">
-										<i class="fa fa-file-text-o text-primary"></i>
+										<i class="fa fa-file-text text-primary"></i>
 									</div>
-									<h4><a href="#">البرنامج الدراسي</a></h4>
-									<a href="{{ url('/viewProImg') }}" class="btn radius-xl">استعراض</a>
+									<h4><a href="#">البرنامج الأمتحاني</a></h4>
+									<a href="{{ url('/home') }}" class="btn radius-xl">استعراض</a>
 								</div>
 							</div>
 						</div>
+						<div class="col-lg-3 col-md-4 col-sm-12">
+							<div class="service-bx m-b0">
+								<div class="action-box">
+									<img src="assets/images/gallery/pic2.jpg" alt="">
+								</div>
+								<div class="info-bx text-center">
+									<div class="feature-box-sm radius bg-white">
+										<i class="fa fa-map-o text-primary"></i>
+									</div>
+									<h4><a href="#">خريطة الكلية</a></h4>
+									<a href="{{ url('/home') }}" class="btn radius-xl">استعراض</a>
+								</div>
+							</div>
+						</div>
+						
 					</div>
 				</div>
             </div>
@@ -525,7 +539,7 @@
 							<div class="col-md-6 col-sm-6">
 								<div class="cours-search-bx m-b30">
 									<div class="icon-box">
-									<h3><i class="ti-user"></i><span class="counter">{{ $students->count() }}</span></h3>
+									<h3><i class="ti-user"></i><span class="counter">{{ $user->where('role','طالب')->count() }}</span></h3>
 									</div>
 									<span class="cours-search-text">طالب</span>
 								</div>
@@ -534,9 +548,9 @@
 							<div class="col-md-6 col-sm-6">
 								<div class="cours-search-bx m-b30">
 									<div class="icon-box">
-									<h3><i class="ti-layout-list-post"></i><span class="counter">{{ $subjects->count() }}</span></h3>
+									<h3><i class="ti-layout-list-post"></i><span class="counter">{{$user->where('role','موظف')->count() }}</span></h3>
 									</div>
-									<span class="cours-search-text">مقرر دراسي</span>
+									<span class="cours-search-text">موظف</span>
 								</div>
 							</div>
 							
@@ -556,8 +570,8 @@
 						</div>
 					</div>
 					<div class="row">
-					<div class="upcoming-event-carousel owl-carousel owl-btn-center-lr owl-btn-1 col-12 p-lr0  m-b30">
-						
+						<div class="upcoming-event-carousel owl-carousel owl-btn-center-lr owl-btn-1 col-12 p-lr0  m-b30">
+								
 									@foreach ($ads as $ad)
 									@if($ad->target == Auth::user()->year || $ad->target == "0") 
 									<div class="item">
@@ -589,7 +603,7 @@
 						@endforeach
 									
 								
-					</div>
+						</div>
 					</div>
 					<div class="text-center">
 					

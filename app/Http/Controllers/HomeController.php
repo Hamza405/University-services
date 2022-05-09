@@ -47,7 +47,7 @@ class HomeController extends Controller
      */
     public function index()
 {       $sections =DB::table('sections')->get();
-        $students =DB::table('users')->get();
+        $user =DB::table('users')->get();
         $subjects =DB::table('subjects')->orderBy('year', 'ASC')->orderBy('semester', 'ASC')->get();
         $services =DB::table('services')->get();
         $orders =DB::table('orders')->where('userID',Auth::user()->id)->get();
@@ -55,12 +55,9 @@ class HomeController extends Controller
         $rowsForDeleted = AD::select('id')->whereMonth('created_at',Carbon::now()->month)->get();
         AD::whereNotIn('id', $rowsForDeleted)->delete();     
         $ads =DB::table('a_d_s')->limit(10)->orderBy('id', 'DESC')->get();
-        return view('home')->with('sections',$sections)->with('students',$students)
+        return view('home')->with('sections',$sections)->with('user',$user)
         ->with('subjects',$subjects)->with('orders',$orders)
         ->with('services',$services)->with('ads',$ads)->with('reorders',$reorders);
-    }
-    public function employeeRegister(Request $request){
-        return view('employeeRegister');
     }
    
     public function exportPdf(){
