@@ -118,7 +118,10 @@
 							<a href="index.html"><img src="assets/images/logo.png" alt=""></a>
 						</div>
                         <ul class="nav navbar-nav">	
-						<li class="active"><a href="{{ url('/home') }}">الرئيسية</a>
+						@if(Auth::user()->role == 'Admin')
+								<li class="active"><a href="{{ url('/adminDash') }}">Dashboard</a>
+							
+							@endif
 								<li><a href="#ads">آخر الإعلانات</a>
 							
 							</li>
@@ -180,10 +183,8 @@
 									<li><a href="{{ route('login') }}">وثيقة تخرج</a></li>
 								</ul>
 							</li> --}}
-							@if(Auth::user()->role == 'Admin')
-								<li class="active"><a href="{{ url('/adminDash') }}">Dashboard</a>
+							<li ><a href="{{ url('/home') }}">الرئيسية</a>
 							
-							@endif
 						</ul>
 						<div class="nav-social-link">
 							<a href="javascript:;"><i class="fa fa-facebook"></i></a>

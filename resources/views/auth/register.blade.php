@@ -57,7 +57,7 @@
 				كلية الهندسة<br>الميكانيكية و الكهربائية
 		</h1>
 		
-		<div class="card col-md-4" style="margin: 32px 64px;">
+		<div class="card col-md-4" style="margin: 32px 64px; border-radius: 25px;">
 			<div class="account-container">
 				<div class="heading-bx left">
 					<h2 class="title-head">أنشئ حساب <span>الآن</span></h2>
@@ -186,7 +186,7 @@
 						<input type="hidden" id="role" name="role" value="طالب">
 						<div class="col-lg-12 m-b30">
                         	<br>    
-                        	<button name="submit" type="submit" style="background:#ccc" value="Submit" class="btn button-md btn-block">إنشاء الحساب</button>
+                        	<button name="submit" type="submit" style="background:amber; border-radius: 10px;" value="Submit" class="btn button-md btn-block">إنشاء الحساب</button>
 						</div>
 						
 					</div>

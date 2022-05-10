@@ -56,16 +56,16 @@
 			<h1 class="col-md-6" style="text-align: center; color:white;margin:auto;"> 
 					كلية الهندسة<br>الميكانيكية و الكهربائية
 			</h1> 
-			<div class="card col-md-4" style="margin:64px;">
+			<div class="card col-md-4" style="margin:64px; border-radius: 25px;">
 				<div class="account-container">
 					<div class="heading-bx left">
 						<h2 class="title-head">تسجيل الدخول</h2>
-						<p>لاتملك حساب ؟ <a href="{{ route('register') }}" style="text-decoration:none">أنشئ حساب الآن</a></p>
+						<p style="visibility:hidden">لاتملك حساب ؟ <a href="{{ route('register') }}" style="text-decoration:none">أنشئ حساب الآن</a></p>
 					</div>	
 					<form class="contact-bx" method="POST" action="{{ route('login') }}">
 						@csrf
 						<div class="row">
-							<div class="col-lg-12">
+							<div class="col-lg-11">
 								<div class="form-group">
 									<div class="input-group">
 										<label style="text-align:end" >
@@ -81,7 +81,10 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-lg-12">
+							<div class="col-lg-1" style="padding-top:10px">
+								<i class="fa fa-envelope"></i>
+							</div>
+							<div class="col-lg-11">
 								<div class="form-group">
 									<div class="input-group"> 
 										<label style="text-align:end" >كلمة المرور</label>
@@ -95,6 +98,9 @@
 									</div>
 								</div>
 							</div>
+							<div class="col-lg-1" style="padding-top:10px">
+								<i class="fa fa-key"></i>
+							</div>
 							<div class="col-lg-12">
 								<div class="form-group form-forget">
 						
@@ -102,10 +108,16 @@
 									<a href="forget-password.html" class="ml-auto">هل نسيت كلمة المرور ؟</a>
 									@endif
 								</div>
+								
+							</div>
+							<div class="col-lg-12">
+								<div class="form-group form-forget">
+									<a class="ml-auto" href="{{ route('register') }}" style="text-decoration:rtl">لاتملك حساب ؟ أنشئ حساب الآن</a>
+								</div>
 							</div>
 							<div class="col-lg-12 m-b30">
 								<br>
-								<button name="submit" style="background:#ccc" type="submit" value="Submit" class="btn button-md btn-block">تسجيل الدخول</button>
+								<button name="submit" style="background:amber; border-radius: 10px;" type="submit" value="Submit" class="btn button-md btn-block">تسجيل الدخول</button>
 							</div>
 						
 						</div>
