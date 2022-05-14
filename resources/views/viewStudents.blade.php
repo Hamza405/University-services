@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 
 <!-- Mirrored from educhamp.themetrades.com/demo/admin.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 22 Feb 2019 13:08:15 GMT -->
 <head>
@@ -155,10 +155,10 @@ nav div:first-child{ display: none; }
 	<main class="ttr-wrapper">
 		<div class="container-fluid">
 			<div class="db-breadcrumb">
-				<h4 class="breadcrumb-title">Dashboard</h4>
+				<h4 class="breadcrumb-title">لوحة التحكم</h4>
 				<ul class="db-breadcrumb-list">
-					<li><a href="#"><i class="fa fa-home"></i>Home</a></li>
-					<li>Dashboard</li>
+					<li><a href="#"><i style="padding:0px 16px" class="fa fa-home"></i>الطلاب</a></li>
+					
 				</ul>
 			</div>	
 			<!-- Card -->
@@ -172,13 +172,13 @@ nav div:first-child{ display: none; }
 					<table class="styled-table">
 						<thead>
 							<tr>
-								<th>Student Name</th>
-                                <th>Student Email</th>
-                                <th>Student Num</th>
-                                <th>Student Section</th>
-                                <th>Student Year</th>
-                                <th>Student Gender</th>
-                                <th>On date</th>
+								<th>اسم الطالب</th>
+                                <th>البريد الإلكتروني</th>
+                                <th>الرقم الجامعي</th>
+                                <th>القسم</th>
+                                <th>العام الدراسي</th>
+                                <th>الجنس</th>
+                                <th>تاريخ إنشاء الحساب</th>
                               
 							</tr>
 						</thead>

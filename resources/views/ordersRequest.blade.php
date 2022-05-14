@@ -1,6 +1,6 @@
 @inject('us','App\Models\User')
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 
 <!-- Mirrored from educhamp.themetrades.com/demo/admin.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 22 Feb 2019 13:08:15 GMT -->
 <head>
@@ -26,7 +26,7 @@
 	<link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png" />
 	
 	<!-- PAGE TITLE HERE ============================================= -->
-	<title>EduChamp : Education HTML Template </title>
+	<title>HMK</title>
 	
 	<!-- MOBILE SPECIFIC ============================================= -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -145,10 +145,9 @@
 	<main class="ttr-wrapper">
 		<div class="container-fluid">
 			<div class="db-breadcrumb">
-				<h4 class="breadcrumb-title">Dashboard</h4>
+				<h4 class="breadcrumb-title">لوحة التحكم</h4>
 				<ul class="db-breadcrumb-list">
-					<li><a href="#"><i class="fa fa-home"></i>Home</a></li>
-					<li>Dashboard</li>
+					<li><a href="#"><i style="padding:0px 16px" class="fa fa-home"></i>طلبات إعادة العملي</a></li>
 				</ul>
 			</div>	
 			<!-- Card -->
@@ -157,9 +156,9 @@
 					<table class="styled-table">
 						<thead>
 							<tr>
-								<th>Student Name</th>
-                                <th>Subject</th>
-								<th>Order Date</th>
+								<th>أسم الطلب</th>
+                                <th>المادة</th>
+								<th>تاريخ الطلب</th>
                               
 							</tr>
 						</thead>

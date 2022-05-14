@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 
 <!-- Mirrored from educhamp.themetrades.com/demo/admin.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 22 Feb 2019 13:08:15 GMT -->
 <head>
@@ -25,7 +25,7 @@
 	<link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png" />
 	
 	<!-- PAGE TITLE HERE ============================================= -->
-	<title>EduChamp : Education HTML Template </title>
+	<title>HMK</title>
 	
 	<!-- MOBILE SPECIFIC ============================================= -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -153,23 +153,22 @@
 	<main class="ttr-wrapper">
 		<div class="container-fluid">
 			<div class="db-breadcrumb">
-				<h4 class="breadcrumb-title">Dashboard</h4>
+				<h4 class="breadcrumb-title">لوحة التحكم</h4>
 				<ul class="db-breadcrumb-list">
-					<li><a href="#"><i class="fa fa-home"></i>Home</a></li>
-					<li>Dashboard</li>
+					<li><a href="#"><i style="margin-top: 16px ;margin-left:16px;margin-right:16px" class="fa fa-home"></i>إضافة علامه</a></li>
+
 				</ul>
 			</div>	
 			<!-- Card -->
-			<div class="row" style="margin-top:2rem">
 				<div class="col-lg-12">
                     <form class="contact-bx" method="POST" action="{{ url('/addMark') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="row placeani">
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                
                                 <div class="row">
                                 <div class="form-group col-lg-12">
-                                    <div class="input-group">
+                                    <div class="input-group" style="margin-top:16px">
                                         
                                         <input  type="number" class="form-control @error('asd') asd @enderror" style="direction: rtl" placeholder="الرقم الجامعي"   name="num" required>
 										@error('asd')
@@ -178,16 +177,16 @@
 										</span> --}}
 										@enderror
                                     </div> <br>
-                                    <div class="input-group">
+                                    <div class="input-group" style="margin-top:16px">
                                         
                                         <input  type="number" class="form-control" style="direction: rtl" placeholder="علامة القسم النظري" name="th" required>
                                     </div> <br>
-									<div class="input-group">
+									                  <div class="input-group" style="margin-top:16px">
                                         
                                         <input  type="number" class="form-control" style="direction: rtl" placeholder="علامة القسم العملي" name="pr" required>
                                     </div> <br>
-									<div class="container" margin="m-5">
-									<div class="input-group" >
+									
+									<div class="input-group" style="margin-top:16px" >
                                         
                                         <input  type="text" class="date-own form-control" style="width: 300px;" placeholder="العام الدراسي" name="year" required>
 										<script type="text/javascript">
@@ -202,8 +201,8 @@
 									  
 										</script>
                                     </div> <br>
-								</div>
-                                    <div class="input-group" style="display: flex">
+	
+                                    <div class="input-group" style="display: flex; margin-top:16px">
                                         
                                         <select name="subject"  class="form-control" style="width: 100%">
                                             @foreach ($subjects as $subject)
@@ -211,7 +210,7 @@
                                             @endforeach
                                         </select>
                                     </div> <br>
-                                    <div class="input-group" style="display: flex">
+                                    <div class="input-group" style="display: flex;margin-top:16px">
                                         
                                         <select id="gender" class="form-control" name="semester" style="width: 100%">
                                             <option value="الدورة الفصلية الأولى">

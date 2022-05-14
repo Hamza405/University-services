@@ -8,7 +8,7 @@
         <meta name="keywords" content="" />
         <meta name="author" content="" />
         <meta name="robots" content="" />
-        <title>US</title>
+        <title>HMK</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         <meta property="og:title" content="EduChamp : Education HTML Template" />

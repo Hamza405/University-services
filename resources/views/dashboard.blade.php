@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 
 <!-- Mirrored from educhamp.themetrades.com/demo/admin.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 22 Feb 2019 13:08:15 GMT -->
 <head>
@@ -25,7 +25,7 @@
 	<link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png" />
 	
 	<!-- PAGE TITLE HERE ============================================= -->
-	<title>EduChamp : Education HTML Template </title>
+	<title>HMK</title>
 	
 	<!-- MOBILE SPECIFIC ============================================= -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -144,10 +144,10 @@
 	<main class="ttr-wrapper">
 		<div class="container-fluid">
 			<div class="db-breadcrumb">
-				<h4 class="breadcrumb-title">Dashboard</h4>
+				<h4 class="breadcrumb-title"> لوحة التحكم </h4>
 				<ul class="db-breadcrumb-list">
-					<li><a href="#"><i class="fa fa-home"></i>Home</a></li>
-					<li>Dashboard</li>
+					<li><a href="#"><i class="fa fa-home" style="padding:0px 16px"></i> الرئيسية </a></li>
+					
 				</ul>
 			</div>	
 			<!-- Card -->
@@ -156,7 +156,7 @@
 					<div class="widget-card widget-bg1" style="padding:2rem">					 
 						<div class="wc-item">
 							<h4 class="wc-title">
-								Students
+								الطلاب
 							</h4>
 							<span class="wc-des">
 								
@@ -166,14 +166,15 @@
 							</span>		
 							<hr style="background: #fff;">
 							<span class="wc-progress-bx">
-								@if(Auth::user()->role == 'Admin')
-								<span class="wc-change">
-									<a href="{{ url('/addStudents') }}" style="color:#fff">Add Student</a>
-								</span>
-								@endif
-								<span class="wc-number ml-auto">
+							<span class="wc-number ml-auto">
 									<i class="fa fa-user"></i>
 								</span>
+								@if(Auth::user()->role == 'Admin')
+								<span class="wc-change">
+									<a href="{{ url('/addStudents') }}" style="color:#fff">إضافة طالب</a>
+								</span>
+								@endif
+								
 							</span>
 						</div>				      
 					</div>
@@ -182,7 +183,7 @@
 					<div class="widget-card widget-bg1" style="padding:2rem">					 
 						<div class="wc-item">
 							<h4 class="wc-title">
-								Employees
+								الموظفين
 							</h4>
 							<span class="wc-des">
 								
@@ -192,14 +193,15 @@
 							</span>		
 							<hr style="background: #fff;">
 							<span class="wc-progress-bx">
-								@if(Auth::user()->role == 'Admin')
-								<span class="wc-change">
-									<a href="{{ url('/addEmployee') }}" style="color:#fff">Add Employee</a>
-								</span>
-								@endif
-								<span class="wc-number ml-auto">
+							<span class="wc-number ml-auto">
 									<i class="fa fa-user"></i>
 								</span>
+								@if(Auth::user()->role == 'Admin')
+								<span class="wc-change">
+									<a href="{{ url('/addEmployee') }}" style="color:#fff">إضافة موظف</a>
+								</span>
+								@endif
+								
 							</span>
 						</div>				      
 					</div>
@@ -208,7 +210,7 @@
 					<div class="widget-card widget-bg2" style="padding:2rem">					 
 						<div class="wc-item">
 							<h4 class="wc-title">
-								Subjects
+								المقرارات الدراسية
 							</h4>
 							<span class="wc-des">
 								
@@ -218,12 +220,13 @@
 							</span>		
 							<hr style="background: #fff;">
 							<span class="wc-progress-bx">
-								<span class="wc-change">
-									<a href="{{ url('/addSubject') }}" style="color:#fff">Add Subject</a>
-								</span>
-								<span class="wc-number ml-auto">
+							<span class="wc-number ml-auto">
 									<i class="fa fa-book" aria-hidden="true"></i>
 								</span>
+								<span class="wc-change">
+									<a href="{{ url('/addSubject') }}" style="color:#fff">إضافة مقرر دراسي</a>
+								</span>
+								
 							</span>
 						</div>				      
 					</div>
@@ -232,7 +235,7 @@
 					<div class="widget-card widget-bg3" style="padding:2rem">					 
 						<div class="wc-item">
 							<h4 class="wc-title">
-								Services
+								الخدمات
 							</h4>
 							<span class="wc-des">
 								
@@ -242,12 +245,13 @@
 							</span>		
 							<hr style="background: #fff;">
 							<span class="wc-progress-bx">
-								<span class="wc-change">
-									<a href="{{ url('/addService') }}" style="color:#fff">Add Services</a>
-								</span>
-								<span class="wc-number ml-auto">
+							<span class="wc-number ml-auto">
 									<i class="fa fa-gear"></i>
 								</span>
+								<span class="wc-change">
+									<a href="{{ url('/addService') }}" style="color:#fff">َإضافة خدمة</a>
+								</span>
+							
 							</span>
 						</div>				      
 					</div>
@@ -256,7 +260,7 @@
 					<div class="widget-card widget-bg3" style="padding:2rem">					 
 						<div class="wc-item">
 							<h4 class="wc-title">
-								Sections 
+								الأقسام 
 							</h4>
 							<span class="wc-des">
 								 
@@ -266,14 +270,15 @@
 							</span>		
 							<hr style="background: #fff;">
 							<span class="wc-progress-bx">
-								@if(Auth::user()->role == 'Admin')
-								<span class="wc-change">
-									<a href="{{ url('/addSection') }}" style="color:#fff">Add Sections</a>
-								</span>
-								@endif
-								<span class="wc-number ml-auto">
+							<span class="wc-number ml-auto">
 									<i class="fa fa-list-alt" aria-hidden="true"></i>
 								</span>
+								@if(Auth::user()->role == 'Admin')
+								<span class="wc-change">
+									<a href="{{ url('/addSection') }}" style="color:#fff">إضافة خدمة</a>
+								</span>
+								@endif
+								
 							</span>
 						</div>				      
 					</div>

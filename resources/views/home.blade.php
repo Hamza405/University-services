@@ -9,7 +9,7 @@
         <meta name="keywords" content="" />
         <meta name="author" content="" />
         <meta name="robots" content="" />
-        <title>US</title>
+        <title>HMK</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         <meta property="og:title" content="EduChamp : Education HTML Template" />
@@ -56,8 +56,8 @@
 		<div class="top-bar">
 			<div class="container">
 				<div class="row d-flex justify-content-between">
-						<div class="topbar-left">
-						</div>
+					<div class="topbar-left">
+					</div>
 					<div class="topbar-right">
 						<ul>
 						<li style="font-weight: bold">{{ Auth::user()->name }}</li>
@@ -118,7 +118,7 @@
 							<a href="index.html"><img src="assets/images/logo.png" alt=""></a>
 						</div>
                         <ul class="nav navbar-nav">	
-						@if(Auth::user()->role == 'Admin')
+							@if(Auth::user()->role == 'Admin')
 								<li class="active"><a href="{{ url('/adminDash') }}">Dashboard</a>
 							
 							@endif
@@ -136,12 +136,12 @@
 									</ul>
 								</li>
 							</li>
-							<li> 
-								<a data-toggle="modal" data-target="#exampleModal">
-									خدمات
-								</a>
+								<li> 
+									<a data-toggle="modal" data-target="#exampleModal">
+										خدمات
+									</a>
+								</li>
 							</li>
-						</li>
 							
 						<li><a href="javascript:;">طلباتي <i class="fa fa-chevron-down"></i></a>
 							<ul class="sub-menu">

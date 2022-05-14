@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 
 <!-- Mirrored from educhamp.themetrades.com/demo/admin.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 22 Feb 2019 13:08:15 GMT -->
 <head>
@@ -25,7 +25,7 @@
 	<link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png" />
 	
 	<!-- PAGE TITLE HERE ============================================= -->
-	<title>EduChamp : Education HTML Template </title>
+	<title>HMK</title>
 	
 	<!-- MOBILE SPECIFIC ============================================= -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -144,14 +144,14 @@
 	<main class="ttr-wrapper">
 		<div class="container-fluid">
 			<div class="db-breadcrumb">
-				<h4 class="breadcrumb-title">Dashboard</h4>
+				<h4 class="breadcrumb-title">لوحة التحكم</h4>
 				<ul class="db-breadcrumb-list">
-					<li><a href="#"><i class="fa fa-home"></i>Home</a></li>
-					<li>Dashboard</li>
+					<li><a href="#"><i style="padding:0px 16px" class="fa fa-home"></i>الإعلانات</a></li>
+				
 				</ul>
 			</div>	
 			<!-- Card -->
-			<div class="row" style="margin-top:2rem">
+			<div class="row" style="margin-top:2rem;margin-right:8rem;margin-left:8em;">
 				<div class="col-lg-12">
                     <form class="contact-bx" method="POST" action="{{ url('/addAds') }}">
                         @csrf
@@ -190,15 +190,16 @@
                         </div>
                     </form>
 				</div>
-				<div class="row" style="margin:2rem">
+			</div>
+			<div class="row" style="margin:2rem">
 					<div class="col-lg-12" >
 						<table class="styled-table">
 							<thead>
 								<tr>
-									<th>Section</th>
-									<th>Ads</th>
-									<th>Target</th>
-									<th>Ads Date</th>
+									<th>القسم</th>
+									<th>محتوى الإعلان</th>
+									<th>سنة الإعلان</th>
+									<th>تاريخ إعلان</th>
 									
 								  
 								</tr>
@@ -233,16 +234,16 @@
 										<form style="display:inline" method="POST"  action="{{ url('/deleteAds'.'/'.$ad->id)}}">
                       						@csrf
                       						@method('DELETE')
-                    						<button type="submit" class="btn btn-danger">Delete</button>
-                    						</form>
+                    						<button type="submit" class="btn btn-danger" style="background-color:transparent"><i class="fa fa-trash" style="color:red;"></i></button>
+                    					</form>
 									</td>
 								</tr>
 								@endforeach	
 							</tbody>
 						</table>
-					</div>
-				
 			</div>
+				
+			
 		</div>
 	</main>
 	<div class="ttr-overlay"></div>
