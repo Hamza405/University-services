@@ -461,8 +461,8 @@
                 <div class="container mb-4 mt-4">
 					<div class="row">
 						<div class="col-lg-3 col-md-4 col-sm-12">
-							<div class="service-bx">
-								<div class="action-box">
+							<div class="service-bx" style="border-radius: 20px">
+								<div class="action-box" style="border-radius: 15px">
 									<img src="assets/images/gallery/pic5.jpg" alt="">
 								</div>
 								<div class="info-bx text-center">
@@ -475,8 +475,8 @@
 							</div>
 						</div>
 						<div class="col-lg-3 col-md-4 col-sm-12">
-							<div class="service-bx m-b0">
-								<div class="action-box">
+							<div class="service-bx m-b0" style="border-radius: 20px">
+								<div class="action-box" style="border-radius: 15px">
 									<img src="assets/images/gallery/pic6.jpg" alt="">
 								</div>
 								<div class="info-bx text-center">
@@ -489,8 +489,8 @@
 							</div>
 						</div>
 						<div class="col-lg-3 col-md-4 col-sm-12">
-							<div class="service-bx m-b0">
-								<div class="action-box">
+							<div class="service-bx m-b0"style="border-radius: 20px">
+								<div class="action-box"style="border-radius: 15px">
 									<img src="assets/images/gallery/pic3.jpg" alt="">
 								</div>
 								<div class="info-bx text-center">
@@ -503,8 +503,8 @@
 							</div>
 						</div>
 						<div class="col-lg-3 col-md-4 col-sm-12">
-							<div class="service-bx m-b0">
-								<div class="action-box">
+							<div class="service-bx m-b0"style="border-radius: 20px">
+								<div class="action-box"style="border-radius: 15px">
 									<img src="assets/images/gallery/pic2.jpg" alt="">
 								</div>
 								<div class="info-bx text-center">
@@ -526,7 +526,7 @@
 			
 			<!-- Form -->
 			<div class="section-area section-sp1 ovpr-dark bg-fix online-cours" style="background-image:url(assets/images/background/bg1.jpg);">
-				<div class="container">
+				<div class="container" style="border-radius:25px">
 					<div class="row">
 						<div class="col-md-12 text-center text-white">
 							<h2></h2>
@@ -576,7 +576,7 @@
 									@foreach ($ads as $ad)
 									@if($ad->target == Auth::user()->year || $ad->target == "0") 
 									<div class="item">
-										<div class="event-bx">
+										<div class="event-bx"style="border-radius: 20px">
 											
 											<div class="info-bx d-flex">
 												<div>
