@@ -59,10 +59,19 @@
 		
 		<div class="card col-md-4" style="margin: 32px 64px; border-radius: 25px;">
 			<div class="account-container">
-				<div class="heading-bx left">
-					<h2 class="title-head">أنشئ حساب <span>الآن</span></h2>
-					<p><a href="{{ route('login') }}"  style="text-decoration:none">تسجيل الدخول</a></p>
-				</div>	
+				
+				<div class="row d-flex justify-content-end" style="margin-bottom:1rem">
+						<div class="col-md-4">
+							<img src="assets/images/logo.png" alt="">	
+						</div>
+						<!-- <div class="col-md-2"></div> -->
+						<div class="col-md-8"style="padding-top:1.2rem">
+							<div class="heading-bx left">
+								<h2 class="title-head">أنشئ حساب <span>الآن</span></h2>
+						
+							</div>
+						</div>
+					</div>	
 				<form class="contact-bx" method="POST" action="{{ route('register') }}">
 					@csrf
 					<div class="row placeani">
@@ -183,7 +192,14 @@
                                 </div>
                             </div>
 						</div> 
+						
 						<input type="hidden" id="role" name="role" value="طالب">
+						<br>
+						<div class="col-lg-12" style="margin-top:1.5rem">
+								<div class="form-group form-forget">
+									<a class="ml-auto" href="{{ route('login') }}" style="text-decoration:rtl">لديك حساب بالفعل؟ تسجيل الدخول</a>
+								</div>
+						</div>
 						<div class="col-lg-12 m-b30">
                         	<br>    
                         	<button name="submit" type="submit" style="background:amber; border-radius: 10px;" value="Submit" class="btn button-md btn-block">إنشاء الحساب</button>

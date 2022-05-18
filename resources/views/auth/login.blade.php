@@ -58,10 +58,18 @@
 			</h1> 
 			<div class="card col-md-4" style="margin:64px; border-radius: 25px;">
 				<div class="account-container">
-					<div class="heading-bx left">
-						<h2 class="title-head">تسجيل الدخول</h2>
-						<p style="visibility:hidden">لاتملك حساب ؟ <a href="{{ route('register') }}" style="text-decoration:none">أنشئ حساب الآن</a></p>
-					</div>	
+					<div class="row d-flex justify-content-end" style="margin-bottom:1rem">
+						<div class="col-md-4">
+							<img src="assets/images/logo.png" alt="">	
+						</div>
+						<!-- <div class="col-md-2"></div> -->
+						<div class="col-md-8"style="padding-top:1.2rem">
+							<div class="heading-bx left">
+								<h2 class="title-head">تسجيل الدخول</h2>
+							</div>
+						</div>
+					</div>
+						
 					<form class="contact-bx" method="POST" action="{{ route('login') }}">
 						@csrf
 						<div class="row">

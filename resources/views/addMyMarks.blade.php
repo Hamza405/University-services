@@ -163,10 +163,10 @@
 				<div class="col-lg-12">
                     <form class="contact-bx" method="POST" action="{{ url('/addMark') }}" enctype="multipart/form-data">
                         @csrf
-                        <div class="row placeani">
-                            <div class="col-lg-6">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-lg-8">
                                
-                                <div class="row">
+                                <div class="row" >
                                 <div class="form-group col-lg-12">
                                     <div class="input-group" style="margin-top:16px">
                                         
@@ -186,21 +186,21 @@
                                         <input  type="number" class="form-control" style="direction: rtl" placeholder="علامة القسم العملي" name="pr" required>
                                     </div> <br>
 									
-									<div class="input-group" style="margin-top:16px" >
-                                        
-                                        <input  type="text" class="date-own form-control" style="width: 300px;" placeholder="العام الدراسي" name="year" required>
-										<script type="text/javascript">
+                                    <div class="input-group" style="margin-top:16px;direction:rtl" >
+                                                          
+                                        <input  type="text" class="date-own form-control" style="width: 300px;float:right" placeholder="العام الدراسي" name="year" required>
+                                        <script type="text/javascript">
 
-											$('.date-own').datepicker({
-									  
-											   minViewMode: 2,
-									  
-											   format: 'yyyy'
-									  
-											 });
-									  
-										</script>
-                                    </div> <br>
+                                          $('.date-own').datepicker({
+                                        
+                                            minViewMode: 2,
+                                        
+                                            format: 'yyyy'
+                                        
+                                          });
+                                        
+                                        </script>
+                                      </div> <br>
 	
                                     <div class="input-group" style="display: flex; margin-top:16px">
                                         
