@@ -134,8 +134,9 @@
 							{{-- <a href="index.html"><img src="assets/images/logo.png" alt=""></a> --}}
 						</div>
                         <ul class="nav navbar-nav">	
-						<li class="active"><a href="{{ url('/home') }}">الرئيسية</a>
-								<li><a href="{{url('/myMarksOnly')}}">مواد النجاح</a>
+							<li class="active"><a href="{{ url('/home') }}">الرئيسية</a>
+							<li><a href="{{url('/myMarksOnly')}}">مواد النجاح</a>
+							<li><a href="{{url('//exportPdf')}}"><i class="fa fa-print" style="font-size:0.8rem"></i></a>
 							
 							
 							{{-- <li><a href="javascript:;">خدمات</a>
@@ -173,13 +174,7 @@
 				<!-- START REVOLUTION SLIDER 5.3.0.2 fullwidth mode -->
 				<div id="rev_slider_486_1" class="rev_slider fullwidthabanner" style="display:none;" data-version="5.3.0.2">
 					<div class="proImg" style="overflow-y:scroll;height:90vh;position: relative;top:10rem;left:5rem;z-index:1000000">
-					<div style="display: flex;width:30%;">
-						<form class="contact-bx exportForm"  action="{{ url('/exportPdf') }}">
-							<button class="pdf">
-								PDF
-							</button>
-					    </form>
-					</div>
+					
 						<table class="styled-table">
 							<thead>
 								<tr >

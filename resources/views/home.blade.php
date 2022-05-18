@@ -1,4 +1,5 @@
 @inject('us','App\Models\User')
+@inject('Carbon','Carbon\Carbon')
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -565,7 +566,7 @@
 			<div class="section-area section-sp2" id="ads">
 				<div class="container">
 					<div class="row">
-						<div class="col-md-12 text-center heading-bx">
+						<div class="col-md-12 text-center heading-bx" >
 							<h2 class="title-head m-b0"> <span>آخر</span>الإعلانات</h2>
 							<hr style="color: #f7b205;width:30%;border:1px solid #f7b205">
 						</div>
@@ -575,26 +576,19 @@
 								
 									@foreach ($ads as $ad)
 									@if($ad->target == Auth::user()->year || $ad->target == "0") 
-									<div class="item">
-										<div class="event-bx"style="border-radius: 20px">
+									<div class="item" style="width: 32rem;">
+										<div class="event-bx" style="border-radius:20px">
 											
-											<div class="info-bx d-flex">
-												<div>
-													{{-- <div class="event-time">
-														<div class="event-date">الامتحانات</div>
-													
-													</div> --}}
+											<div class="info-bx d-flex"style="direction:rtl">
+											
+												<div class="event-info">
+													<h4 style="float:right;margin-right:0.4rem;color: #4C238D">{{ $ad->section }}</h4>
+													<br>
+													<p style="float:right;margin-right:0.4rem"><i class="fa fa-clock-o" style="padding-left:8px"></i> {{date('d-M-y', strtotime($ad->created_at))}} </p>
+														
 												</div>
-									<div class="event-info">
-											<h4 class="event-title"><a href="#" style="color: #4C238D;">{{ $ad->section }}</a></h4>
-											<ul class="media-post">
-												<li><a href="#"><i class="fa fa-clock-o"></i> {{ $ad->created_at }}</a></li>
-												
-											</ul>
-										
-									</div>
 									
-								</div>
+											</div>
 								<div style="padding: 0.5rem 1.5rem;text-align:end;height:30vh;@if(strlen($ad->description) > 100) overflow-y:scroll; @endif ">
 									<p>{{ $ad->description }}</p>
 								</div>

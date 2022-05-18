@@ -74,8 +74,9 @@ class HomeController extends Controller
         // return Excel::download(Mark::get(), 'invoices.xlsx');
     }
     public function exportOnlyPdf(){
+        $user = Auth::user();
         $data = Mark::where('userID',Auth::user()->id)->where('result','ناجح')->orderBy('subjectId','ASC')->get();
-        view()->share('marks',$data);
+        view()->share(['marks'=> $data,'user'=>$user]);
         $pdf = PDF::loadView('pdfMyMarkOnlyTable', $data);
         return $pdf->download('marks.pdf');
        
