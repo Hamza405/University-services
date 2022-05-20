@@ -109,7 +109,7 @@
 							<div class="col-lg-1" style="padding-top:10px">
 								<i class="fa fa-key"></i>
 							</div>
-							<div class="col-lg-12">
+							<!-- <div class="col-lg-12">
 								<div class="form-group form-forget">
 						
 									@if (Route::has('password.request'))
@@ -117,7 +117,7 @@
 									@endif
 								</div>
 								
-							</div>
+							</div> -->
 							<div class="col-lg-12">
 								<div class="form-group form-forget">
 									<a class="ml-auto" href="{{ route('register') }}" style="text-decoration:rtl">لاتملك حساب ؟ أنشئ حساب الآن</a>
