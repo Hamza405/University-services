@@ -151,37 +151,78 @@
 				</ul>
 			</div>	
 			<!-- Card -->
-			<div class="row" style="margin-top:2rem">
-				<div class="col-lg-12">
-                    <form class="contact-bx" method="POST" action="{{ url('/addStudents') }}">
+			<div class="row d-flex justify-content-center" style="margin-top:3rem">
+				<div class="col-lg-8">
+                    <form class="contact-bx" method="POST" action="{{ url('/addEmployee') }}">
                         @csrf
                         <div class="row placeani">
                             <div class="col-lg-12">
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <label style="text-align:end">الاسم الكامل</label>
-                                        <input style="direction:rtl" id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-    
-                                        @error('name')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
+                              <div class="row">
+                                <div class="form-group col-lg-6 col-md-6">
+                                      <div class="input-group">
+                                          <label style="text-align:end">البريد الالكتروني</label>
+                                          <input style="direction:rtl" id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+      
+                                      @error('email')
+                                          <span class="invalid-feedback" role="alert">
+                                              <strong>{{ $message }}</strong>
+                                          </span>
+                                      @enderror
+                                      </div>
+                                  </div>
+                                  <div class="form-group col-lg-6 col-md-6">
+                                      <div class="input-group">
+                                          <label style="text-align:end">الاسم الكامل</label>
+                                          <input style="direction:rtl" id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+      
+                                          @error('name')
+                                              <span class="invalid-feedback" role="alert">
+                                                  <strong>{{ $message }}</strong>
+                                              </span>
+                                          @enderror
+                                      </div>
+                                  </div>
                                 </div>
                             </div>
                             <div class="col-lg-12">
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <label style="text-align:end">بريدك الالكتروني</label>
-                                        <input style="direction:rtl" id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-    
-                                    @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                    </div>
+                                <div class="row">
+                                  
+                                  <div class="form-group col-lg-6">
+                            		    <select id="section" name="section">
+                                        <option value="حاسبات" selected>
+                                            حاسبات
+                                        </option>
+                                        <option value="طبية">
+                                          طبية
+                                        </option>
+                                        <option value="اتصالات">
+                                          اتصالات
+                                        </option>
+                                        <option value="ميكاترونيك">
+                                          ميكاترونيك
+                                        </option>
+                                        <option value="بحرية">
+                                          بحرية
+                                        </option>
+                                        <option value="طاقة">
+                                          طاقة
+                                        </option> <option value="قوى">
+                                          قوى
+                                        </option> <option value="ميكانيك">
+                                          ميكانيك
+                                        </option>
+                                    </select>
+                            	</div>
+                              <div class="col-lg-6">
+                                    <select id="gender" name="gender">
+                                        <option value="ذكر">
+                                            ذكر
+                                        </option>
+                                        <option value="أنثى">
+                                        أنثى
+                                        </option>
+                                    </select>
+                                </div>
                                 </div>
                             </div>
                             <div class="col-lg-12">

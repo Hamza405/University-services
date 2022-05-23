@@ -138,35 +138,35 @@
                                     <span class="invalid-feedback" role="alert">
                                         <strong> الرقم الجامعي مستخدم في حساب أخر</strong>
                                     </span>
-                                @enderror
+                               		 @enderror
 								</div>
                             </div>
-                            <div class="form-group col-lg-6">
-                            <select id="section" name="section">
+                           		<div class="form-group col-lg-6">
+                            		<select id="section" name="section">
                                         <option value="حاسبات" selected>
                                             حاسبات
                                         </option>
-                                        <option disabled>
+                                        <option value="طبية">
                                           طبية
                                         </option>
-                                        <option disabled>
+                                        <option value="اتصالات">
                                           اتصالات
                                         </option>
-                                        <option disabled>
+                                        <option value="ميكاترونيك">
                                           ميكاترونيك
                                         </option>
-                                        <option disabled>
+                                        <option value="بحرية">
                                           بحرية
                                         </option>
-                                        <option disabled>
+                                        <option value="طاقة">
                                           طاقة
-                                        </option> <optiondisabled >
+                                        </option> <option value="قوى">
                                           قوى
-                                        </option> <option disabled>
+                                        </option> <option value="ميكانيك">
                                           ميكانيك
                                         </option>
                                     </select>
-                            </div>
+                            	</div>
                             </div>
 						</div>
 						<div class="col-lg-12">

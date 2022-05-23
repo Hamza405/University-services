@@ -350,22 +350,20 @@ class HomeController extends Controller
     public function storeEmployee (Request $request)
     {   
         $email = User::where('email','=',$request->email)->first();
-        if($number == null){
+        if($email == null){
             User::create([
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
-                'num' => $request->num,
-                'year' => $request->year,
                 'section' => $request->section,
                 'gender' => $request->gender,
                 'role' => 'موظف',
             ]);
     
             $employees = User::where('role','موظف')->get();
-            return view('viewStudents')->with('employees',$employees);
+            return view('addEmployee');
         }
-        return redirect()->back()->withErrors('');
+        return redirect()->back()->withErrors(['email'=>'البريد مستخدم في حساب أخر']);
 
         
     }
@@ -415,7 +413,7 @@ class HomeController extends Controller
             return view('viewServices')->with('services',$services);
         }
        
-        return redirect()->back()->withErrors('');
+        return redirect()->back()->withErrors('هذه الخدمة موجوده مسبقا');
     }
 
     public function storeSection (Request $request)
@@ -431,7 +429,7 @@ class HomeController extends Controller
         }
 
        
-        return redirect()->back()->withErrors('');
+        return redirect()->back()->withErrors('القسم موجود مسبقا');
     }
 
     
@@ -466,10 +464,10 @@ class HomeController extends Controller
         $fullMark = $request->th + $request->pr;
         
         if($getUserId==null){
-            return back()->withErrors('الرقم الجامعي غير صالح');
+            return  redirect()->back()->withErrors('الرقم الجامعي غير صالح');
         }
         if($fullMark > 100){
-            return back()->withErrors('هناك خطا في ادخال العلامات');
+            return  redirect()->back()->withErrors('هناك خطا في ادخال العلامات');
         }
        
             $subjectState = Mark::where('userId','=',$getUserId->id)->where('subjectId','=',$request->subject)->where('result','=','ناجح')->first(); 
@@ -500,7 +498,7 @@ class HomeController extends Controller
                 return view('addMyMarks')->with('subjects',$subjects);
             }
             else{
-                return back()->withErrors('الطالب بالفعل نجح في المقرر');
+                return  redirect()->back()->withErrors('الطالب بالفعل نجح في المقرر');
             }  
             return view('addMyMarks')->with('subjects',$subjects);
             
