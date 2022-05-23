@@ -11,7 +11,13 @@
 							<span class="ttr-icon"><i class="ti-user"></i></span>
 		                	<span class="ttr-label">الطلاب</span>
 		                </a>
-		            </li>				
+		            </li>
+					<li>
+						<a href="{{ url('/employees') }}" class="ttr-material-button">
+							<span class="ttr-icon"><i class="ti-user"></i></span>
+		                	<span class="ttr-label">الموظفين</span>
+		                </a>
+		            </li>					
 					<li>
 						<a href="{{ url('/subjects') }}" class="ttr-material-button">
 							<span class="ttr-icon"><i class="ti-book"></i></span>

@@ -41,6 +41,7 @@ Route::get('subjects', [App\Http\Controllers\HomeController::class,'subjects']);
 Route::get('services', [App\Http\Controllers\HomeController::class,'services']);
 Route::get('sections', [App\Http\Controllers\HomeController::class,'sections']);
 Route::get('students', [App\Http\Controllers\HomeController::class,'students']);
+Route::get('employees', [App\Http\Controllers\HomeController::class,'employees']);
 Route::get('orders', [App\Http\Controllers\HomeController::class,'orders']);
 
 Route::get('addmyMarks', [App\Http\Controllers\HomeController::class,'myMarks']);
@@ -94,6 +95,8 @@ Route::get('exportPdf',[App\Http\Controllers\HomeController::class,'exportPdf'])
 Route::get('exportOnlyPdf',[App\Http\Controllers\HomeController::class,'exportOnlyPdf']);
 Route::get('exportExcel',[App\Http\Controllers\HomeController::class,'exportExcel']);
 Route::get('exportExcelOrder',[App\Http\Controllers\HomeController::class,'exportExcelOrder']);
+Route::get('exportExcelComplaints',[App\Http\Controllers\HomeController::class,'exportExcelComplaints']);
+Route::get('exportExcelEmployees',[App\Http\Controllers\HomeController::class,'exportExcelEmployees']);
 
 Route::get('complaints',[App\Http\Controllers\ComplaintController::class,'complaints']);
 

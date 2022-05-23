@@ -27,6 +27,8 @@ use PDF;
 
 use App\Exports\IExport;
 use App\Exports\OExport;
+use App\Exports\CExport;
+use App\Exports\EExport;
 
 class HomeController extends Controller
 {
@@ -95,6 +97,15 @@ class HomeController extends Controller
         return  Excel::download(new OExport, 'subjects.xlsx');
 
     }
+    public function exportExcelComplaints(){
+        return  Excel::download(new CExport, 'complaints.xlsx');
+
+    }
+    public function exportExcelEmployees(){
+        return  Excel::download(new EExport, 'employees.xlsx');
+
+    }
+
     public function orders(){
         $orders =DB::table('orders')->get();
 
@@ -281,6 +292,11 @@ class HomeController extends Controller
         return view('viewStudents')->with('students',$students);
     }
 
+    public function employees ()
+    {   $employees = User::where('role','موظف')->paginate(5);
+        return view('viewEmployees')->with('employees',$employees);
+    }
+
     public function addStudent ()
     {   
         return view('addStudent');
@@ -350,22 +366,20 @@ class HomeController extends Controller
     public function storeEmployee (Request $request)
     {   
         $email = User::where('email','=',$request->email)->first();
-        if($number == null){
+        if($email == null){
             User::create([
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
-                'num' => $request->num,
-                'year' => $request->year,
                 'section' => $request->section,
                 'gender' => $request->gender,
                 'role' => 'موظف',
             ]);
     
             $employees = User::where('role','موظف')->get();
-            return view('viewStudents')->with('employees',$employees);
+            return view('addEmployee');
         }
-        return redirect()->back()->withErrors('');
+        return redirect()->back()->withErrors(['email'=>'البريد مستخدم في حساب أخر']);
 
         
     }
@@ -415,7 +429,7 @@ class HomeController extends Controller
             return view('viewServices')->with('services',$services);
         }
        
-        return redirect()->back()->withErrors('');
+        return redirect()->back()->withErrors('هذه الخدمة موجوده مسبقا');
     }
 
     public function storeSection (Request $request)
@@ -431,7 +445,7 @@ class HomeController extends Controller
         }
 
        
-        return redirect()->back()->withErrors('');
+        return redirect()->back()->withErrors('القسم موجود مسبقا');
     }
 
     
@@ -462,19 +476,29 @@ class HomeController extends Controller
 
     public function saveAddMark (Request $request)
     {   
-        $getUserId = User::Select('id')->where('num',$request->num)->first();
+        $getUserId = User::Select('id')->where('num',$request->num)->where('role','طالب')->first();
         $fullMark = $request->th + $request->pr;
         
-        if($getUserId==null){
-            return back()->withErrors('الرقم الجامعي غير صالح');
-        }
-        if($fullMark > 100){
-            return back()->withErrors('هناك خطا في ادخال العلامات');
-        }
-       
-            $subjectState = Mark::where('userId','=',$getUserId->id)->where('subjectId','=',$request->subject)->where('result','=','ناجح')->first(); 
-            if($subjectState == null){
-                if($fullMark >= 60){
+        if($getUserId!=null){
+            if($fullMark<=100){
+                $subjectState = Mark::where('userId','=',$getUserId->id)->where('subjectId','=',$request->subject)->where('result','=','ناجح')->first(); 
+                if($subjectState != null){
+                    return  redirect()->back()->withErrors('الطالب بالفعل نجح في المقرر');
+                }
+                else{
+                    if($fullMark >= 60){
+                        Mark::create([
+                            'userId'=>$getUserId->id,
+                            'subjectId'=>$request->subject,
+                            'th'=>$request->th,
+                            'pr'=>$request->pr,
+                            'year'=>$request->year,
+                            'semester'=>$request->semester,
+                            'result'=>'ناجح'
+                        ]);
+                        $subjects =DB::table('subjects')->get();
+                        return view('addMyMarks')->with('subjects',$subjects);
+                    }
                     Mark::create([
                         'userId'=>$getUserId->id,
                         'subjectId'=>$request->subject,
@@ -482,27 +506,19 @@ class HomeController extends Controller
                         'pr'=>$request->pr,
                         'year'=>$request->year,
                         'semester'=>$request->semester,
-                        'result'=>'ناجح'
+                        'result'=>'راسب'
                     ]);
                     $subjects =DB::table('subjects')->get();
                     return view('addMyMarks')->with('subjects',$subjects);
-                }
-                Mark::create([
-                    'userId'=>$getUserId->id,
-                    'subjectId'=>$request->subject,
-                    'th'=>$request->th,
-                    'pr'=>$request->pr,
-                    'year'=>$request->year,
-                    'semester'=>$request->semester,
-                    'result'=>'راسب'
-                ]);
-                $subjects =DB::table('subjects')->get();
+                }  
                 return view('addMyMarks')->with('subjects',$subjects);
-            }
-            else{
-                return back()->withErrors('الطالب بالفعل نجح في المقرر');
-            }  
-            return view('addMyMarks')->with('subjects',$subjects);
+            }else{
+                return  redirect()->back()->withErrors('هناك خطا في ادخال العلامات');
+            }   
+        }else{
+            return  redirect()->back()->withErrors('الرقم الجامعي غير صالح');
+        }
+        
             
     } 
         // $ss = Mark::where('userId','=',$getUserId->id)->where('')->where('subjectId','=',$request->subject)->first();
