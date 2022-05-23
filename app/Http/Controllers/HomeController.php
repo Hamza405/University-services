@@ -460,19 +460,29 @@ class HomeController extends Controller
 
     public function saveAddMark (Request $request)
     {   
-        $getUserId = User::Select('id')->where('num',$request->num)->first();
+        $getUserId = User::Select('id')->where('num',$request->num)->where('role','طالب')->first();
         $fullMark = $request->th + $request->pr;
         
-        if($getUserId==null){
-            return  redirect()->back()->withErrors('الرقم الجامعي غير صالح');
-        }
-        if($fullMark > 100){
-            return  redirect()->back()->withErrors('هناك خطا في ادخال العلامات');
-        }
-       
-            $subjectState = Mark::where('userId','=',$getUserId->id)->where('subjectId','=',$request->subject)->where('result','=','ناجح')->first(); 
-            if($subjectState == null){
-                if($fullMark >= 60){
+        if($getUserId!=null){
+            if($fullMark<=100){
+                $subjectState = Mark::where('userId','=',$getUserId->id)->where('subjectId','=',$request->subject)->where('result','=','ناجح')->first(); 
+                if($subjectState != null){
+                    return  redirect()->back()->withErrors('الطالب بالفعل نجح في المقرر');
+                }
+                else{
+                    if($fullMark >= 60){
+                        Mark::create([
+                            'userId'=>$getUserId->id,
+                            'subjectId'=>$request->subject,
+                            'th'=>$request->th,
+                            'pr'=>$request->pr,
+                            'year'=>$request->year,
+                            'semester'=>$request->semester,
+                            'result'=>'ناجح'
+                        ]);
+                        $subjects =DB::table('subjects')->get();
+                        return view('addMyMarks')->with('subjects',$subjects);
+                    }
                     Mark::create([
                         'userId'=>$getUserId->id,
                         'subjectId'=>$request->subject,
@@ -480,27 +490,19 @@ class HomeController extends Controller
                         'pr'=>$request->pr,
                         'year'=>$request->year,
                         'semester'=>$request->semester,
-                        'result'=>'ناجح'
+                        'result'=>'راسب'
                     ]);
                     $subjects =DB::table('subjects')->get();
                     return view('addMyMarks')->with('subjects',$subjects);
-                }
-                Mark::create([
-                    'userId'=>$getUserId->id,
-                    'subjectId'=>$request->subject,
-                    'th'=>$request->th,
-                    'pr'=>$request->pr,
-                    'year'=>$request->year,
-                    'semester'=>$request->semester,
-                    'result'=>'راسب'
-                ]);
-                $subjects =DB::table('subjects')->get();
+                }  
                 return view('addMyMarks')->with('subjects',$subjects);
-            }
-            else{
-                return  redirect()->back()->withErrors('الطالب بالفعل نجح في المقرر');
-            }  
-            return view('addMyMarks')->with('subjects',$subjects);
+            }else{
+                return  redirect()->back()->withErrors('هناك خطا في ادخال العلامات');
+            }   
+        }else{
+            return  redirect()->back()->withErrors('الرقم الجامعي غير صالح');
+        }
+        
             
     } 
         // $ss = Mark::where('userId','=',$getUserId->id)->where('')->where('subjectId','=',$request->subject)->first();
