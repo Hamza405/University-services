@@ -15,6 +15,7 @@ use App\Models\Order;
 use App\Models\AD;
 use App\Models\Reorder;
 use App\Models\ProImage;
+use App\Models\Complaint;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Auth;
@@ -272,7 +273,7 @@ class ApiController extends Controller
 
         $validate = Reorder::where('userID', Auth::user()->id)->where('subjectID', $request->subject)->first();
 
-        $validateSuccessInSubject = Marks::where('userId', Auth::user()->id)->where('subjectId', $request->subject)->where('result','ناجح')->first();
+        $validateSuccessInSubject = Mark::where('userId', Auth::user()->id)->where('subjectId', $request->subject)->where('result','ناجح')->first();
 
         if( $validateSuccessInSubject){
             return response()->json([
@@ -296,7 +297,7 @@ class ApiController extends Controller
 
         if($order){
             return response()->json([
-                'order' => $$order,
+                'order' => $order,
                 'status' => 200
             ]);
         }
@@ -317,6 +318,23 @@ class ApiController extends Controller
         return response()->json([
             'error' => 'Some thing wrong!',
             'status' => 404
+        ]);
+    }
+
+    public function saveComplaint(Request $request){
+        $res = Complaint::create([
+            'student_id' => Auth::user()->id,
+            'content' => $request->content,
+            'isShown' => $request->isShow?1:0,
+        ]);
+        if($res){
+            return response()->json([
+                'status' => 200
+            ]);
+        }
+        return response()->json([
+            'status' => 404,
+            'error' => 'Some thing wrong!, Try again'
         ]);
     }
 
