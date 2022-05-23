@@ -1,4 +1,3 @@
-@inject('us','App\Models\User')
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
@@ -26,7 +25,7 @@
 	<link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png" />
 	
 	<!-- PAGE TITLE HERE ============================================= -->
-	<title>HMK</title>
+	<title>EduChamp : Education HTML Template </title>
 	
 	<!-- MOBILE SPECIFIC ============================================= -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -158,13 +157,14 @@ nav div:first-child{ display: none; }
 			<div class="db-breadcrumb">
 				<h4 class="breadcrumb-title">لوحة التحكم</h4>
 				<ul class="db-breadcrumb-list">
-					<li><a href="#"><i style="padding:0px 16px" class="fa fa-home"></i>الشكاوي</a></li>
+					<li><a href="#"><i style="padding:0px 16px" class="fa fa-home"></i>الموظفين</a></li>
+					
 				</ul>
 			</div>	
 			<!-- Card -->
 			<div class="row" style="margin-top:2rem">
 				<div class="col-lg-12">
-					<form class="contact-bx exportForm"  action="{{ url('/exportExcelComplaints') }}">
+					<form class="contact-bx exportForm"  action="{{ url('/exportExcelEmployees') }}">
 						<button class="pdf">
 							Excel
 						</button>
@@ -172,23 +172,22 @@ nav div:first-child{ display: none; }
 					<table class="styled-table">
 						<thead>
 							<tr>
-								<th>رقم الشكوى</th>
-                                <th>صاحب الشكوى</th>
-                                <th>محتوى الشكوى</th>
-                                <th>تاريخ التقديم</th>
+								<th>اسم الموظف</th>
+                                <th>البريد الإلكتروني</th>
+                                <th>القسم</th>
+                                <th>الجنس</th>
+                                <th>تاريخ إنشاء الحساب</th>
                               
 							</tr>
 						</thead>
 						<tbody>
-							@foreach ($complaints as $complaint)
+							@foreach ($employees as $employee)
 							<tr>
-								<td>{{ $complaint->id }}</td>
-                                <td>
-                                    @if($complaint->isShown){{$us->getStdName($complaint->student_id)->name}}
-                                    @else محجوب @endif
-                                </td>
-                                <td>{{ $complaint->content }}</td>
-                                <td> {{ $complaint->created_at }}</td>
+								<td>{{ $employee->name }}</td>
+                                <td> {{ $employee->email }}</td>
+                                <td> {{ $employee->section }}</td>
+                                <td>{{ $employee->gender }}</td>
+                                <td> {{ $employee->created_at }}</td>
 							</tr>
 							@endforeach	
 							

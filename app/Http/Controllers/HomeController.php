@@ -27,6 +27,8 @@ use PDF;
 
 use App\Exports\IExport;
 use App\Exports\OExport;
+use App\Exports\CExport;
+use App\Exports\EExport;
 
 class HomeController extends Controller
 {
@@ -95,6 +97,15 @@ class HomeController extends Controller
         return  Excel::download(new OExport, 'subjects.xlsx');
 
     }
+    public function exportExcelComplaints(){
+        return  Excel::download(new CExport, 'complaints.xlsx');
+
+    }
+    public function exportExcelEmployees(){
+        return  Excel::download(new EExport, 'employees.xlsx');
+
+    }
+
     public function orders(){
         $orders =DB::table('orders')->get();
 
@@ -279,6 +290,11 @@ class HomeController extends Controller
     public function students ()
     {   $students = User::where('role','طالب')->paginate(5);
         return view('viewStudents')->with('students',$students);
+    }
+
+    public function employees ()
+    {   $employees = User::where('role','موظف')->paginate(5);
+        return view('viewEmployees')->with('employees',$employees);
     }
 
     public function addStudent ()
