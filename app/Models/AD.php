@@ -15,7 +15,8 @@ class AD extends Model
     protected $fillable = [
         'section',
         'description',
-        'target'
+        'target',
+        'parent_section'
     ];
 
 }

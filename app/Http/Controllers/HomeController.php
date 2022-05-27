@@ -107,7 +107,7 @@ class HomeController extends Controller
     }
 
     public function orders(){
-        $orders =DB::table('orders')->get();
+        $orders =DB::table('orders')->where('section',Auth::user()->section)->paginate(10);
 
         return view('viewOrders')->with('orders',$orders);
     }
@@ -235,7 +235,8 @@ class HomeController extends Controller
             'userID' => Auth::user()->id,
             'serviceID' => $request->service,
             'state' => 0,
-            'deadline'=> $newDateTime
+            'deadline'=> $newDateTime,
+            'section' => Auth::user()->section
         ]);
         
             $sections =DB::table('sections')->get();
@@ -324,7 +325,7 @@ class HomeController extends Controller
     public function addAds ()
     {   
         $sections =DB::table('sections')->get();
-        $ads=DB::table('a_d_s')->get();
+        $ads=AD::where('parent_section',Auth::user()->section)->get();
         return view('addAds')->with('sections',$sections)->with('ads',$ads);
     }
 
@@ -386,10 +387,12 @@ class HomeController extends Controller
 
     public function storeAds(Request $request)
     {   
+        $user=Auth::user();
         AD::create([
             'section' => $request->section,
             'description' => $request->description,
-            'target'=>$request->target
+            'target'=>$request->target,
+            'parent_section'=>$user->section!=null?$user->section:'حاسبات'
         ]);
         $sections =DB::table('sections')->get();
         $ads=AD::get();

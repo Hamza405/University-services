@@ -158,6 +158,7 @@
 						<thead>
 							<tr>
 								<th>الطالب</th>
+								<th>الرقم الجامعي</th>
                                 <th>الطلب</th>
                                 <th>الحالة</th>
 								<th>تاريخ الطلب</th>
@@ -168,6 +169,7 @@
 							@foreach ($orders as $order)
 							<tr>
 								<td>{{ $us->getStdName($order->userID)->name}}</td>
+								<td>{{ $us->getStdName($order->userID)->num}}</td>
                                 <td>
 									{{ $us->getServiceName($order->serviceID)->serviceName }}
                                 </td>
@@ -188,8 +190,13 @@
 							@endforeach	
 						</tbody>
 					</table>
+					
 				</div>
 				
+					
+			</div>
+			<div class="row d-flex justify-content-center">
+				{{ $orders->links("pagination::bootstrap-4") }}	
 			</div>
 		</div>
 	</main>

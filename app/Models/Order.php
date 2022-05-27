@@ -13,7 +13,8 @@ class Order extends Model
         'userID',
         'serviceID',
         'state',
-        'deadline'
+        'deadline',
+        'section'
     
     ];
 }

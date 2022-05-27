@@ -182,6 +182,7 @@ class ApiController extends Controller
         'userID' => Auth::user()->id,
         'serviceID' => $request['serviceId'],
         'state' => 0,
+        'section'=> Auth::user()->section,
         'deadline'=> $newDateTime
     ]);
 
@@ -291,6 +292,7 @@ class ApiController extends Controller
 
         $order =Reorder::create([
             'userID' => Auth::user()->id,
+            'section'=> Auth::user()->section,
             'subjectID' => $request->subject,
             'deadline' => $newDateTime
         ]);
@@ -325,6 +327,7 @@ class ApiController extends Controller
         $res = Complaint::create([
             'student_id' => Auth::user()->id,
             'content' => $request->content,
+            'section'=> Auth::user()->section,
             'isShown' => $request->isShow?1:0,
         ]);
         if($res){

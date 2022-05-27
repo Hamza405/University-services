@@ -197,6 +197,9 @@ nav div:first-child{ display: none; }
 				</div>
 				
 			</div>
+			<div class="row d-flex justify-content-center">
+				{{ $complaints->links("pagination::bootstrap-4") }}	
+			</div>
 		</div>
 	</main>
 	<div class="ttr-overlay"></div>

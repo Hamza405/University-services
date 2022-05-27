@@ -26,11 +26,13 @@ class ComplaintController extends Controller
                 'student_id' => Auth::user()->id,
                 'content' => $request->content,
                 'isShown' => 1,
+                'section' => Auth::user()->section
             ]);
         }else{
             Complaint::create([
                 'student_id' => Auth::user()->id,
-                'content' => $request->content
+                'content' => $request->content,
+                'section' => Auth::user()->section
             ]);
         }
 
@@ -38,7 +40,7 @@ class ComplaintController extends Controller
     }
 
     public function complaints(){
-        $complaints = Complaint::get();
+        $complaints = Complaint::where('section',Auth::user()->section)->paginate(5);
         return view('complaintsView')->with('complaints',$complaints);
     }
 }
