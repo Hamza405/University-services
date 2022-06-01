@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 
 <!-- Mirrored from educhamp.themetrades.com/demo/admin.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 22 Feb 2019 13:08:15 GMT -->
 <head>
@@ -144,10 +144,9 @@
 	<main class="ttr-wrapper">
   <div class="container-fluid" style="width: 75%;position: absolute;left: 16px;">
 			<div class="db-breadcrumb">
-				<h4 class="breadcrumb-title">Dashboard</h4>
+				<h4 class="breadcrumb-title">لوحة التحكم</h4>
 				<ul class="db-breadcrumb-list">
-					<li><a href="#"><i class="fa fa-home"></i>Home</a></li>
-					<li>Dashboard</li>
+					<li><a href="#"><i style="padding:0px 16px" class="fa fa-home"></i>إضافة طالب</a></li>
 				</ul>
 			</div>	
 			<!-- Card -->
