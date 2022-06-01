@@ -12,6 +12,7 @@ use App\Models\Service;
 use App\Models\Student;
 use App\Models\Order;
 use App\Models\AD;
+use App\Models\StudySection;
 use App\Models\Reorder;
 use App\Models\ProImage;
 use App\Exports\UsersExport;
@@ -165,7 +166,6 @@ class HomeController extends Controller
         $studypro = DB::table('study_program')->get();
         return view('addPro')->with('studypro',$studypro);
     }
-
      
     public function viewProImg(){
         $studypro = DB::table('study_program')->get();
@@ -322,6 +322,10 @@ class HomeController extends Controller
         return view('addSection');
     }
 
+    public function addStudySection(){
+        return view('addStudySection');
+    }
+
     public function addAds ()
     {   
         $sections =DB::table('sections')->get();
@@ -450,6 +454,20 @@ class HomeController extends Controller
        
         return redirect()->back()->withErrors('القسم موجود مسبقا');
     }
+
+    public function storeStudySection(Request $request){
+        $sec = StudySection::where('name','=',$request->name)->first();
+        if($sec==null){
+            StudySection::create([
+                'name' => $request->name,
+            ]);
+    
+            $studySection = StudySection::all();
+            return view('addStudySection');
+        }
+        return redirect()->back()->withErrors('القسم موجود مسبقا');
+    }
+
 
     
     public function myMarks ()

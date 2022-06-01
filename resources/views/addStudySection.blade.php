@@ -25,7 +25,7 @@
 	<link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png" />
 	
 	<!-- PAGE TITLE HERE ============================================= -->
-	<title>HMK</title>
+	<title>EduChamp : Education HTML Template </title>
 	
 	<!-- MOBILE SPECIFIC ============================================= -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -115,7 +115,6 @@
 			</div>
 			<!--logo end -->
 			<div class="ttr-header-menu">
-				
 				<!-- header left menu start -->
 				@include('templates.navbar')
 				<!-- header left menu end -->
@@ -129,7 +128,7 @@
 	<div class="ttr-sidebar" style="left: 78% !important;">
 		<div class="ttr-sidebar-wrapper content-scroll">
 			<!-- side menu logo start -->
-			
+		
 			<!-- side menu logo end -->
 			<!-- sidebar menu start -->
 			<nav class="ttr-sidebar-navi">
@@ -143,173 +142,51 @@
 
 	<!--Main container start -->
 	<main class="ttr-wrapper">
-	<div class="container-fluid" style="width: 75%;position: absolute;left: 16px;">
+  <div class="container-fluid" style="width: 75%;position: absolute;left: 16px;">
 			<div class="db-breadcrumb">
-				<h4 class="breadcrumb-title"> لوحة التحكم </h4>
+				<h4 class="breadcrumb-title">لوحة التحكم</h4>
 				<ul class="db-breadcrumb-list">
-					<li><a href="#"><i class="fa fa-home" style="padding:0px 16px"></i> الرئيسية </a></li>
-					
+					<li><a href="#"><i style="padding:0px 16px" class="fa fa-home"></i>إضافة قسم دراسي</a></li>
 				</ul>
 			</div>	
 			<!-- Card -->
-			<div class="row" style="margin-top:5rem">
-				<div class="col-md-6 col-lg-6 col-xl-6 col-sm-6 col-12">
-					<div class="widget-card widget-bg1" style="padding:2rem">					 
-						<div class="wc-item">
-							<h4 class="wc-title">
-								الطلاب
-							</h4>
-							<span class="wc-des">
-								
-							</span>
-							<span class="wc-stats">
-								{{ $students->count() }}
-							</span>		
-							<hr style="background: #fff;">
-							<span class="wc-progress-bx">
-							<span class="wc-number ml-auto">
-									<i class="fa fa-user"></i>
-								</span>
-								@if(Auth::user()->role == 'Admin')
-								<span class="wc-change">
-									<a href="{{ url('/addStudents') }}" style="color:#fff">إضافة طالب</a>
-								</span>
-								@endif
-								
-							</span>
-						</div>				      
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-6 col-xl-6 col-sm-6 col-12">
-					<div class="widget-card widget-bg1" style="padding:2rem">					 
-						<div class="wc-item">
-							<h4 class="wc-title">
-								الموظفين
-							</h4>
-							<span class="wc-des">
-								
-							</span>
-							<span class="wc-stats">
-								{{ $employees->count() }}
-							</span>		
-							<hr style="background: #fff;">
-							<span class="wc-progress-bx">
-							<span class="wc-number ml-auto">
-									<i class="fa fa-user"></i>
-								</span>
-								@if(Auth::user()->role == 'Admin')
-								<span class="wc-change">
-									<a href="{{ url('/addEmployee') }}" style="color:#fff">إضافة موظف</a>
-								</span>
-								@endif
-								
-							</span>
-						</div>				      
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-6 col-xl-6 col-sm-6 col-12">
-					<div class="widget-card widget-bg2" style="padding:2rem">					 
-						<div class="wc-item">
-							<h4 class="wc-title">
-								المقرارات الدراسية
-							</h4>
-							<span class="wc-des">
-								
-							</span>
-							<span class="wc-stats counter">
-								{{ $subjects->count() }} 
-							</span>		
-							<hr style="background: #fff;">
-							<span class="wc-progress-bx">
-							<span class="wc-number ml-auto">
-									<i class="fa fa-book" aria-hidden="true"></i>
-								</span>
-								<span class="wc-change">
-									<a href="{{ url('/addSubject') }}" style="color:#fff">إضافة مقرر دراسي</a>
-								</span>
-								
-							</span>
-						</div>				      
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-6 col-xl-6 col-sm-6 col-12">
-					<div class="widget-card widget-bg2" style="padding:2rem">					 
-						<div class="wc-item">
-							<h4 class="wc-title">
-								 الأقسام الدراسية
-							</h4>
-							<span class="wc-des">
-								
-							</span>
-							<span class="wc-stats counter">
-								{{ $subjects->count() }} 
-							</span>		
-							<hr style="background: #fff;">
-							<span class="wc-progress-bx">
-							<span class="wc-number ml-auto">
-									<i class="fa fa-book" aria-hidden="true"></i>
-								</span>
-								<span class="wc-change">
-									<a href="{{ url('/addStudySection') }}" style="color:#fff">إضافة قسم دراسي</a>
-								</span>
-								
-							</span>
-						</div>				      
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-6 col-xl-6 col-sm-6 col-12">
-					<div class="widget-card widget-bg3" style="padding:2rem">					 
-						<div class="wc-item">
-							<h4 class="wc-title">
-								الخدمات
-							</h4>
-							<span class="wc-des">
-								
-							</span>
-							<span class="wc-stats counter">
-								{{ $services->count() }}
-							</span>		
-							<hr style="background: #fff;">
-							<span class="wc-progress-bx">
-							<span class="wc-number ml-auto">
-									<i class="fa fa-gear"></i>
-								</span>
-								<span class="wc-change">
-									<a href="{{ url('/addService') }}" style="color:#fff">َإضافة خدمة</a>
-								</span>
+			<div class="row" style="margin-top:2rem">
+				<div class="col-lg-12">
+                    <form class="contact-bx" method="POST" action="{{ url('/addStudySection') }}">
+                        @csrf
+                        <div class="row placeani">
+                            <div class="col-lg-12">
+                                <div class="row">
+                                <div class="form-group col-lg-12">
+									@if($errors->any())
+    									{!! implode('dododo', $errors->all('<div>:message</div>')) !!}
+									@endif
+                                    <div class="input-group">
+                                        <label style="text-align:end">اسم القسم</label>
+                                        <input style="direction:rtl" id="num" type="text" class="form-control" name="name" required>
+										
+                                    </div>
+									@if($errors->any())
+								<div class="d-flex justify-content-center">
+									<div class="text-danger" >
+    									{{ implode('', $errors->all('هذا القسم مضاف مسبقا')) }}
+									</div>
+									@endif
+                                </div>
+								</div>
+                                
+                                </div>
+                            </div>
+                          
+                            <div class="col-lg-12 m-b30">
+                            <br>    
+                            <button name="submit" type="submit" style="background:#ccc" value="Submit" class="btn button-md btn-block">حفظ البيانات</button>
+                            </div>
 							
-							</span>
-						</div>				      
-					</div>
+                            
+                        </div>
+                    </form>
 				</div>
-				<div class="col-md-6 col-lg-6 col-xl-6 col-sm-6 col-12">
-					<div class="widget-card widget-bg3" style="padding:2rem">					 
-						<div class="wc-item">
-							<h4 class="wc-title">
-								الأقسام 
-							</h4>
-							<span class="wc-des">
-								 
-							</span>
-							<span class="wc-stats counter">
-								{{ $sections->count() }}
-							</span>		
-							<hr style="background: #fff;">
-							<span class="wc-progress-bx">
-							<span class="wc-number ml-auto">
-									<i class="fa fa-list-alt" aria-hidden="true"></i>
-								</span>
-								@if(Auth::user()->role == 'Admin')
-								<span class="wc-change">
-									<a href="{{ url('/addSection') }}" style="color:#fff">إضافة خدمة</a>
-								</span>
-								@endif
-								
-							</span>
-						</div>				      
-					</div>
-				</div>
-				
 				
 			</div>
 		</div>

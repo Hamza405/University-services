@@ -47,7 +47,7 @@ Route::group(['middleware' => ['employeeRoutes']],function() {
 
 
 Route::group(['middleware' => ['studentRoutes']],function() {
-        Route::get('adminDash', [App\Http\Controllers\HomeController::class,'dashboard']);
+        Route::get('adminDash', [App\Http\Controllers\HomeController::class,'dashboard'])->name('adminDash');
         Route::get('subjects', [App\Http\Controllers\HomeController::class,'subjects']);
         Route::get('services', [App\Http\Controllers\HomeController::class,'services']);
         Route::get('sections', [App\Http\Controllers\HomeController::class,'sections']);
@@ -59,6 +59,8 @@ Route::group(['middleware' => ['studentRoutes']],function() {
         Route::get('ordersDone/{uId}/{sId}', [App\Http\Controllers\HomeController::class,'orderDone']);
         Route::delete('/deleteAds/{post}',[App\Http\Controllers\HomeController::class,'deleteAds'])->name('ads.delete');
         Route::get('addStudents', [App\Http\Controllers\HomeController::class,'addStudent']);
+        Route::get('addStudySection', [App\Http\Controllers\HomeController::class,'addStudySection']);
+        Route::Post('addStudySection', [App\Http\Controllers\HomeController::class,'storeStudySection']);
         Route::post('addStudents', [App\Http\Controllers\HomeController::class,'storeStudent']);
         Route::get('/addEmployee', [App\Http\Controllers\HomeController::class, 'addEmployee'])->name('addEmployee');
         Route::get('addEmployee', [App\Http\Controllers\HomeController::class,'addEmployee']);
