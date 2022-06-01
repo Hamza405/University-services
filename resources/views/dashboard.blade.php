@@ -115,6 +115,7 @@
 			</div>
 			<!--logo end -->
 			<div class="ttr-header-menu">
+				
 				<!-- header left menu start -->
 				@include('templates.navbar')
 				<!-- header left menu end -->

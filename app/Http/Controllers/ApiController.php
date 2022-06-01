@@ -145,6 +145,7 @@ class ApiController extends Controller
    public function getAds(){
        $userYear = Auth::user()->year;
        $ads = DB::table('a_d_s')
+       -where('section',Auth::user()->section)
        ->where('target', 0)
        ->orWhere('target', $userYear)
        ->orderBy('id', 'DESC')->get();

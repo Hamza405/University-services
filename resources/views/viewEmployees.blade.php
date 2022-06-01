@@ -62,7 +62,6 @@
 }
 
 span.relative svg{ width: 10px; }
-nav{ margin: auto;text-align: center; margin: 1.2rem 0; }
 nav div:first-child{ display: none; }
 
 .styled-table thead tr {

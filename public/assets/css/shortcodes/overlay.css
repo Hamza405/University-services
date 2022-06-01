@@ -15,7 +15,7 @@
     opacity: 1;
     width: 100%;
     margin-bottom: 0;
-	visibility: visible;
+    visibility: visible;
 }
 .ovbl-light,
 .ovbl-middle,
@@ -54,7 +54,7 @@
 .ovwh-light:after,
 .ovwh-middle:after,
 .ovwh-dark:after {
-    background: #FFF;
+    background: #fff;
 }
 .ovpr-light:after,
 .ovpr-middle:after,
@@ -150,18 +150,18 @@
     -moz-transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
     width: 100%;
-	padding: 0 10px;
+    padding: 0 10px;
 }
-.ov-box .align-b{
+.ov-box .align-b {
     height: auto;
     left: 0;
     list-style: outside none none;
     margin: 0;
     position: absolute;
-	top:auto;
+    top: auto;
     bottom: 0;
     width: 100%;
-	transform: translate(0);
+    transform: translate(0);
     -o-transform: translate(0);
     -moz-transform: translate(0);
     -webkit-transform: translate(0);
@@ -172,18 +172,18 @@
     margin: 0 2px;
 }
 .overlay-icon a i {
-    background-color: #FFF;
+    background-color: #fff;
 }
 .ov-box:hover a > i,
 .action-box:hover .ov-box a > i,
 .ttr-box-bx:hover .ov-box a > i {
     opacity: 1;
     visibility: visible;
-    -webkit-transition: all .5s ease-in-out;
-    -moz-transition: all .5s ease-in-out;
-    -ms-transition: all .5s ease-in-out;
-    -o-transition: all .5s ease-in-out;
-    transition: all .5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 .ov-box:hover,
 .action-box:hover .ov-box,
@@ -194,13 +194,13 @@
     visibility: visible;
 }
 .media-ov1,
-.media-ov2{
+.media-ov2 {
     position: relative;
 }
 .media-ov1:before,
 .media-ov1:after,
 .media-ov2:before,
-.media-ov2:after{
+.media-ov2:after {
     content: "";
     background: #000;
     position: absolute;
@@ -246,7 +246,7 @@
     position: relative;
     overflow: hidden;
     display: block;
-	vertical-align: middle;
+    vertical-align: middle;
 }
 .media-effect img {
     display: block;

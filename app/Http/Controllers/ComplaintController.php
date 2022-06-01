@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Complaint;
+use App\Http\Controllers\HomeController;
 use Auth;
 
 class ComplaintController extends Controller
@@ -41,6 +42,10 @@ class ComplaintController extends Controller
 
     public function complaints(){
         $complaints = Complaint::where('section',Auth::user()->section)->paginate(5);
-        return view('complaintsView')->with('complaints',$complaints);
+        if(Auth::user()->role == 'Admin' || Auth::user()->role == 'موظف' ){
+            return view('complaintsView')->with('complaints',$complaints);
+        }else{
+           return (new HomeController)->dashboard();
+        }
     }
 }

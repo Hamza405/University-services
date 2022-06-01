@@ -136,7 +136,7 @@
                         <ul class="nav navbar-nav">	
 							<li class="active"><a href="{{ url('/home') }}">الرئيسية</a>
 							<li><a href="{{url('/myMarksOnly')}}">مواد النجاح</a>
-							<li><a href="{{url('//exportPdf')}}"><i class="fa fa-print" style="font-size:0.8rem"></i></a>
+							<li><a href="{{url('/exportPdf')}}"><i class="fa fa-print" style="font-size:0.8rem"></i></a>
 							
 							
 							{{-- <li><a href="javascript:;">خدمات</a>
