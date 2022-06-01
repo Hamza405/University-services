@@ -163,25 +163,12 @@
 									<div class="input-group" style="display: grid">
                                         
                                         <select id="gender" name="day" style="width: 100%">
-                                            <option value="1">
-												السبت
+											@foreach($studypro as $as)
+											<option value="{{$as->id}}">
+												{{$as->day}}
                                             </option>
-                                            <option value="2">
-												الأحد
-                                            </option>
-											<option value="3">
-												الاثنين
-                                            </option>
-                                            <option value="4">
-												الثلاثاء
-                                            </option>
-											<option value="5">
-												الاربعاء
-                                            </option>
-                                            <option value="6">
-												الخميس
-                                            </option>
-		
+											@endforeach
+                                        
                                         </select>
                                     </div> <br>
                                     <div class="input-group">

@@ -163,7 +163,8 @@ class HomeController extends Controller
     }
 
     public function addPro(){
-        $studypro = DB::table('study_program')->get();
+        $section = (new StudySection)->getSectionByName(Auth::user()->section);
+        $studypro = DB::table('study_program')->where('section_id','=',$section->id)->get();
         return view('addPro')->with('studypro',$studypro);
     }
      
@@ -196,14 +197,15 @@ class HomeController extends Controller
     }
 
     public function storePro(Request $request){
-        DB::table('study_program')->where('id','=',$request->day)->update([
+        $section = (new StudySection)->getSectionByName(Auth::user()->section);
+        DB::table('study_program')->where('id','=',$request->day)->where('section_id','=',$section->id)->update([
             'year1'=>$request->y1,
             'year2'=>$request->y2,
             'year3'=>$request->y3,
             'year4'=>$request->y4,
             'year5'=>$request->y5,
         ]);
-        $studypro = DB::table('study_program')->get();
+        $studypro = DB::table('study_program')->where('section_id','=',$section->id)->get();
         return view('addPro')->with('studypro',$studypro);
     }
 

@@ -143,28 +143,11 @@
                             </div>
                            		<div class="form-group col-lg-6">
                             		<select id="section" name="section">
-                                        <option value="حاسبات" selected>
-                                            حاسبات
+										@foreach($studySections as $section)
+										<option value="{{$section->name}}" selected>
+											{{$section->name}}
                                         </option>
-                                        <option value="طبية">
-                                          طبية
-                                        </option>
-                                        <option value="اتصالات">
-                                          اتصالات
-                                        </option>
-                                        <option value="ميكاترونيك">
-                                          ميكاترونيك
-                                        </option>
-                                        <option value="بحرية">
-                                          بحرية
-                                        </option>
-                                        <option value="طاقة">
-                                          طاقة
-                                        </option> <option value="قوى">
-                                          قوى
-                                        </option> <option value="ميكانيك">
-                                          ميكانيك
-                                        </option>
+										@endforeach
                                     </select>
                             	</div>
                             </div>
