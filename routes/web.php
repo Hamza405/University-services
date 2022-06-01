@@ -41,7 +41,7 @@ Route::group(['middleware' => ['employeeRoutes']],function() {
         Route::get('exportPdf',[App\Http\Controllers\HomeController::class,'exportPdf']);
         Route::get('exportOnlyPdf',[App\Http\Controllers\HomeController::class,'exportOnlyPdf']);
         Route::get('myMarksOnly',[App\Http\Controllers\HomeController::class,'viewMyMarksOnly']);    
-        Route::get('viewProImg', [App\Http\Controllers\HomeController::class,'viewProImg']);
+        Route::get('viewStudyProgram', [App\Http\Controllers\HomeController::class,'viewProImg']);
     }
 );
 

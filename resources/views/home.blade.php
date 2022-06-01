@@ -321,7 +321,7 @@
 								data-paddingbottom="[0,0,0,0]"
 								data-paddingleft="[0,0,0,0]"
 								style="z-index: 7; text-transform:capitalize; white-space: unset; color:#fff; font-family:rubik; font-size:18px; line-height:28px; font-weight:400;">
-									 قسم الحاسبات والتحكم الآلي
+								أهلا بك في قسم ال{{Auth::user()->section}}
 							</div>
 							<!-- LAYER NR. 4 -->
 						
@@ -398,7 +398,7 @@
 								data-paddingbottom="[10,10,10,10]"
 								data-paddingleft="[0,0,0,0]"
 								style="z-index: 6; font-family:rubik; font-weight:700; text-align:center; white-space: normal;text-transform:uppercase;">
-								قسم الحاسبات والتحكم الآلي
+								كلية الهندسة الميكانيكية والكهربائية
 							</div>
 
 							<!-- LAYER NR. 3 -->
@@ -442,7 +442,7 @@
 								data-paddingbottom="[0,0,0,0]"
 								data-paddingleft="[0,0,0,0]"
 								style="z-index: 7; text-transform:capitalize; white-space: unset; color:#fff; font-family:rubik; font-size:18px; line-height:28px; font-weight:400;">
-									 قسم الحاسبات والتحكم الآلي
+								أهلا بك في قسم ال{{Auth::user()->section}}
 							</div>
 							<!-- LAYER NR. 4 -->
 		
@@ -485,7 +485,7 @@
 										<i class="fa fa-files-o text-primary"></i>
 									</div>
 									<h4><a href="#">البرنامج الدراسي</a></h4>
-									<a href="{{ url('/viewProImg') }}" class="btn radius-xl">استعراض</a>
+									<a href="{{ url('/viewStudyProgram') }}" class="btn radius-xl">استعراض</a>
 								</div>
 							</div>
 						</div>
