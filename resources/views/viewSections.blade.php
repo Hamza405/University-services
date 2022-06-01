@@ -99,7 +99,7 @@
 	<header class="ttr-header">
 		<div class="ttr-header-wrapper">
 			<!--sidebar menu toggler start -->
-			<div class="ttr-toggle-sidebar ttr-material-button">
+			<div class="ttr-toggle-sidebar ttr-material-button" style="float:right">
 				<i class="ti-close ttr-open-icon"></i>
 				<i class="ti-menu ttr-close-icon"></i>
 			</div>
@@ -125,7 +125,7 @@
 	</header>
 	<!-- header end -->
 	<!-- Left sidebar menu start -->
-	<div class="ttr-sidebar">
+	<div class="ttr-sidebar" style="left: 78% !important;">
 		<div class="ttr-sidebar-wrapper content-scroll">
 			<!-- side menu logo start -->
 		
@@ -142,7 +142,7 @@
 
 	<!--Main container start -->
 	<main class="ttr-wrapper">
-		<div class="container-fluid">
+		<div class="container-fluid" style="width: 75%;position: absolute;left: 16px;">
 			<div class="db-breadcrumb">
 				<h4 class="breadcrumb-title">لوحة التحكم</h4>
 				<ul class="db-breadcrumb-list">

@@ -1,5 +1,5 @@
 
-<ul class="ttr-header-navigation" style="position: absolute;right: 4rem;">
+<ul class="ttr-header-navigation" style="position: absolute;right: 5rem;">
     @if(Auth::user()->role == 'Admin')
         <li>
             <a href="{{ url('/home') }}" class="ttr-material-button ttr-submenu-toggle">الرئيسية</a>

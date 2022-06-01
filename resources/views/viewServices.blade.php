@@ -142,8 +142,7 @@
 
 	<!--Main container start -->
 	<main class="ttr-wrapper">
-		<div class="container-fluid" style="width: 75%;position: absolute;
-  left: 16px;">
+		<div class="container-fluid" style="width: 75%;position: absolute;left: 16px;">
 			<div class="db-breadcrumb">
 				<h4 class="breadcrumb-title">لوحة التحكم</h4>
 				<ul class="db-breadcrumb-list">
