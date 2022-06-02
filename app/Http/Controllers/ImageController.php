@@ -38,6 +38,8 @@ class ImageController extends Controller
     }
 		//View image
     public function viewStudyExam(){
-        return view('view_image');
+        $section = (new StudySection)->getSectionByName(Auth::user()->section);
+        $studyExam = StudyExam::where('section_id', $section->id)->first();
+        return view('viewStudyExam', compact('studyExam'));
     }
 }

@@ -1,5 +1,4 @@
 @inject('us','App\Models\User')
-@inject('Carbon','Carbon\Carbon')
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -10,7 +9,7 @@
         <meta name="keywords" content="" />
         <meta name="author" content="" />
         <meta name="robots" content="" />
-        <title>HMK</title>
+        <title>US</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         <meta property="og:title" content="EduChamp : Education HTML Template" />
@@ -44,9 +43,11 @@
 		html{
 			scroll-behavior: smooth;
 			}
-			.item{
-				width: 70%;margin: auto
-			}
+			.uranus.tparrows { display: none }
+			table tr,table th{ color:#fff;border: 1px solid #fff}
+			table{ text-align: center;width: 85%;border: 1px solid #f7b205; }
+			table td{ border: 1px solid #fff }
+			table tr  th{ background: #f7b205;padding:.7rem }
 	</style>
     </head>
     <body id="bg">
@@ -57,8 +58,8 @@
 		<div class="top-bar">
 			<div class="container">
 				<div class="row d-flex justify-content-between">
-					<div class="topbar-left">
-					</div>
+						<div class="topbar-left">
+						</div>
 					<div class="topbar-right">
 						<ul>
 						<li style="font-weight: bold">{{ Auth::user()->name }}</li>
@@ -85,7 +86,7 @@
                 <div class="container clearfix">
 					<!-- Header Logo ==== -->
 					<div class="menu-logo">
-						{{-- <a href="{{ url('/home') }}"><img src="assets/images/logo-white.png" alt=""></a> --}}
+						{{-- <a href="{{ url('/') }}"><img src="assets/images/logo-white.png" alt=""></a> --}}
 					</div>
 					<!-- Mobile Nav Button ==== -->
                     <button class="navbar-toggler collapsed menuicon justify-content-end" type="button" data-toggle="collapse" data-target="#menuDropdown" aria-controls="menuDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -116,64 +117,21 @@
 					<!-- Navigation Menu ==== -->
                     <div class="menu-links navbar-collapse collapse justify-content-start" id="menuDropdown">
 						<div class="menu-logo">
-							<a href="index.html"><img src="assets/images/logo.png" alt=""></a>
+							{{-- <a href="index.html"><img src="assets/images/logo.png" alt=""></a> --}}
 						</div>
                         <ul class="nav navbar-nav">	
-							@if(Auth::user()->role == 'Admin')
-								<li class="active"><a href="{{ url('/adminDash') }}">Dashboard</a>
-							
-							@endif
-								<li><a href="#ads">آخر الإعلانات</a>
-							
-							</li>
-							
-								<li><a href="javascript:;">الأقسام <i class="fa fa-chevron-down"></i></a>
-									<ul class="sub-menu">
-
-										@foreach ($sections as $section)
-											<li><a href="">{{ $section->sectionName }}</a></li>
-										@endforeach
-								
-									</ul>
-								</li>
-							</li>
-								<li> 
-									<a data-toggle="modal" data-target="#exampleModal">
-										خدمات
-									</a>
-								</li>
-							</li>
-							
-						<li><a href="javascript:;">طلباتي <i class="fa fa-chevron-down"></i></a>
-							<ul class="sub-menu">
-
-							@if (count($orders) > 0)
-								@foreach ($orders as $order)
-									<li><a href="">{{ $us->getServiceName($order->serviceID)->serviceName }}
-										@if($us->check(Auth::user()->id,$order->serviceID)->state == 0)
-										<span style="float: right;color:red;font-weight:bold">قيد المعالجة</span>
-										@else 
-										<span style="float: right;color:green;font-weight:bold">تم</span>
-										@endif
-									
-									</a>
-										
-									</li>
-								@endforeach
-								<hr>
-								@foreach ($reorders as $reorder)
+						<li class="active"><a href="{{ url('/home') }}">الرئيسية</a>
 								<li>
-									<a style="display: inline-block">{{ $us->getSubjecteName($reorder->subjectID)->name }}</a>
-									<a style="display: inline-block;color:#f7b205" href="{{ url('/pullReOrder'.'/'.Auth::user()->id.'/'.$reorder->subjectID) }}">إلغاء الطلب</a>
-								</li>
-								@endforeach
-							@else 
-							<p style="text-align: center;color:#000">لاتوجد طلبات</p>
-							@endif
-						
-							</ul>
+							
+							</li>
+							
+							
+							</li>
+							
 						</li>
-						<li><a href="{{ url('/myMarks') }}">علاماتي</a>
+							
+					
+						
 					</li>
 							{{-- <li><a href="javascript:;">خدمات</a>
 								<ul class="sub-menu">
@@ -184,8 +142,8 @@
 									<li><a href="{{ route('login') }}">وثيقة تخرج</a></li>
 								</ul>
 							</li> --}}
-							<li ><a href="{{ url('/home') }}">الرئيسية</a>
-							
+							{{-- <li class="active"><a href="{{ url('/adminDash') }}">Dashboard</a> --}}
+						
 						</ul>
 						<div class="nav-social-link">
 							<a href="javascript:;"><i class="fa fa-facebook"></i></a>
@@ -198,14 +156,25 @@
             </div>
         </div>
     </header>
-    <!-- Header Top END ==== -->
+	<!-- Header Top END ==== -->
+	
     <!-- Content -->
     <div class="page-content bg-white">
+		
         <!-- Main Slider -->
         <div class="rev-slider">
 			<div id="rev_slider_486_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container" data-alias="news-gallery36" data-source="gallery" style="margin:0px auto;background-color:#ffffff;padding:0px;margin-top:0px;margin-bottom:0px;">
 				<!-- START REVOLUTION SLIDER 5.3.0.2 fullwidth mode -->
 				<div id="rev_slider_486_1" class="rev_slider fullwidthabanner" style="display:none;" data-version="5.3.0.2">
+					<div class="row d-flex justfiy-content-center">
+						<div class="col-lg-10">
+							<div class="img-fluid" style="overflow-y:scroll;height:90vh;position: relative;top:10rem;left:5rem;z-index:1000000">
+								<img src="public/Image/StudyExam/{{$studyExam->image}}" alt=" البرنامج الأمتحاني ">
+							</div>
+						</div>
+					</div>
+					
+					
 					<ul>	<!-- SLIDE  -->
 						<li data-index="rs-100" 
 						data-transition="parallaxvertical" 
@@ -277,7 +246,7 @@
 								data-paddingbottom="[10,10,10,10]"
 								data-paddingleft="[0,0,0,0]"
 								style="z-index: 6; font-family:rubik; font-weight:700; text-align:center; white-space: normal;">
-									كلية الهندسة الميكانيكية والكهربائية
+									
 							</div>
 
 							<!-- LAYER NR. 3 -->
@@ -299,7 +268,7 @@
 								data-paddingbottom="[0,0,0,0]"
 								data-paddingleft="[0,0,0,0]"
 								style="z-index: 7; white-space: nowrap; color:#fff; font-family:rubik; font-size:18px; font-weight:400;">
-									جامعة تشرين
+									
 							</div>
 							
 							<!-- LAYER NR. 3 -->
@@ -321,7 +290,7 @@
 								data-paddingbottom="[0,0,0,0]"
 								data-paddingleft="[0,0,0,0]"
 								style="z-index: 7; text-transform:capitalize; white-space: unset; color:#fff; font-family:rubik; font-size:18px; line-height:28px; font-weight:400;">
-								أهلا بك في قسم ال{{Auth::user()->section}}
+									 
 							</div>
 							<!-- LAYER NR. 4 -->
 						
@@ -398,7 +367,7 @@
 								data-paddingbottom="[10,10,10,10]"
 								data-paddingleft="[0,0,0,0]"
 								style="z-index: 6; font-family:rubik; font-weight:700; text-align:center; white-space: normal;text-transform:uppercase;">
-								كلية الهندسة الميكانيكية والكهربائية
+								
 							</div>
 
 							<!-- LAYER NR. 3 -->
@@ -420,7 +389,7 @@
 								data-paddingbottom="[0,0,0,0]"
 								data-paddingleft="[0,0,0,0]"
 								style="z-index: 7; white-space: nowrap;text-transform:uppercase; color:#fff; font-family:rubik; font-size:18px; font-weight:400;">
-									جامعة تشرين
+									
 							</div>
 							
 							<!-- LAYER NR. 3 -->
@@ -442,7 +411,7 @@
 								data-paddingbottom="[0,0,0,0]"
 								data-paddingleft="[0,0,0,0]"
 								style="z-index: 7; text-transform:capitalize; white-space: unset; color:#fff; font-family:rubik; font-size:18px; line-height:28px; font-weight:400;">
-								أهلا بك في قسم ال{{Auth::user()->section}}
+									 
 							</div>
 							<!-- LAYER NR. 4 -->
 		
@@ -453,231 +422,7 @@
 				</div><!-- END REVOLUTION SLIDER -->  
 			</div>  
 		</div>  
-        <!-- Main Slider -->
-		<div class="content-block">
-			
-            
-			<!-- Our Services -->
-			<div class="section-area content-inner service-info-bx">
-                <div class="container mb-4 mt-4">
-					<div class="row">
-						<div class="col-lg-3 col-md-4 col-sm-12">
-							<div class="service-bx" style="border-radius: 20px">
-								<div class="action-box" style="border-radius: 15px">
-									<img src="assets/images/gallery/pic5.jpg" alt="">
-								</div>
-								<div class="info-bx text-center">
-									<div class="feature-box-sm radius bg-white">
-										<i class="fa fa-book text-primary"></i>
-									</div>
-									<h4><a href="#">المقررات الدراسية</a></h4>
-								<a href="{{ url('/viewStudentsSubjects') }}" class="btn radius-xl">استعراض</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-4 col-sm-12">
-							<div class="service-bx m-b0" style="border-radius: 20px">
-								<div class="action-box" style="border-radius: 15px">
-									<img src="assets/images/gallery/pic6.jpg" alt="">
-								</div>
-								<div class="info-bx text-center">
-									<div class="feature-box-sm radius bg-white">
-										<i class="fa fa-files-o text-primary"></i>
-									</div>
-									<h4><a href="#">البرنامج الدراسي</a></h4>
-									<a href="{{ url('/viewStudyProgram') }}" class="btn radius-xl">استعراض</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-4 col-sm-12">
-							<div class="service-bx m-b0"style="border-radius: 20px">
-								<div class="action-box"style="border-radius: 15px">
-									<img src="assets/images/gallery/pic3.jpg" alt="">
-								</div>
-								<div class="info-bx text-center">
-									<div class="feature-box-sm radius bg-white">
-										<i class="fa fa-file-text text-primary"></i>
-									</div>
-									<h4><a href="#">البرنامج الأمتحاني</a></h4>
-									<a href="{{ url('/viewStudyExam') }}" class="btn radius-xl">استعراض</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-4 col-sm-12">
-							<div class="service-bx m-b0"style="border-radius: 20px">
-								<div class="action-box"style="border-radius: 15px">
-									<img src="assets/images/gallery/pic2.jpg" alt="">
-								</div>
-								<div class="info-bx text-center">
-									<div class="feature-box-sm radius bg-white">
-										<i class="fa fa-map-o text-primary"></i>
-									</div>
-									<h4><a href="#">خريطة الكلية</a></h4>
-									<a href="{{ url('/home') }}" class="btn radius-xl">استعراض</a>
-								</div>
-							</div>
-						</div>
-						
-					</div>
-				</div>
-            </div>
-            <!-- Our Services END -->
-			
-		
-			
-			<!-- Form -->
-			<div class="section-area section-sp1 ovpr-dark bg-fix online-cours" style="background-image:url(assets/images/background/bg1.jpg);">
-				<div class="container" style="border-radius:25px">
-					<div class="row">
-						<div class="col-md-12 text-center text-white">
-							<h2></h2>
-							<h5></h5>
-							
-						</div>
-					</div>
-					<div class="mw800 m-auto">
-						<div class="row">
-							
-							<div class="col-md-6 col-sm-6">
-								<div class="cours-search-bx m-b30">
-									<div class="icon-box">
-									<h3><i class="ti-user"></i><span class="counter">{{ $user->where('role','طالب')->count() }}</span></h3>
-									</div>
-									<span class="cours-search-text">طالب</span>
-								</div>
-							</div>
-
-							<div class="col-md-6 col-sm-6">
-								<div class="cours-search-bx m-b30">
-									<div class="icon-box">
-									<h3><i class="ti-layout-list-post"></i><span class="counter">{{$user->where('role','موظف')->count() }}</span></h3>
-									</div>
-									<span class="cours-search-text">موظف</span>
-								</div>
-							</div>
-							
-						
-						</div>
-					</div>
-					
-				</div>
-			</div>
-			<!-- Form END -->
-			<div class="section-area section-sp2" id="ads">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12 text-center heading-bx" >
-							<h2 class="title-head m-b0"> <span>آخر</span>الإعلانات</h2>
-							<hr style="color: #f7b205;width:30%;border:1px solid #f7b205">
-						</div>
-					</div>
-					<div class="row">
-						<div class="upcoming-event-carousel owl-carousel owl-btn-center-lr owl-btn-1 col-12 p-lr0  m-b30">
-								
-									@foreach ($ads as $ad)
-									@if($ad->target == Auth::user()->year || $ad->target == "0") 
-									<div class="item" style="width: 32rem;">
-										<div class="event-bx" style="border-radius:20px">
-											
-											<div class="info-bx d-flex"style="direction:rtl">
-											
-												<div class="event-info">
-													<h4 style="float:right;margin-right:0.4rem;color: #4C238D">{{ $ad->section }}</h4>
-													<br>
-													<p style="float:right;margin-right:0.4rem"><i class="fa fa-clock-o" style="padding-left:8px"></i> {{date('d-M-y', strtotime($ad->created_at))}} </p>
-														
-												</div>
-									
-											</div>
-								<div style="padding: 0.5rem 1.5rem;text-align:end;height:30vh;@if(strlen($ad->description) > 100) overflow-y:scroll; @endif ">
-									<p>{{ $ad->description }}</p>
-								</div>
-							</div>
-						</div>
-						@endif
-						@endforeach
-									
-								
-						</div>
-					</div>
-					<div class="text-center">
-					
-					</div>
-				</div>
-			</div>
-			
-			
-			
-			
-			
-        </div>
-		<!-- contact area END -->
-    </div>
-	<!-- Content END-->
-	<!-- Button trigger modal -->
-
-  
-  <!-- Modal -->
-  <div  class="modal fade" style="margin-top: 7rem" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-	  <div class="modal-content">
-		<div class="modal-header">
-		  <h5 class="modal-title" id="exampleModalLabel">تقديم الطلبات</h5>
-		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-		  </button>
-		</div>
-		<div class="modal-body" >
-		  
-		</div>
-		<form action="{{ url('/addOrderStd') }}" method="POST" style="width: 80%;margin:auto;padding:1.1rem">
-			@csrf
-			<select name="service" >
-				@foreach ($services as $service)
-					<option value="{{ $service->id }}">{{ $service->serviceName }}</option>
-				@endforeach
-			</select> <br>
-			<button type="submit" class="btn btn-primary btn-block" style="background: #f7b205;color:#fff;margin:2rem 0">تأكيد</button>
-		</form> 
-		<div class="modal-header" style="direction:rtl;text-align:right">
-			<h5 style="direction:rtl;text-align:right" class="modal-title" id="exampleModalLabel">تقديم طلب إعادة عملي</h5>
-			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-			</button>
-		</div>
-		<form action="{{ url('/reOrder') }}" method="POST" style="width: 80%;margin:auto;padding:1.1rem;text-align:end">
-			@csrf
-			<label style="direction:rtl;text-align:right" for="service">اختر المادة</label>
-			<select name="subject" id="subject">
-				@foreach ($subjects as $subject) 
-					<option value="{{ $subject->id }}" @if($us->checkSubject(Auth::user()->id,$subject->id)) disabled @endif >{{ $subject->name }} </option>
-				@endforeach
-			</select> <br>
-			<button type="submit" class="btn btn-primary btn-block" style="background: #f7b205;color:#fff;margin:2rem 0">قدم الطلب</button>
-		</form>
-		<!-- -->
-		<div class="modal-header" style="direction:rtl;text-align:right">
-			<h5 class="modal-title" id="exampleModalLabel"> تقديم شكوى </h5>
-			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-			</button>
-		</div>
-		<form action="{{ url('/saveComplaint') }}" method="POST" style="width: 80%;margin:auto;padding:1.1rem">
-			@csrf
-			<textarea minlength="50" dir="rtl" name="content" id="content" cols="30" rows="10" class="form-control" required>
-			</textarea>
-			<br>
-			<div class="row" style="direction:rtl;text-align:right">
-				<div class="col-md-8">
-				<label for="isShown">إظهار اسم مقدم الشكوى</label>
-				</div>
-				<div class="col-md-4">
-				<input style="width:1rem;position:relative;right:-3rem;top:-.4rem" type="checkbox" name="isShown" id="isShown" class="form-control">
-				</div>
-			</div>	
-			<button type="submit" class="btn btn-primary btn-block" style="background: #f7b205;color:#fff;margin:2rem 0">قدم الشكوى</button>
-		</form>
-	  </div>
-	</div>
-  </div>
+      
 	<!-- Footer ==== -->
     <footer>
      
@@ -808,8 +553,6 @@ jQuery(document).ready(function() {
 		});
 	}
 });	
-
-document.getElementById('content').value = '';
 </script>
 </body>
 </html>

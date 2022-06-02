@@ -95,7 +95,7 @@ Route::post('/storeStudyExam',[App\Http\Controllers\ImageController::class,'stor
 ->name('images.store');
 
 //For showing an image
-Route::get('/viewStudyExam',[App\Http\Controllers\ImageController::class,'viewStudyExam'])->name('images.view');
+Route::get('/viewStudyExam',[App\Http\Controllers\ImageController::class,'viewStudyExam']);
 
 
 
