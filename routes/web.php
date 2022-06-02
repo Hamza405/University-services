@@ -88,7 +88,14 @@ Route::group(['middleware' => ['studentRoutes']],function() {
     }
 );
 
+Route::get('/addStudyExam',[App\Http\Controllers\ImageController::class,'addStudyExam'])->name('addStudyExam');
 
+//For storing an image
+Route::post('/storeStudyExam',[App\Http\Controllers\ImageController::class,'storeStudyExam'])
+->name('images.store');
+
+//For showing an image
+Route::get('/viewStudyExam',[App\Http\Controllers\ImageController::class,'viewStudyExam'])->name('images.view');
 
 
 

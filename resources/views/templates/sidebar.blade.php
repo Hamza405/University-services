@@ -69,6 +69,12 @@
 		                </a>
 					</li>
 					<li>
+						<a href="{{ url('/addStudyExam') }}" class="ttr-material-button">
+							<span class="ttr-icon"><i class="ti-file"></i></span>
+		                	<span class="ttr-label">البرنامج الأمتحاني</span>
+		                </a>
+					</li>
+					<li>
 						<a href="{{ url('/getreOrderRequest') }}" class="ttr-material-button">
 							<span class="ttr-icon"><i class="ti-widget"></i></span>
 		                	<span class="ttr-label">طلبات إعادة العملي</span>
