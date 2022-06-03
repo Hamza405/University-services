@@ -47,9 +47,17 @@
 			.item{
 				width: 70%;margin: auto
 			}
+			dialog {
+  border: none !important;
+  border-radius: 15px;
+  box-shadow: 0 0 #0000, 0 0 #0000, 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  padding: 1.6rem;
+  max-width: 400px;
+}
 	</style>
     </head>
     <body id="bg">
+		@include('sweetalert::alert')
 <div class="page-wraper">
 <div id="loading-icon-bx"></div>
 	<!-- Header Top ==== -->
@@ -692,6 +700,37 @@
     <!-- Footer END ==== -->
     <button class="back-to-top fa fa-chevron-up" ></button>
 </div>
+@include('templates.alert')
+<dialog id="favDialog" >
+	<p id="dialog_description" style="direction: rtl">
+		تم تقديم هذا الطلب بالفعل,
+		طلبك قيد المعالجة
+	  </p>
+	  <div style="display: flex;
+	  justify-content: center;
+	  align-items: center;">
+		<button id="b" type="button" class="btn btn-warning">اغلاق</button>
+	  </div>
+</dialog>
+@if($errors->any()){
+	
+	<script>
+	 let favDialog = document.querySelector('#favDialog');
+					 
+	 let btn = document.querySelector('#b');
+	 btn.addEventListener ('click',(e)=>{
+		favDialog.close()
+	 })
+
+	
+	
+			favDialog.showModal();
+
+	
+	</script>
+}
+@endif
+
 
 <!-- External JavaScripts -->
 <script src="assets/js/jquery.min.js"></script>

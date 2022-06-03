@@ -10,6 +10,6 @@ class reorder extends Model
     use HasFactory;
 
     protected $fillable = [
-        'userID','subjectID','deadline'
+        'userID','subjectID','deadline','section'
     ];
 }

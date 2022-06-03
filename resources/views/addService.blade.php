@@ -94,7 +94,7 @@
     </style>
 </head>
 <body class="ttr-opened-sidebar ttr-pinned-sidebar">
-	
+	@include('sweetalert::alert')
 	<!-- header start -->
 	<header class="ttr-header">
 		<div class="ttr-header-wrapper">
@@ -186,6 +186,7 @@
 			</div>
 		</div>
 	</main>
+  
 	<div class="ttr-overlay"></div>
 
 <!-- External JavaScripts -->
@@ -287,6 +288,8 @@
   });
 
 </script>
+
+
 </body>
 
 <!-- Mirrored from educhamp.themetrades.com/demo/admin.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 22 Feb 2019 13:09:05 GMT -->

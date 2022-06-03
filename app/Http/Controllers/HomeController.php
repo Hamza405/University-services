@@ -25,6 +25,7 @@ use Illuminate\Contracts\Support\Responsable;
 use Auth;
 use Carbon\Carbon;
 use PDF;
+use RealRashid\SweetAlert\Facades\Alert;
 
 use App\Exports\IExport;
 use App\Exports\OExport;
@@ -139,11 +140,19 @@ class HomeController extends Controller
         // $date =date('Y-m-d H:i:s');
         // $daysToAdd = 5;
         // $date = $date->addDays("30");
+        $order = ReOrder::where([
+            'userID' => $request->userID,
+            'subjectID' => $request->subjectID,
+        ])->first();
+        if($order!=null){
+            return redirect()->back()->withError('msg');
+        }
 
         Reorder::create([
             'userID' => Auth::user()->id,
             'subjectID' => $request->subject,
-            'deadline' => $newDateTime
+            'deadline' => $newDateTime,
+            'section' => Auth::user()->section
         ]);
 
         $sections =DB::table('sections')->get();
@@ -232,6 +241,12 @@ class HomeController extends Controller
     {  
         $currentDateTime = Carbon::now();
         $newDateTime = Carbon::now()->addDay(30);
+
+        $order = Order::where('userID',Auth::user()->id)->where('serviceID',$request->service)->first();
+        if($order!=null){
+            return redirect()->back()->withErrors(['msg', 'The Message']);
+        }
+        
 
         Order::create([
             'userID' => Auth::user()->id,
@@ -437,7 +452,6 @@ class HomeController extends Controller
             $services = Service::all();
             return view('viewServices')->with('services',$services);
         }
-       
         return redirect()->back()->withErrors('هذه الخدمة موجوده مسبقا');
     }
 
