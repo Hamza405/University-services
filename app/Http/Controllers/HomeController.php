@@ -50,7 +50,7 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-{       $sections =DB::table('sections')->get();
+{       $sections =DB::table('study_sections')->get();
         $user =DB::table('users')->get();
         $subjects =DB::table('subjects')->orderBy('year', 'ASC')->orderBy('semester', 'ASC')->get();
         $services =DB::table('services')->get();
@@ -285,7 +285,7 @@ class HomeController extends Controller
 
     public function subjects()
     {
-        $subjects = Subject::orderBy('year', 'ASC')->orderBy('semester', 'ASC')->get();
+        $subjects = Subject::where('section',Auth::user()->section)->orderBy('year', 'ASC')->orderBy('semester', 'ASC')->get();
         return view('viewSubjects')->with('subjects',$subjects);
     }
 
@@ -422,13 +422,14 @@ class HomeController extends Controller
 
     public function storeSubject (Request $request)
     {   
-        $subject = Subject::where('name','=',$request->name)->first();
+        $subject = Subject::where('name','=',$request->name)->where('section',Auth::user()->section)->first();
         
         if($subject == null){
             Subject::create([
                 'name' => $request->name,
                 'year' => $request->year,
                 'semester' => $request->semester,
+                'section' => Auth::user()->section
             ]);
     
             $subjects = Subject::orderBy('year', 'ASC')->orderBy('semester', 'ASC')->get();

@@ -164,29 +164,11 @@
                                     </div>
                                 </div>
                                 <div class="form-group col-lg-6">
-                                <select id="section" name="section">
-                                            <option value="حاسبات" selected>
-                                                حاسبات
+                                <select id="section" name="section" disabled>
+                                            <option value="{{Auth::user()->section}}" selected>
+                                             {{ Auth::user()->section}}
                                             </option>
-                                            <option disabled>
-                                              طبية
-                                            </option>
-                                            <option disabled>
-                                              اتصالات
-                                            </option>
-                                            <option disabled>
-                                              ميكاترونيك
-                                            </option>
-                                            <option disabled>
-                                              بحرية
-                                            </option>
-                                            <option disabled>
-                                              طاقة
-                                            </option> <optiondisabled >
-                                              قوى
-                                            </option> <option disabled>
-                                              ميكانيك
-                                            </option>
+                                            
                                         </select>
                                 </div>
                                 </div>

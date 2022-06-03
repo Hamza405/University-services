@@ -139,7 +139,7 @@
 									<ul class="sub-menu">
 
 										@foreach ($sections as $section)
-											<li><a href="">{{ $section->sectionName }}</a></li>
+											<li><a href="">{{ $section->name }}</a></li>
 										@endforeach
 								
 									</ul>
@@ -579,9 +579,13 @@
 							<hr style="color: #f7b205;width:30%;border:1px solid #f7b205">
 						</div>
 					</div>
-					<div class="row">
+					<div class="row mt-3">
 						<div class="upcoming-event-carousel owl-carousel owl-btn-center-lr owl-btn-1 col-12 p-lr0  m-b30">
-								
+									@if($ads->isEmpty())
+										<div class="col-md-12 text-center">
+											<h4>^_^ لا يوجد إعلانات </h4>
+										</div>
+									@endif
 									@foreach ($ads as $ad)
 									@if($ad->target == Auth::user()->year || $ad->target == "0") 
 									<div class="item" style="width: 32rem;">
@@ -701,19 +705,19 @@
     <button class="back-to-top fa fa-chevron-up" ></button>
 </div>
 @include('templates.alert')
-<dialog id="favDialog" >
-	<p id="dialog_description" style="direction: rtl">
-		تم تقديم هذا الطلب بالفعل,
-		طلبك قيد المعالجة
-	  </p>
-	  <div style="display: flex;
-	  justify-content: center;
-	  align-items: center;">
-		<button id="b" type="button" class="btn btn-warning">اغلاق</button>
-	  </div>
-</dialog>
+
 @if($errors->any()){
-	
+	<dialog id="favDialog" >
+		<p id="dialog_description" style="direction: rtl">
+			تم تقديم هذا الطلب بالفعل,
+			طلبك قيد المعالجة
+		  </p>
+		  <div style="display: flex;
+		  justify-content: center;
+		  align-items: center;">
+			<button id="b" type="button" class="btn btn-warning">اغلاق</button>
+		  </div>
+	</dialog>
 	<script>
 	 let favDialog = document.querySelector('#favDialog');
 					 
