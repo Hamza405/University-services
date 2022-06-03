@@ -272,6 +272,7 @@ class HomeController extends Controller
     {
         $subjects = Subject::orderBy('year', 'ASC')->orderBy('semester', 'ASC')->get();
         $sections = Section::all();
+        $studySection = StudySection::all();
         $students = User::where('role','طالب')->get();
         $employees = User::where('role','موظف')->get();
         $services = Service::all();
@@ -280,6 +281,7 @@ class HomeController extends Controller
         ->with('sections',$sections)
         ->with('students',$students)
         ->with('services',$services)
+        ->with('studySection',$studySection)
         ->with('employees',$employees);
     }
 

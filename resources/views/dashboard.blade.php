@@ -242,7 +242,7 @@
 								
 							</span>
 							<span class="wc-stats counter">
-								{{ $subjects->count() }} 
+								{{ $studySection->count() }} 
 							</span>		
 							<hr style="background: #fff;">
 							<span class="wc-progress-bx">
