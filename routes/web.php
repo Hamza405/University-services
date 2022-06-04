@@ -20,13 +20,13 @@ use Carbon\Carbon;
 */
 
 Route::get('/', function () {
-    $sections =DB::table('sections')->get();
+    $sections =DB::table('study_sections')->get();
     $students =DB::table('users')->get();
     $subjects =DB::table('subjects')->get();
     $rowsForDeleted = AD::select('id')->whereMonth('created_at',Carbon::now()->month)->get();
     AD::whereNotIn('id', $rowsForDeleted)->delete();
     $ads =DB::table('a_d_s')->limit(10)->orderBy('id', 'DESC')->get();
-    return view('welcome')->with('sections',$sections)->with('students',$students)
+    return view('index')->with('sections',$sections)->with('students',$students)
     ->with('subjects',$subjects)->with('ads',$ads);
 });
 
@@ -42,6 +42,7 @@ Route::group(['middleware' => ['employeeRoutes']],function() {
         Route::get('exportOnlyPdf',[App\Http\Controllers\HomeController::class,'exportOnlyPdf']);
         Route::get('myMarksOnly',[App\Http\Controllers\HomeController::class,'viewMyMarksOnly']);    
         Route::get('viewStudyProgram', [App\Http\Controllers\HomeController::class,'viewProImg']);
+        Route::get('/viewStudyExam',[App\Http\Controllers\ImageController::class,'viewStudyExam']);
     }
 );
 
@@ -85,17 +86,12 @@ Route::group(['middleware' => ['studentRoutes']],function() {
         Route::get('exportExcelEmployees',[App\Http\Controllers\HomeController::class,'exportExcelEmployees']);
         Route::post('saveComplaint',[App\Http\Controllers\ComplaintController::class,'saveComplaint']);
         Route::get('/complaints',[App\Http\Controllers\ComplaintController::class,'complaints']);
+        Route::get('/addStudyExam',[App\Http\Controllers\ImageController::class,'addStudyExam'])->name('addStudyExam');
+        Route::post('/storeStudyExam',[App\Http\Controllers\ImageController::class,'storeStudyExam'])->name('images.store');
     }
 );
 
-Route::get('/addStudyExam',[App\Http\Controllers\ImageController::class,'addStudyExam'])->name('addStudyExam');
 
-//For storing an image
-Route::post('/storeStudyExam',[App\Http\Controllers\ImageController::class,'storeStudyExam'])
-->name('images.store');
-
-//For showing an image
-Route::get('/viewStudyExam',[App\Http\Controllers\ImageController::class,'viewStudyExam']);
 
 
 
