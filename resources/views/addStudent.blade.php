@@ -150,8 +150,8 @@
 				</ul>
 			</div>	
 			<!-- Card -->
-			<div class="row" style="margin-top:2rem">
-				<div class="col-lg-12">
+			<div class="row row d-flex justify-content-center" style="margin-top:2rem">
+				<div class="col-lg-8">
                     <form class="contact-bx" method="POST" action="{{ url('/addStudents') }}">
                         @csrf
                         <div class="row placeani">

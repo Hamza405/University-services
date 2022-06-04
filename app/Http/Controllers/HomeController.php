@@ -323,7 +323,8 @@ class HomeController extends Controller
     }
 
     public function addEmployee(){
-        return view('addEmployee');
+        $sections = StudySection::all();
+        return view('addEmployee')->with('sections',$sections);
     }
 
     public function addSubject ()

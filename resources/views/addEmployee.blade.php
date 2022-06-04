@@ -86,6 +86,9 @@
 .styled-table tbody tr:last-of-type {
     border-bottom: 2px solid #009879;
 }
+label{
+  text-align:right !important;
+}
 
 .styled-table tbody tr.active-row {
     font-weight: bold;
@@ -152,15 +155,15 @@
 			<!-- Card -->
 			<div class="row d-flex justify-content-center" style="margin-top:3rem">
 				<div class="col-lg-8">
-                    <form class="contact-bx" method="POST" action="{{ url('/addEmployee') }}">
+                    <form class="contact-bx" style="direction:rtl" method="POST" action="{{ url('/addEmployee') }} ">
                         @csrf
                         <div class="row placeani">
                             <div class="col-lg-12">
                               <div class="row">
                                 <div class="form-group col-lg-6 col-md-6">
                                       <div class="input-group">
-                                          <label style="text-align:end">البريد الالكتروني</label>
-                                          <input style="direction:rtl" id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                          <label style="text-align:end; text-align:right"  >البريد الالكتروني</label>
+                                          <input style="" id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
       
                                       @error('email')
                                           <span class="invalid-feedback" role="alert">
@@ -188,28 +191,12 @@
                                   
                                   <div class="form-group col-lg-6">
                             		    <select id="section" name="section">
-                                        <option value="حاسبات" selected>
-                                            حاسبات
-                                        </option>
-                                        <option value="طبية">
-                                          طبية
-                                        </option>
-                                        <option value="اتصالات">
-                                          اتصالات
-                                        </option>
-                                        <option value="ميكاترونيك">
-                                          ميكاترونيك
-                                        </option>
-                                        <option value="بحرية">
-                                          بحرية
-                                        </option>
-                                        <option value="طاقة">
-                                          طاقة
-                                        </option> <option value="قوى">
-                                          قوى
-                                        </option> <option value="ميكانيك">
-                                          ميكانيك
-                                        </option>
+                                      @foreach($sections as $s)
+                                      <option value="{{$s->name}}" selected>
+                                        {{$s->name}}
+                                    </option>
+                                      @endforeach
+                                        
                                     </select>
                             	</div>
                               <div class="col-lg-6">

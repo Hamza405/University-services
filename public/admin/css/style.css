@@ -1042,6 +1042,9 @@
     margin-bottom: 0;
     border: 0;
 }
+label {
+    text-align: right !important;
+}
 .header-transparent .header-lang-bx .btn {
     background-color: transparent !important;
     color: #fff;
