@@ -16,6 +16,8 @@ use App\Models\AD;
 use App\Models\Reorder;
 use App\Models\ProImage;
 use App\Models\Complaint;
+use App\Models\StudyExam;
+use App\Models\StudySection;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Auth;
@@ -145,7 +147,7 @@ class ApiController extends Controller
    public function getAds(){
        $userYear = Auth::user()->year;
        $ads = DB::table('a_d_s')
-       -where('section',Auth::user()->section)
+       ->where('parent_section',Auth::user()->section)
        ->where('target', 0)
        ->orWhere('target', $userYear)
        ->orderBy('id', 'DESC')->get();
@@ -178,7 +180,13 @@ class ApiController extends Controller
    public function addOrder(Request $request){
     $currentDateTime = Carbon::now();
     $newDateTime = Carbon::now()->addDay(30);
-
+    $o = Order::where('userID',Auth::user()->id)->where('serviceID',$request['serviceId'])->first();
+    if($o){
+        return response()->json([
+            'error' => 'You have already ordered this service',
+            'status' => 404
+        ]);
+    }
    $order =Order::create([
         'userID' => Auth::user()->id,
         'serviceID' => $request['serviceId'],
@@ -228,7 +236,7 @@ class ApiController extends Controller
     }
 
     public function getSubjects(){
-        $data = Subject::orderBy('year', 'ASC')->orderBy('semester', 'ASC')->get();
+        $data = Subject::where('section',Auth::user()->section)->orderBy('year', 'ASC')->orderBy('semester', 'ASC')->get();
         if($data){
             return response()->json([
                 'subjects' => $data,
@@ -339,6 +347,21 @@ class ApiController extends Controller
         return response()->json([
             'status' => 404,
             'error' => 'Some thing wrong!, Try again'
+        ]);
+    }
+
+    public function getExam(){
+        $section = (new StudySection)->getSectionByName(Auth::user()->section);
+        $exam = StudyExam::where('section_id',$section->id)->first();
+        if($exam){
+            return response()->json([
+                'exam' => 'public/Image/StudyExam/${$exam}',
+                'status' => 200
+            ]);
+        }
+        return response()->json([
+            'error' => 'Some thing wrong!',
+            'status' => 404
         ]);
     }
 
