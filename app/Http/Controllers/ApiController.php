@@ -355,7 +355,7 @@ class ApiController extends Controller
         $exam = StudyExam::where('section_id',$section->id)->first();
         if($exam){
             return response()->json([
-                'exam' => 'public/Image/StudyExam/${$exam}',
+                'exam' => $exam,
                 'status' => 200
             ]);
         }

@@ -555,28 +555,7 @@
 											<h4>^_^ لمشاهدة الإعلانات يرجى التسجيل </h4>
 										</div>
 									@endif
-									@foreach ($ads as $ad)
-									@if($ad->target == Auth::user()->year || $ad->target == "0") 
-									<div class="item" style="width: 32rem;">
-										<div class="event-bx" style="border-radius:20px">
-											
-											<div class="info-bx d-flex"style="direction:rtl">
-											
-												<div class="event-info">
-													<h4 style="float:right;margin-right:0.4rem;color: #4C238D">{{ $ad->section }}</h4>
-													<br>
-													<p style="float:right;margin-right:0.4rem"><i class="fa fa-clock-o" style="padding-left:8px"></i> {{date('d-M-y', strtotime($ad->created_at))}} </p>
-														
-												</div>
 									
-											</div>
-								<div style="padding: 0.5rem 1.5rem;text-align:end;height:30vh;@if(strlen($ad->description) > 100) overflow-y:scroll; @endif ">
-									<p>{{ $ad->description }}</p>
-								</div>
-							</div>
-						</div>
-						@endif
-						@endforeach
 									
 								
 						</div>
