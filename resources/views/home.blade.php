@@ -127,10 +127,10 @@
 							<a href="index.html"><img src="assets/images/logo.png" alt=""></a>
 						</div>
                         <ul class="nav navbar-nav">	
-							@if(Auth::user()->role == 'Admin')
+							{{-- @if(Auth::user()->role == 'Admin') --}}
 								<li class="active"><a href="{{ url('/adminDash') }}">Dashboard</a>
 							
-							@endif
+							{{-- @endif --}}
 								<li><a href="#ads">آخر الإعلانات</a>
 							
 							</li>

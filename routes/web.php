@@ -43,6 +43,10 @@ Route::group(['middleware' => ['employeeRoutes']],function() {
         Route::get('myMarksOnly',[App\Http\Controllers\HomeController::class,'viewMyMarksOnly']);    
         Route::get('viewStudyProgram', [App\Http\Controllers\HomeController::class,'viewProImg']);
         Route::get('/viewStudyExam',[App\Http\Controllers\ImageController::class,'viewStudyExam']);
+        Route::post('addOrderStd', [App\Http\Controllers\HomeController::class,'addOrderStd']);
+        Route::post('reOrder', [App\Http\Controllers\HomeController::class,'reOrder']);
+
+        Route::post('saveComplaint',[App\Http\Controllers\ComplaintController::class,'saveComplaint']);
     }
 );
 
@@ -74,17 +78,15 @@ Route::group(['middleware' => ['studentRoutes']],function() {
         Route::post('addAds', [App\Http\Controllers\HomeController::class,'storeAds']);
         Route::get('addService', [App\Http\Controllers\HomeController::class,'addService']);
         Route::post('addService', [App\Http\Controllers\HomeController::class,'storeService']);
-        Route::post('addOrderStd', [App\Http\Controllers\HomeController::class,'addOrderStd']);
         Route::get('addPro', [App\Http\Controllers\HomeController::class,'addPro']);
         Route::put('addPro', [App\Http\Controllers\HomeController::class,'storePro']);
-        Route::post('reOrder', [App\Http\Controllers\HomeController::class,'reOrder']);
+        
         Route::get('pullReOrder/{uId}/{sId}', [App\Http\Controllers\HomeController::class,'pullReOrder']);
         Route::get('getreOrderRequest', [App\Http\Controllers\HomeController::class,'getreOrderRequest']);
         Route::get('exportExcel',[App\Http\Controllers\HomeController::class,'exportExcel']);
         Route::get('exportExcelOrder',[App\Http\Controllers\HomeController::class,'exportExcelOrder']);
         Route::get('exportExcelComplaints',[App\Http\Controllers\HomeController::class,'exportExcelComplaints']);
         Route::get('exportExcelEmployees',[App\Http\Controllers\HomeController::class,'exportExcelEmployees']);
-        Route::post('saveComplaint',[App\Http\Controllers\ComplaintController::class,'saveComplaint']);
         Route::get('/complaints',[App\Http\Controllers\ComplaintController::class,'complaints']);
         Route::get('/addStudyExam',[App\Http\Controllers\ImageController::class,'addStudyExam'])->name('addStudyExam');
         Route::post('/storeStudyExam',[App\Http\Controllers\ImageController::class,'storeStudyExam'])->name('images.store');

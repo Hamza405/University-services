@@ -242,10 +242,10 @@ class HomeController extends Controller
         $currentDateTime = Carbon::now();
         $newDateTime = Carbon::now()->addDay(30);
 
-        $order = Order::where('userID',Auth::user()->id)->where('serviceID',$request->service)->first();
-        if($order!=null){
-            return redirect()->back()->withErrors(['msg', 'The Message']);
-        }
+        // $order = Order::where('userID',Auth::user()->id)->where('serviceID',$request->service)->first();
+        // if($order!=null){
+        //     return redirect()->back()->withErrors(['msg', 'The Message']);
+        // }
         
 
         Order::create([

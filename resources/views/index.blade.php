@@ -135,7 +135,7 @@
 									<ul class="sub-menu">
 
 										@foreach ($sections as $section)
-											<li><a href="">{{ $section->name }}</a></li>
+											<li ><a href=""  style="pointer-events: none">{{ $section->name }}</a></li>
 										@endforeach
 								
 									</ul>
@@ -436,8 +436,8 @@
             
 			<!-- Our Services -->
 			<div class="section-area content-inner service-info-bx">
-                <div class="container mb-4 mt-4">
-					<div class="row">
+                <div class="container mb-4 mt-4 ">
+					<div class="row d-felx justify-content-center">
 						<div class="col-lg-3 col-md-4 col-sm-12">
 							<div class="service-bx" style="border-radius: 20px">
 								<div class="action-box" style="border-radius: 15px">
@@ -480,7 +480,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-3 col-md-4 col-sm-12">
+						{{-- <div class="col-lg-3 col-md-4 col-sm-12">
 							<div class="service-bx m-b0"style="border-radius: 20px">
 								<div class="action-box"style="border-radius: 15px">
 									<img src="assets/images/gallery/pic2.jpg" alt="">
@@ -493,7 +493,7 @@
 									<a href="{{ url('/home') }}" class="btn radius-xl">استعراض</a>
 								</div>
 							</div>
-						</div>
+						</div> --}}
 						
 					</div>
 				</div>
@@ -550,11 +550,11 @@
 					</div>
 					<div class="row mt-3">
 						<div class="upcoming-event-carousel owl-carousel owl-btn-center-lr owl-btn-1 col-12 p-lr0  m-b30">
-									@if($ads->isEmpty())
+									{{-- @if($ads->isEmpty()) --}}
 										<div class="col-md-12 text-center">
 											<h4>^_^ لمشاهدة الإعلانات يرجى التسجيل </h4>
 										</div>
-									@endif
+									{{-- @endif --}}
 									
 									
 								
