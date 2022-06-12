@@ -139,7 +139,7 @@
 									<ul class="sub-menu">
 
 										@foreach ($sections as $section)
-											<li><a href="">{{ $section->name }}</a></li>
+											<li><a href="" style="pointer-events:none">{{ $section->name }}</a></li>
 										@endforeach
 								
 									</ul>
@@ -468,7 +468,7 @@
 			<!-- Our Services -->
 			<div class="section-area content-inner service-info-bx">
                 <div class="container mb-4 mt-4">
-					<div class="row">
+					<div class="row d-flex justify-content-center">
 						<div class="col-lg-3 col-md-4 col-sm-12">
 							<div class="service-bx" style="border-radius: 20px">
 								<div class="action-box" style="border-radius: 15px">
@@ -511,7 +511,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-3 col-md-4 col-sm-12">
+						{{-- <div class="col-lg-3 col-md-4 col-sm-12">
 							<div class="service-bx m-b0"style="border-radius: 20px">
 								<div class="action-box"style="border-radius: 15px">
 									<img src="assets/images/gallery/pic2.jpg" alt="">
@@ -524,7 +524,7 @@
 									<a href="{{ url('/home') }}" class="btn radius-xl">استعراض</a>
 								</div>
 							</div>
-						</div>
+						</div> --}}
 						
 					</div>
 				</div>
@@ -719,18 +719,13 @@
 		  </div>
 	</dialog>
 	<script>
-	 let favDialog = document.querySelector('#favDialog');
-					 
-	 let btn = document.querySelector('#b');
-	 btn.addEventListener ('click',(e)=>{
-		favDialog.close()
-	 })
-
-	
-	
-			favDialog.showModal();
-
-	
+		let favDialog = document.querySelector('#favDialog');
+						
+		let btn = document.querySelector('#b');
+		btn.addEventListener ('click',(e)=>{
+			favDialog.close()
+		})
+		favDialog.showModal();
 	</script>
 }
 @endif

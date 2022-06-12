@@ -242,12 +242,10 @@ class HomeController extends Controller
         $currentDateTime = Carbon::now();
         $newDateTime = Carbon::now()->addDay(30);
 
-        // $order = Order::where('userID',Auth::user()->id)->where('serviceID',$request->service)->first();
-        // if($order!=null){
-        //     return redirect()->back()->withErrors(['msg', 'The Message']);
-        // }
-        
-
+        $order = Order::where('userID',Auth::user()->id)->where('serviceID',$request->service)->first();
+        if($order!=null){
+            return redirect()->back()->withErrors(['msg', 'The Message']);
+        }
         Order::create([
             'userID' => Auth::user()->id,
             'serviceID' => $request->service,
@@ -528,29 +526,57 @@ class HomeController extends Controller
                 }
                 else{
                     if($fullMark >= 60){
-                        Mark::create([
-                            'userId'=>$getUserId->id,
-                            'subjectId'=>$request->subject,
-                            'th'=>$request->th,
-                            'pr'=>$request->pr,
-                            'year'=>$request->year,
-                            'semester'=>$request->semester,
-                            'result'=>'ناجح'
-                        ]);
-                        $subjects =DB::table('subjects')->get();
-                        return view('addMyMarks')->with('subjects',$subjects);
+                        if($request->work){
+                            Mark::create([
+                                'userId'=>$getUserId->id,
+                                'subjectId'=>$request->subject,
+                                'th'=>$request->th,
+                                'year'=>$request->year,
+                                'semester'=>$request->semester,
+                                'result'=>'ناجح'
+                            ]);
+                            $subjects =DB::table('subjects')->get();
+                            return view('addMyMarks')->with('subjects',$subjects);
+                        }else{
+                            Mark::create([
+                                'userId'=>$getUserId->id,
+                                'subjectId'=>$request->subject,
+                                'th'=>$request->th,
+                                'pr'=>$request->pr,
+                                'year'=>$request->year,
+                                'semester'=>$request->semester,
+                                'result'=>'ناجح'
+                            ]);
+                            $subjects =DB::table('subjects')->get();
+                            return view('addMyMarks')->with('subjects',$subjects);
+                        }
+                        
+                    }else {
+                        if($request->work){
+                            Mark::create([
+                                'userId'=>$getUserId->id,
+                                'subjectId'=>$request->subject,
+                                'th'=>$request->th,
+                                'year'=>$request->year,
+                                'semester'=>$request->semester,
+                                'result'=>'راسب'
+                            ]);
+                            $subjects =DB::table('subjects')->get();
+                            return view('addMyMarks')->with('subjects',$subjects);
+                        }else{
+                            Mark::create([
+                                'userId'=>$getUserId->id,
+                                'subjectId'=>$request->subject,
+                                'th'=>$request->th,
+                                'pr'=>$request->pr,
+                                'year'=>$request->year,
+                                'semester'=>$request->semester,
+                                'result'=>'راسب'
+                            ]);
+                            $subjects =DB::table('subjects')->get();
+                            return view('addMyMarks')->with('subjects',$subjects);
+                        }
                     }
-                    Mark::create([
-                        'userId'=>$getUserId->id,
-                        'subjectId'=>$request->subject,
-                        'th'=>$request->th,
-                        'pr'=>$request->pr,
-                        'year'=>$request->year,
-                        'semester'=>$request->semester,
-                        'result'=>'راسب'
-                    ]);
-                    $subjects =DB::table('subjects')->get();
-                    return view('addMyMarks')->with('subjects',$subjects);
                 }  
                 return view('addMyMarks')->with('subjects',$subjects);
             }else{

@@ -183,24 +183,50 @@
                                     </div> <br>
 									                  <div class="input-group" style="margin-top:16px">
                                         
-                                        <input  type="number" class="form-control" style="direction: rtl" placeholder="علامة القسم العملي" name="pr" required>
-                                    </div> <br>
-									
-                                    <div class="input-group" style="margin-top:16px;direction:rtl" >
+                                        <input id="pr" type="number" class="form-control" style="direction: rtl" placeholder="علامة القسم العملي" name="pr" required>
+                                    </div> 
+                                    <br>
+                                   
+                                    <div class="row mt-2" style="direction:rtl;text-align:right;width:50%">
+                                      <div class="col-md-8">
+                                      <label style="padding-top:7px" for="isShown">لايوجد عملي لهذا المقرر</label>
+                                      </div>
+                                      <div class="col-md-4">
+                                      <input style="width:2rem;position:relative;right:-3rem;top:-.4rem" type="checkbox" name="work" id="work" class="form-control">
+                                      <script>
+                                        let isCheck=false;
+                                        const pr = document.getElementById('pr')
+                                        const check =  document.getElementById('work')
+                                        check.addEventListener('change',function(){
+                                          isCheck=!isCheck;
+                                          pr.value=isCheck?0:null
+                                          pr.disabled=isCheck;
+                                        })
+                                      </script>
+                                    </div>
+                                 
+                                  </div>
+                                   
+                                    
+                                        <div class="input-group" style="margin-top:4px;direction:rtl" >
                                                           
-                                        <input  type="text" class="date-own form-control" style="width: 300px;float:right" placeholder="العام الدراسي" name="year" required>
-                                        <script type="text/javascript">
-
-                                          $('.date-own').datepicker({
-                                        
-                                            minViewMode: 2,
-                                        
-                                            format: 'yyyy'
-                                        
-                                          });
-                                        
-                                        </script>
-                                      </div> <br>
+                                          <input  type="text" class="date-own form-control" style="width: 300px;float:right" placeholder="العام الدراسي" name="year" required>
+                                          <script type="text/javascript">
+  
+                                            $('.date-own').datepcker({
+                                          
+                                              minViewMode: 2,
+                                          
+                                              format: 'yyyy'
+                                          
+                                            });
+                                          
+                                          </script>
+                                        </div>
+                                      
+                                    
+                                 
+                                    <br>
 	
                                     <div class="input-group" style="display: flex; margin-top:16px">
                                         

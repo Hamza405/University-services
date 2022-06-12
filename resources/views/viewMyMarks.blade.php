@@ -188,7 +188,6 @@
 							</thead>
 							<tbody>
 								@foreach ($marks as $s)
-					
 								<tr>
 									
 									<td>
@@ -200,7 +199,7 @@
 									</td>	
 								
 									<td >
-										{{$s->pr}}
+										{{$s->pr==null?'لايوجد':$s->pr}}
 									</td>	
 							
 									<td >
