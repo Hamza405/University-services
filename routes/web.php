@@ -41,11 +41,11 @@ Route::group(['middleware' => ['employeeRoutes']],function() {
         Route::get('exportPdf',[App\Http\Controllers\HomeController::class,'exportPdf']);
         Route::get('exportOnlyPdf',[App\Http\Controllers\HomeController::class,'exportOnlyPdf']);
         Route::get('myMarksOnly',[App\Http\Controllers\HomeController::class,'viewMyMarksOnly']);    
-        Route::get('viewStudyProgram', [App\Http\Controllers\HomeController::class,'viewProImg']);
+        Route::get('viewStudyProgram', [App\Http\Controllers\HomeController::class,'viewStudyProgram']);
         Route::get('/viewStudyExam',[App\Http\Controllers\ImageController::class,'viewStudyExam']);
         Route::post('addOrderStd', [App\Http\Controllers\HomeController::class,'addOrderStd']);
         Route::post('reOrder', [App\Http\Controllers\HomeController::class,'reOrder']);
-
+        Route::get('pullReOrder/{uId}/{sId}', [App\Http\Controllers\HomeController::class,'pullReOrder']);
         Route::post('saveComplaint',[App\Http\Controllers\ComplaintController::class,'saveComplaint']);
     }
 );
@@ -81,7 +81,7 @@ Route::group(['middleware' => ['studentRoutes']],function() {
         Route::get('addPro', [App\Http\Controllers\HomeController::class,'addPro']);
         Route::put('addPro', [App\Http\Controllers\HomeController::class,'storePro']);
         
-        Route::get('pullReOrder/{uId}/{sId}', [App\Http\Controllers\HomeController::class,'pullReOrder']);
+       
         Route::get('getreOrderRequest', [App\Http\Controllers\HomeController::class,'getreOrderRequest']);
         Route::get('exportExcel',[App\Http\Controllers\HomeController::class,'exportExcel']);
         Route::get('exportExcelOrder',[App\Http\Controllers\HomeController::class,'exportExcelOrder']);

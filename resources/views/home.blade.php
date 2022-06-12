@@ -127,10 +127,10 @@
 							<a href="index.html"><img src="assets/images/logo.png" alt=""></a>
 						</div>
                         <ul class="nav navbar-nav">	
-							{{-- @if(Auth::user()->role == 'Admin') --}}
+							@if(Auth::user()->role == 'Admin')
 								<li class="active"><a href="{{ url('/adminDash') }}">Dashboard</a>
 							
-							{{-- @endif --}}
+							@endif
 								<li><a href="#ads">آخر الإعلانات</a>
 							
 							</li>
@@ -706,7 +706,7 @@
 </div>
 @include('templates.alert')
 
-@if($errors->any()){
+@if($errors->first()=='or'){
 	<dialog id="favDialog" >
 		<p id="dialog_description" style="direction: rtl">
 			تم تقديم هذا الطلب بالفعل,
@@ -720,10 +720,38 @@
 	</dialog>
 	<script>
 		let favDialog = document.querySelector('#favDialog');
+		let c = document.querySelector('#dialog_description');
 						
 		let btn = document.querySelector('#b');
+		// $('#dialog_description').text('asdasdasd')
+		// c.innerHTML={{$errors->first()}}
 		btn.addEventListener ('click',(e)=>{
 			favDialog.close()
+			favDialog.style.display = 'none';
+		})
+		favDialog.showModal();
+	</script>
+}
+@endif
+
+@if($errors->first()=='re'){
+	<dialog id="favDialogr" >
+		<p id="dialog_descriptionr" style="direction: rtl">
+			أنت بالفعل ناجح في هذا المقرر
+		  </p>
+		  <div style="display: flex;
+		  justify-content: center;
+		  align-items: center;">
+			<button id="br" type="button" class="btn btn-warning">اغلاق</button>
+		  </div>
+	</dialog>
+	<script>
+		let favDialog = document.querySelector('#favDialogr');
+						
+		let btn = document.querySelector('#br');
+		btn.addEventListener ('click',(e)=>{
+			favDialog.close()
+			favDialog.style.display = 'none';
 		})
 		favDialog.showModal();
 	</script>

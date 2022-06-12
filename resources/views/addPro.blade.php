@@ -162,29 +162,46 @@
                                 <div class="form-group col-lg-12">
 									<div class="input-group" style="display: grid">
                                         
-                                        <select id="gender" name="day" style="width: 100%">
+                                        <select id="gender" onchange="togl(this)" name="day" style="width: 100%">
 											@foreach($studypro as $as)
-											<option value="{{$as->id}}">
+											<option  value="{{$as->id}}">
 												{{$as->day}}
                                             </option>
+											<script>
+												const select = document.getElementById("gender")
+												const t1 = document.getElementById("t1")
+												const t2 = document.getElementById("t2")
+												const t3 = document.getElementById("t3")
+												const t4 = document.getElementById("t4")
+												const t5 = document.getElementById("t5")
+												function togl(select){
+													if(select.options[select.selectedIndex].text=='الأحد'){
+													 t1.value="asdasdas"
+													}
+													
+												}
+												 
+												
+												</script>  
+											
 											@endforeach
                                         
                                         </select>
                                     </div> <br>
                                     <div class="input-group">
-                                    	<textarea class="form-control" style="direction: rtl" placeholder="السنة الأولى" name="y1" required></textarea>
+                                    	<textarea id="t1" class="form-control" style="direction: rtl" placeholder="السنة الأولى" name="y1" required></textarea>
                                     </div> <br>
 									<div class="input-group">
-                                    	<textarea  class="form-control" style="direction: rtl" placeholder="السنة الثانية" name="y2" required></textarea>
+                                    	<textarea id="t2" class="form-control" style="direction: rtl" placeholder="السنة الثانية" name="y2" required></textarea>
                                     </div> <br>
 									<div class="input-group">
-                                    	<textarea  class="form-control" style="direction: rtl" placeholder="السنة الثالثة" name="y3" required></textarea>
+                                    	<textarea id="t3" class="form-control" style="direction: rtl" placeholder="السنة الثالثة" name="y3" required></textarea>
                                     </div> <br>
 									<div class="input-group">
-                                    	<textarea  class="form-control" style="direction: rtl" placeholder="السنة الرابعة" name="y4" required></textarea>
+                                    	<textarea id="t4" class="form-control" style="direction: rtl" placeholder="السنة الرابعة" name="y4" required></textarea>
                                     </div> <br>
 									<div class="input-group">
-                                    	<textarea  class="form-control" style="direction: rtl" placeholder="السنة الخامسة" name="y5" required></textarea>
+                                    	<textarea id="t5" class="form-control" style="direction: rtl" placeholder="السنة الخامسة" name="y5" required></textarea>
                                     </div> <br>
 									
                                     
@@ -193,7 +210,8 @@
 									  <div class="text-danger" >
 										  {{ implode('', $errors->all('هناك غلط بالرقم الجامعي او ان الطالب فعلا ناجح في الماده او مجموع العلامات غير صحيح')) }}
 									  </div>
-									  @endif    
+									  @endif  
+									
                             </div>
 							  
                           

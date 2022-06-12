@@ -136,14 +136,18 @@ class HomeController extends Controller
     public function reOrder(Request $request){
         $currentDateTime = Carbon::now();
         $newDateTime = Carbon::now()->addDay(30);
-        
+        $mark = Mark::where('userId',Auth::user()->id)->where('subjectId',$request->subject)->where('result','ناجح')->first();
+        if($mark){
+            return redirect()->back()->withErrors('re');
+        }
         // $date =date('Y-m-d H:i:s');
         // $daysToAdd = 5;
         // $date = $date->addDays("30");
         $order = ReOrder::where([
-            'userID' => $request->userID,
-            'subjectID' => $request->subjectID,
+            ['userID' ,'=', Auth::user()->id],
+            ['subjectID' ,'=', strval($request->subject)]
         ])->first();
+        
         if($order!=null){
             return redirect()->back()->withError('msg');
         }
@@ -219,7 +223,8 @@ class HomeController extends Controller
     }
 
     public function viewStudyProgram(){
-        
+        $section = (new StudySection)->getSectionByName(Auth::user()->section);
+        $studypro = DB::table('study_program')->where('section_id','=',$section->id)->get();
         return view('viewProImage')->with('studypro',$studypro);
     }
 
@@ -244,7 +249,7 @@ class HomeController extends Controller
 
         $order = Order::where('userID',Auth::user()->id)->where('serviceID',$request->service)->first();
         if($order!=null){
-            return redirect()->back()->withErrors(['msg', 'The Message']);
+            return redirect()->back()->withErrors('or');
         }
         Order::create([
             'userID' => Auth::user()->id,

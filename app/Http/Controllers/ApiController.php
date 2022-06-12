@@ -17,6 +17,7 @@ use App\Models\Reorder;
 use App\Models\ProImage;
 use App\Models\Complaint;
 use App\Models\StudyExam;
+use App\Models\StudyProgram;
 use App\Models\StudySection;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
@@ -236,6 +237,7 @@ class ApiController extends Controller
     }
 
     public function getSubjects(){
+        
         $data = Subject::where('section',Auth::user()->section)->orderBy('year', 'ASC')->orderBy('semester', 'ASC')->get();
         if($data){
             return response()->json([
@@ -264,7 +266,8 @@ class ApiController extends Controller
     }
 
     public function getStudyProgram(){
-        $studyProgram = DB::table('study_program')->get();
+        $section = (new StudySection)->getSectionByName(Auth::user()->section);
+        $studyProgram = DB::table('study_program')->where('section_id','=',$section->id)->get();
         if($studyProgram){
             return response()->json([
                 'studyProgram' => $studyProgram,
@@ -308,7 +311,7 @@ class ApiController extends Controller
 
         if($order){
             return response()->json([
-                'order' => $order,
+                // 'order' => $order,
                 'status' => 200
             ]);
         }
