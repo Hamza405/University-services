@@ -77,10 +77,10 @@
 								<div class="form-group">
 									<div class="input-group">
 										<label style="text-align:end" >
-										البريد الألكتروني
+										
 										</label>
 										<!-- <input name="email" > -->
-										<input style="direction:rtl" name="email" id="email" type="email"  value="{{ old('email') }}" required autocomplete="email" autofocus class="form-control @error('email') is-invalid @enderror">
+										<input style="direction:rtl" placeholder="البريد الألكتروني" name="email" id="email" type="email"  value="{{ old('email') }}" required autofocus class="form-control @error('email') is-invalid @enderror">
 										@error('email')
 										<span class="invalid-feedback" role="alert">
 											<strong>{{ $message }}</strong>
@@ -95,8 +95,8 @@
 							<div class="col-lg-11">
 								<div class="form-group">
 									<div class="input-group"> 
-										<label style="text-align:end" >كلمة المرور</label>
-										<input style="direction:rtl" id="password" value="" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required>
+										<label style="text-align:end" ></label>
+										<input style="direction:rtl" placeholder="كلمة المرور" id="password" value="" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required>
 
 										@error('password')
 											<span class="invalid-feedback" role="alert">
