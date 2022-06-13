@@ -310,6 +310,11 @@ class HomeController extends Controller
         return view('viewSections')->with('sections',$sections);
     }
 
+    public function studySections ()
+    {   $sections = StudySection::all();
+        return view('viewStudySection')->with('sections',$sections);
+    }
+
     public function students ()
     {   $students = User::where('role','طالب')->paginate(5);
         return view('viewStudents')->with('students',$students);
@@ -344,6 +349,8 @@ class HomeController extends Controller
     {   
         return view('addSection');
     }
+
+    
 
     public function addStudySection(){
         return view('addStudySection');
@@ -518,6 +525,30 @@ class HomeController extends Controller
         
     }
 
+    public function deteteService($id){
+        $item = Service::findOrFail($id);
+        $item->delete();
+
+        $services = Service::all();
+        return redirect()->route('services')->with('services',$services);
+    }
+
+    public function deteteSection($id){
+        $item = Section::findOrFail($id);
+        $item->delete();
+
+        $sections = Section::all();
+        return redirect()->route('sections')->with('sections',$sections);
+    }
+
+    public function deleteStudySection($id){
+        $item = StudySection::findOrFail($id);
+        $item->delete();
+
+        $sections = StudySection::all();
+        return redirect()->route('studySections')->with('sections',$sections);
+    }
+
     public function saveAddMark (Request $request)
     {   
         $getUserId = User::Select('id')->where('num',$request->num)->where('role','طالب')->first();
@@ -593,6 +624,8 @@ class HomeController extends Controller
         
             
     } 
+
+    
         // $ss = Mark::where('userId','=',$getUserId->id)->where('')->where('subjectId','=',$request->subject)->first();
         // if($ss==null){
         //     if($fullMark >= 60){

@@ -167,6 +167,12 @@
 								<td>{{ $section->sectionName }}</td>
                                 <td>
                                     {{ $section->created_at }}
+									<br>
+										<form style="display:inline" method="POST"  action="{{ url('/deleteSection'.'/'.$section->id)}}">
+                      						@csrf
+                      						@method('DELETE')
+                    						<button type="submit" class="btn btn-danger" style="background-color:transparent"><i class="fa fa-trash" style="color:red;font-size:1.3rem"></i></button>
+                    					</form>
                                 </td>
 							</tr>
 							@endforeach	

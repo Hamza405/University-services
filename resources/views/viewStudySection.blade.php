@@ -146,8 +146,8 @@
 			<div class="db-breadcrumb">
 				<h4 class="breadcrumb-title">لوحة التحكم</h4>
 				<ul class="db-breadcrumb-list">
-					<li><a href="#"><i style="padding:0px 16px" class="fa fa-home"></i>الخدمات</a></li>
-				
+					<li><a href="#"><i style="padding:0px 16px" class="fa fa-home"></i>الأقسام</a></li>
+			
 				</ul>
 			</div>	
 			<!-- Card -->
@@ -156,23 +156,28 @@
 					<table class="styled-table">
 						<thead>
 							<tr>
-								<th>الخدمة</th>
-								<th>تاريخ الإنشاء</th>
+								<th>القسم</th>
+                                <th>تاريخ الإنشاء</th>
+                              
 							</tr>
 						</thead>
 						<tbody>
-							@foreach ($services as $service)
+							@foreach ($sections as $section)
 							<tr>
-								<td>{{ $service->serviceName }}</td>
-								<td>
-									{{ $service->created_at }}
-									<br>
-										<form style="display:inline" method="POST"  action="{{ url('/deleteService'.'/'.$service->id)}}">
-                      						@csrf
-                      						@method('DELETE')
-                    						<button type="submit" class="btn btn-danger" style="background-color:transparent"><i class="fa fa-trash" style="color:red;font-size:1.3rem"></i></button>
-                    					</form>
-								</td>
+								<td>{{ $section->name }}</td>
+                                <td>
+                                    {{ $section->created_at }}
+									@if(Auth::user()->role == 'Admin')
+										@if($section->id != 2)
+											<br>
+											<form style="display:inline" method="POST"  action="{{ url('/deleteStudySection'.'/'.$section->id)}}">
+												@csrf
+												@method('DELETE')
+												<button type="submit" class="btn btn-danger" style="background-color:transparent"><i class="fa fa-trash" style="color:red;font-size:1.3rem"></i></button>
+											</form>
+										@endif
+									@endif
+                                </td>
 							</tr>
 							@endforeach	
 						</tbody>

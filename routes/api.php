@@ -39,6 +39,7 @@ Route::group(['middleware'=>'auth:sanctum'], function(){
     Route::get('/getSubjects',[App\Http\Controllers\ApiController::class, 'getSubjects']);
     Route::get('/getStudyProgram',[App\Http\Controllers\ApiController::class, 'getStudyProgram']);
     Route::post('/reOrder', [App\Http\Controllers\ApiController::class,'reOrder']);
+    Route::post('/pullReOrder', [App\Http\Controllers\ApiController::class,'pullReOrder']);
     Route::get('/getReOrder', [App\Http\Controllers\ApiController::class,'getReOrder']);
     Route::post('/saveComplaint', [App\Http\Controllers\ApiController::class,'saveComplaint']);
     Route::get('/getExam', [App\Http\Controllers\ApiController::class,'getExam']);

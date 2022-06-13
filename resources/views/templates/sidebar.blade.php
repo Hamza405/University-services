@@ -37,6 +37,12 @@
 		                </a>
 					</li>
 					<li>
+						<a href="{{ url('/studySections') }}" class="ttr-material-button">
+							<span class="ttr-icon"><i class="ti-layers"></i></span>
+		                	<span class="ttr-label">الأقسام الدراسية</span>
+		                </a>
+					</li>
+					<li>
 						<a href="{{ url('/addmyMarks') }}" class="ttr-material-button">
 							<span class="ttr-icon"><i class="ti-hand-open"></i></span>
 		                	<span class="ttr-label">العلامات</span>

@@ -321,6 +321,16 @@ class ApiController extends Controller
         ]);
     }
 
+    public function pullReOrder(Request $request){
+        Reorder::where([
+            'userID' => Auth::user()->id,
+            'subjectID' => $request->subject,
+        ])->delete();
+        return response()->json([
+            'status' => 200
+        ]);
+    }
+
     public function getReOrder (){
         $reorders = Reorder::where('userID', Auth::user()->id)->get();
         if($reorders){
